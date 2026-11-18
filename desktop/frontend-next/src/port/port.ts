@@ -28,7 +28,7 @@ import type { NetworkProbe, NetworkSettings } from "./network";
 import type { ApprovalDefault, ApprovalMode, WorkspaceTrust, ApprovalVerdict, BrowserTab, Checkpoint, HistoryMessage, HostTodo, JobEntry, JobOutput, Preset, RewindPlan, ToolOutputPage, RewindResult, RewindUndo, RewindScope, SessionEntry, SessionStatus, SessionUsage, SourceUsage, WalletLine, WalletReading, PlanAction } from "./session";
 import type { ContextBreakdown, ShellOption, ShellSettings } from "./shell";
 import type { SkillCatalog, SkillEntry, SkillUpdateChange, SkillUpdatePlan } from "./skill";
-import type { RunningWorkPort } from "./running";
+import type { SubagentRun, SubagentTranscript } from "./subagent";
 import type { StudioCrash, StudioLogs, UpdateMode, UpdateProgress, VersionEntry, VersionHub, VersionNotes } from "./version";
 import type { ChangeDiff, CommitFile, CommitProposal, CommitRequest, CommitResult, DiscardRequest, GitCommitFiles, GitRepos, PushRequest, PushResult, PushPlan, StageRequest, WorkspaceBranch, WorkspaceBranches, WorkspaceChange, WorkspaceChanges, WorkspaceEntry, WorkspaceFile, WorkspaceFiles, WorkspaceGit, WorkspaceInfo, WorkspacePreviewPort } from "./workspace";
 import type { SessionTailPort } from "./session_tail";
@@ -46,7 +46,7 @@ import type { ExecutionGraphRead, TrajectoryRead, WireEvent } from "./wire";
 import type { PluginExport, PluginInstallRequest, PluginPackage, PluginPlan } from "./plugin";
 import type { MarketDetail, MarketList, MarketOwnRequest, MarketPackage, MarketPlan, MarketPublished, MarketQuery, MarketRequest, MarketSubmission, MarketVote } from "./market";
 import type { Appearance, SceneFolder, ThemeImport, ThemePack } from "./look";
-import type { AskTimeoutSettings, ModStatus, ModsSettings, ModsSettingsEdit, SessionRefSettings, AutoArchiveSettings, ChangedFilesSettings, FeedbackLevelNotices, FoldWorkSettings, TurnNarrationSettings, ObservabilityPatch, ObservabilitySettings, WebAccessPatch, WebAccessSettings, SearxngProbe, BrowserToolsSettings, SubagentClaimsSettings, WriteLeaseSettings, PlanApprovalSettings, DefaultModeSettings, ToolSettings, PeerReceipt, PeersState, PeersSettings, PeersSettingsEdit, PeerRemember, ConfigProblem, ConfigRepair, DisplayCurrencyMode, DisplayCurrencySettings, PermissionLists, PermissionRules, ProgressWatchSettings, SandboxSettings, WorkspaceRoots, ChangedSettings } from "./boundary";
+import type { AskTimeoutSettings, ModStatus, ModsSettings, ModsSettingsEdit, SessionRefSettings, AutoArchiveSettings, ChangedFilesSettings, FeedbackLevelNotices, FoldWorkSettings, TurnNarrationSettings, WebAccessPatch, WebAccessSettings, SearxngProbe, BrowserToolsSettings, SubagentClaimsSettings, WriteLeaseSettings, PlanApprovalSettings, DefaultModeSettings, ToolSettings, PeerReceipt, PeersState, PeersSettings, PeersSettingsEdit, PeerRemember, ConfigProblem, ConfigRepair, DisplayCurrencyMode, DisplayCurrencySettings, PermissionLists, PermissionRules, ProgressWatchSettings, SandboxSettings, WorkspaceRoots, ChangedSettings } from "./boundary";
 import type { ScheduleBoard, ScheduleDraft, SchedulePreview, ScheduleResultView, ScheduleView } from "./schedule";
 import type { Protocol, ProviderHealth, ProviderCheck, ProviderCheckDraft, ProviderDraft, ProviderEdit, ProviderEntry, ProviderModelCheck, ProviderModelCheckRequest, ProviderProbe, ProviderSetup, ProviderRemoval, ProviderPreset, ProviderPresetInstall } from "./provider";
 export type { ModelEffort, ModelLimit, ModelRate, Protocol, ProviderHealth, ProviderCheck, ProviderCheckDraft, ProviderDraft, ProviderEdit, ProviderEntry, ProviderModelCheck, ProviderModelCheckRequest, ProviderProbe, ProviderSetup, ProviderRemoval, ProviderPreset, ProviderPresetInstall } from "./provider";
@@ -181,7 +181,7 @@ export interface TrayPrefs {
   closeToTray: boolean;
 }
 
-export interface AgentPort extends RunningWorkPort, MemoryHoldPort, WorkspacePreviewPort, SessionTailPort, UploadUsagePort, TerminalPort {
+export interface AgentPort extends MemoryHoldPort, WorkspacePreviewPort, SessionTailPort, UploadUsagePort, TerminalPort {
   providerSetup(): Promise<ProviderSetup | null>;
   saveProviderKey(apiKey: string): Promise<void>;
   // The models that answer the job asked about; "chat" when none is named.
@@ -336,8 +336,6 @@ export interface AgentPort extends RunningWorkPort, MemoryHoldPort, WorkspacePre
   saveFoldWorkSettings(fold: boolean): Promise<FoldWorkSettings>;
   turnNarrationSettings(): Promise<TurnNarrationSettings>;
   saveTurnNarrationSettings(level: TurnNarrationSettings["level"]): Promise<TurnNarrationSettings>;
-  observabilitySettings(): Promise<ObservabilitySettings>;
-  saveObservabilitySettings(patch: ObservabilityPatch): Promise<ObservabilitySettings>;
   webAccessSettings(): Promise<WebAccessSettings>;
   saveWebAccessSettings(patch: WebAccessPatch): Promise<WebAccessSettings>;
   probeSearxng(): Promise<SearxngProbe>;
@@ -708,6 +706,11 @@ export interface AgentPort extends RunningWorkPort, MemoryHoldPort, WorkspacePre
   // Ends one running tool call and lets the turn go on; a call that already
   // finished is refused (tool_call.not_running).
   stopToolCall(callId: string): Promise<void>;
+  // The sub-agent runs this conversation spawned, running or finished, newest
+  // first, and one run's conversation a page at a time: a running run is read
+  // live. A run of another conversation is refused (subagent.not_owned).
+  subagents(): Promise<SubagentRun[]>;
+  subagentTranscript(ref: string, after?: number, limit?: number): Promise<SubagentTranscript>;
   // The person's guidance to a sub-agent that is still running, read at its next
   // tool call. Refused with a code when it is not running (subagent.not_running),
   // is empty, over the size or rate limit, or is another conversation's.

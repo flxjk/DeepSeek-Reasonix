@@ -10,7 +10,6 @@ import (
 	"reasonix/internal/contract/config"
 	"reasonix/internal/contract/event"
 	"reasonix/internal/frontend/termrender"
-	"reasonix/internal/platform/telemetry"
 	"reasonix/internal/runtime/agent"
 	"reasonix/internal/session/control"
 	"reasonix/internal/state/sessionstore"
@@ -29,10 +28,10 @@ type runSinkChain struct {
 }
 
 // buildRunSink assembles `run`'s sink chain: stdout rendering innermost, then
-// metrics accumulation, then trajectory recording, then notifications and the
-// telemetry reporter outermost. Markdown post-stream redraw (cursor moves) is
+// metrics accumulation, then trajectory recording, then notifications outermost.
+// Markdown post-stream redraw (cursor moves) is
 // enabled only on a TTY; piped / captured output keeps the raw stream.
-func buildRunSink(format runOutputFormat, printOnly, showThinking bool, metricsPath, trajectoryPath string, cfg *config.Config, reporter *telemetry.Reporter) (runSinkChain, error) {
+func buildRunSink(format runOutputFormat, printOnly, showThinking bool, metricsPath, trajectoryPath string, cfg *config.Config) (runSinkChain, error) {
 	var chain runSinkChain
 	if printOnly || format != runOutputText {
 		chain.resultOutput = newRunOutputSink(os.Stdout, format)
@@ -69,7 +68,6 @@ func buildRunSink(format runOutputFormat, printOnly, showThinking bool, metricsP
 		chain.sink = rec
 	}
 	chain.sink = withNotifications(chain.sink, cfg)
-	chain.sink = reporter.Wrap(chain.sink)
 	return chain, nil
 }
 

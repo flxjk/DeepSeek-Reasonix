@@ -55,7 +55,6 @@ const DocumentPreview = lazy(() => import("./document/DocumentPreview"));
 const CodeEditor = lazy(() => import("./CodeEditor"));
 
 import { treeRows } from "./workbench_tree";
-import { ExplorerResize } from "./ExplorerResize";
 import { AgentRunView } from "./AgentRunView";
 import { JobRunView } from "./JobRunView";
 import { useAgentTabs, type AgentRequest } from "./useAgentTabs";
@@ -611,10 +610,7 @@ export function WorkbenchPanel({
               {failed}
             </div>
           )}
-          {!launcher && !active && showFiles && (
-            <WorkbenchState icon="file" title={t("workbench.pick_a_file")} detail={t("workbench.pick_a_file_detail")} />
-          )}
-          {(launcher || (!active && !showFiles)) && (
+          {(launcher || !active) && (
             <WorkbenchLauncher
               key={String(launcher)} focus={launcher}
               changes={changes.length}
@@ -631,7 +627,7 @@ export function WorkbenchPanel({
             <AgentBrowserPanel
               tabs={[active.tab]}
               shown={shown && !launcher}
-              showTabs={false} editPage={preview.edit}
+              showTabs={false}
               onOpenDocument={(path) => port.openDocument(path)}
             />
           )}
@@ -681,7 +677,7 @@ export function WorkbenchPanel({
                 </Suspense>
               ) : mode === "preview" ? (
                 previewTab ? (
-                  <AgentBrowserPanel tabs={[previewTab]} shown={shown && !launcher} showTabs={false} onOpenDocument={(path) => port.openDocument(path)} editPage={preview.edit} />
+                  <AgentBrowserPanel tabs={[previewTab]} shown={shown && !launcher} showTabs={false} onOpenDocument={(path) => port.openDocument(path)} />
                 ) : (
                   <div className="workbench-empty">{t("common.loading")}</div>
                 )
@@ -717,7 +713,6 @@ export function WorkbenchPanel({
           </div>
         </main>
         <aside className="workbench-explorer">
-          <ExplorerResize />
           <WorkbenchExplorerHead
             port={port}
             count={files.length + directories.length}

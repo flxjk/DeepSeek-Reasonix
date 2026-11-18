@@ -4,16 +4,10 @@ import (
 	"context"
 	"encoding/json"
 	"errors"
-	"io"
 	"net/http"
 	"net/http/httptest"
-	"os"
-	"path/filepath"
 	"sync/atomic"
 	"testing"
-	"time"
-
-	"reasonix/internal/base/testenv"
 )
 
 func TestVoteSendsTheTokenAndValueToTheRegistry(t *testing.T) {
@@ -99,103 +93,5 @@ func TestVoteTokenNeverFollowsARedirect(t *testing.T) {
 	}
 	if leaked.Load() != 0 {
 		t.Fatal("the redirect target was contacted")
-	}
-}
-
-func TestReportInstallSendsOnlyTheSlugAndKey(t *testing.T) {
-	c := testClient(t, func(w http.ResponseWriter, r *http.Request) {
-		if r.URL.Path != "/v1/packages/acme/kit/installed" || r.Header.Get("Authorization") != "" {
-			t.Errorf("%s auth=%q", r.URL.Path, r.Header.Get("Authorization"))
-		}
-		raw, _ := io.ReadAll(r.Body)
-		if string(raw) != `{"installId":"0123456789abcdef0123456789abcdef"}` {
-			t.Errorf("body = %s", raw)
-		}
-		_, _ = w.Write([]byte(`{"ok":true,"counted":true,"installCount":1}`))
-	})
-	if err := c.ReportInstall(context.Background(), "acme/kit", "0123456789abcdef0123456789abcdef"); err != nil {
-		t.Fatal(err)
-	}
-}
-
-func TestInstallIDIsTheMarketsOwnRandomID(t *testing.T) {
-	home := testenv.TempDir(t)
-	id, err := InstallID(home)
-	if err != nil {
-		t.Fatal(err)
-	}
-	if !installIDShape.MatchString(id) {
-		t.Fatalf("id %q is not 32 lowercase hex", id)
-	}
-	again, err := InstallID(home)
-	if err != nil || again != id {
-		t.Fatalf("second read = %q, %v; want the stored %q", again, err, id)
-	}
-	if other, _ := InstallID(testenv.TempDir(t)); other == id {
-		t.Fatal("two homes drew the same id")
-	}
-	if err := os.WriteFile(filepath.Join(home, "market", "install-id"), []byte("not-an-id\n"), 0o600); err != nil {
-		t.Fatal(err)
-	}
-	if fixed, err := InstallID(home); err != nil || !installIDShape.MatchString(fixed) || fixed == id {
-		t.Fatalf("a corrupt file was not replaced: %q, %v", fixed, err)
-	}
-	if _, err := os.Stat(filepath.Join(home, "cli-telemetry-install-id")); !os.IsNotExist(err) {
-		t.Fatal("the market id touched the usage-statistics id")
-	}
-}
-
-type recordingReporter struct{ got chan [2]string }
-
-func (r *recordingReporter) ReportInstall(_ context.Context, slug, key string) error {
-	r.got <- [2]string{slug, key}
-	return nil
-}
-
-func TestInstallReportsOnceOnlyWhenAKeyIsGiven(t *testing.T) {
-	f := newFixture(t)
-	rep := &recordingReporter{got: make(chan [2]string, 4)}
-	f.svc.Report = rep
-	plan, err := f.svc.Plan(context.Background(), Request{Slug: "acme/review-kit"})
-	if err != nil {
-		t.Fatal(err)
-	}
-	f.svc.InstallKey = "k"
-	if _, err := f.svc.Plan(context.Background(), Request{Slug: "acme/review-kit"}); err != nil {
-		t.Fatal(err)
-	}
-	if _, err := f.svc.Install(context.Background(), Request{Slug: "acme/review-kit", Version: "1.0.0", PlanID: planID(t, plan)}); err != nil {
-		t.Fatal(err)
-	}
-	select {
-	case got := <-rep.got:
-		if got != [2]string{"acme/review-kit", "k"} {
-			t.Fatalf("reported %v", got)
-		}
-	case <-time.After(5 * time.Second):
-		t.Fatal("no report after an install")
-	}
-	select {
-	case got := <-rep.got:
-		t.Fatalf("a plan was reported too: %v", got)
-	case <-time.After(100 * time.Millisecond):
-	}
-}
-
-func TestInstallWithoutAKeyReportsNothing(t *testing.T) {
-	f := newFixture(t)
-	rep := &recordingReporter{got: make(chan [2]string, 1)}
-	f.svc.Report = rep
-	plan, err := f.svc.Plan(context.Background(), Request{Slug: "acme/review-kit"})
-	if err != nil {
-		t.Fatal(err)
-	}
-	if _, err := f.svc.Install(context.Background(), Request{Slug: "acme/review-kit", Version: "1.0.0", PlanID: planID(t, plan)}); err != nil {
-		t.Fatal(err)
-	}
-	select {
-	case got := <-rep.got:
-		t.Fatalf("reported without consent: %v", got)
-	case <-time.After(100 * time.Millisecond):
 	}
 }

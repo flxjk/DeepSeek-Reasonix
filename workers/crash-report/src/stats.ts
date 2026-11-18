@@ -315,7 +315,7 @@ function metricBlocks(bySignal: Map<string, BarRow[]>, signals: string[], option
 
 function metricsCards(rows: MetricRow[], signals = AGENT_METRIC_SIGNALS): string {
   if (!rows.length)
-    return `<div class="empty">${i18n("No metrics yet — flows in once an opt-in build ships", "暂无运行指标 — 等 opt-in 版本发布后有数据")}</div>`;
+    return `<div class="empty">${i18n("No metrics in this window", "当前时间窗口暂无运行指标")}</div>`;
   const bySignal = metricsBySignal(rows);
   const blocks = metricBlocks(bySignal, signals);
   return blocks ? `<div class="metrics">${blocks}</div>` : `<div class="empty">${i18n("No data in this window", "当前时间窗口暂无数据")}</div>`;
@@ -568,7 +568,6 @@ export function renderStats(
     overview: OverviewCounts;
     latestVersion: string;
     filters: {
-      surface: "desktop" | "cli";
       status: string;
       source: string;
       version: string;
@@ -652,7 +651,6 @@ export function renderStats(
     put("exitCode", data.filters.exitCode ?? "");
     put("recovery", data.filters.recovery ?? "");
     put("gpu", data.filters.gpu ?? "");
-    put("surface", data.filters.surface === "cli" ? "cli" : "");
     if (data.filters.newLatest) params.set("new", "latest");
     if (data.filters.regressed) params.set("regressed", "1");
     if (data.filters.windowDays === 7) params.set("window", "7d");
@@ -671,10 +669,6 @@ export function renderStats(
   const windowControls = `<div class="segmented" aria-label="Time window">
 <a class="${range === 7 ? "active" : ""}"${range === 7 ? ` aria-current="true"` : ""} href="${esc(filterQS({ window: "7d" }))}">7d</a>
 <a class="${range === 30 ? "active" : ""}"${range === 30 ? ` aria-current="true"` : ""} href="${esc(filterQS({ window: "" }))}">30d</a>
-</div>`;
-  const surfaceControls = `<div class="segmented" aria-label="Client surface">
-<a class="${data.filters.surface === "desktop" ? "active" : ""}"${data.filters.surface === "desktop" ? ` aria-current="true"` : ""} href="${esc(filterQS({ surface: "" }))}">${i18n("Desktop", "桌面端")}</a>
-<a class="${data.filters.surface === "cli" ? "active" : ""}"${data.filters.surface === "cli" ? ` aria-current="true"` : ""} href="${esc(filterQS({ surface: "cli" }))}">CLI</a>
 </div>`;
   const overviewTone = topSeverityTone(data.overview.openReports, data.overview.regressedReports, data.overview.criticalOpenReports);
   const isDevelopmentDiagnostic = (row: CrashRow) => row.development ?? row.fingerprint.startsWith("dev:");
@@ -725,7 +719,7 @@ ${filterTab("Regressed", "回归", filterQS({ regressed: data.filters.regressed 
 </div></div>`;
   const usageModule = `<section id="usage" class="card full module-card"><div class="module-head"><div><span>${i18n("Module", "模块")}</span><h2>${i18n("Usage distribution", "使用分布")}</h2></div></div>
 <div class="module-panel wide"><h3>${i18nHTML(`Daily active installs <b>— ${rangeText}</b> (solid: users, faded: opens)`, `每日活跃 <b>— ${rangeText}</b>（实线：用户，淡色：打开次数）`)}</h3>
-${anyPing ? dailyChart(days) : `<div class="empty">${i18n("No pings yet — data starts flowing once a telemetry-enabled build ships", "暂无启动 ping — 等带统计的版本发布后这里开始有数据")}</div>`}</div>
+${anyPing ? dailyChart(days) : `<div class="empty">${i18n("No launch pings in this window", "当前时间窗口暂无启动 ping")}</div>`}</div>
 <div class="module-split">
 <section class="module-panel"><h3>${i18nHTML(`Versions <b>— ${rangeText}</b>`, `版本分布 <b>— ${rangeText}</b>`)}</h3>${listBars(data.versions)}</section>
 <section class="module-panel"><h3>${i18nHTML(`Platforms <b>— ${rangeText}</b>`, `平台分布 <b>— ${rangeText}</b>`)}</h3>${listBars(data.platforms)}</section>
@@ -756,9 +750,9 @@ ${filters}
     "health",
     `${dashboardNav}
 <div id="top" class="hero-line"><div><h1>${i18n("Crash & Telemetry", "客户端健康看板")}</h1><p class="sub">${i18nHTML(
-      `${rangeText} window · anonymous launch pings, opt-in aggregate metrics, and user-sent diagnostic reports only`,
-      `${rangeText} 时间窗口 · 仅包含匿名启动 ping、opt-in 汇总指标和用户发送的诊断报告`,
-    )}</p></div><div class="module-actions">${surfaceControls}${windowControls}</div></div>
+      `${rangeText} window · user-sent diagnostic reports and retained historical launch metrics only`,
+      `${rangeText} 时间窗口 · 仅包含用户发送的诊断报告和留存的历史启动指标`,
+    )}</p></div><div class="module-actions">${windowControls}</div></div>
 ${pageOverview}
 <div class="grid">
 ${activeModuleHTML[activeModule]}

@@ -9,7 +9,6 @@ import (
 	"reasonix/internal/contract/config"
 	"reasonix/internal/contract/event"
 	"reasonix/internal/contract/pricing"
-	"reasonix/internal/contract/process"
 	"reasonix/internal/contract/provider"
 	"reasonix/internal/ext/command"
 	"reasonix/internal/ext/hook"
@@ -328,8 +327,6 @@ type RuntimeSettings interface {
 	SaveChangedFilesSettings(show bool) error
 	FeedbackLevelNotices() FeedbackLevelNoticeSettings
 	SaveFeedbackLevelNotices(enabled bool) error
-	ObservabilitySettings() ObservabilitySettings
-	SaveObservabilitySettings(patch ObservabilityPatch) (ObservabilitySettings, error)
 	FoldWorkSettings() FoldWorkSettings
 	SaveFoldWorkSettings(fold bool) error
 	MemoryProactiveSettings() MemoryProactiveSettings
@@ -451,11 +448,6 @@ type SubagentView interface {
 	SubagentTranscript(ref string, after, limit int) (delegation.RunTranscript, error)
 }
 
-// ProcessView reads what the session has running now, across owners.
-type ProcessView interface {
-	Processes() ([]process.Process, error)
-}
-
 // Mods is Claude Code mods: which are installed and what became of each, and the
 // user's switch and budget for running them.
 type Mods interface {
@@ -568,7 +560,6 @@ type SurfaceHistory interface {
 
 type SessionAPI interface {
 	AgentCompositions
-	ProcessView
 	AgentPresetManagement
 	SurfaceActions
 	SurfaceHistory

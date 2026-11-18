@@ -181,10 +181,8 @@ When the listing changes:
   description or a required capability that is not available.
 - The terminal UI and Studio show discovery diagnostics as renderer-managed
   notices, including new diagnostics discovered while completing a slash command.
-  Noninteractive commands keep their stderr diagnostics.
-- Identical diagnostics are shown once per skill store, and Studio shows each one
-  once for as long as the app runs, however many windows it opens. A changed
-  diagnostic is shown again.
+  Identical diagnostics are shown once per skill store; changed diagnostics remain
+  visible. Noninteractive commands keep their stderr diagnostics.
 
 ```toml
 [skills]

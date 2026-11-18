@@ -10,15 +10,7 @@ const columnSets = {
     "os_build", "os_revision", "channel", "distro_id", "distro_version",
     "kernel_version", "session_type", "runtime_engine", "runtime_version", "gpu_mode",
   ],
-  cli_pings: [
-    "os_build", "os_revision", "channel", "distro_id", "distro_version",
-    "kernel_version", "session_type", "runtime_engine", "runtime_version", "gpu_mode",
-  ],
   metric_users: [
-    "arch", "os_build", "os_revision", "channel", "distro_id", "distro_version",
-    "kernel_version", "session_type", "runtime_engine", "runtime_version", "gpu_mode", "event_count",
-  ],
-  cli_metric_users: [
     "arch", "os_build", "os_revision", "channel", "distro_id", "distro_version",
     "kernel_version", "session_type", "runtime_engine", "runtime_version", "gpu_mode", "event_count",
   ],

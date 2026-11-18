@@ -37,7 +37,6 @@ func metaFromSpec(ref string, status sessionstore.SubagentStatus, created, updat
 		WorkspaceRoot:    capsule.WorkspaceRoot,
 		ParentSession:    capsule.ParentSession,
 		ParentToolCallID: capsule.ParentToolCallID,
-		ParentTurn:       strings.TrimSpace(spec.ParentTurn),
 		SystemPromptHash: capsule.SystemPromptHash,
 		ToolScope:        capsule.ToolScope,
 		ToolSchemaHash:   capsule.ToolSchemaHash,

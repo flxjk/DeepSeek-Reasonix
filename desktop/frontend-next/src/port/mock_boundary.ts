@@ -1,5 +1,5 @@
 import type { Adjudications, BrowserToolsSettings, SubagentClaimsSettings, WriteLeaseSettings, PlanApprovalSettings, DefaultModeSettings, ToolSettings, PeerReceipt, PeersState, PeersSettings, PeersSettingsEdit, PeerRemember, ConfigProblem, ConfigRepair, PermissionLists, PermissionRules, SandboxSettings, UpdateMode } from "./port";
-import type { AskTimeoutSettings, ModStatus, ModsSettings, ModsSettingsEdit, SessionRefSettings, AutoArchiveSettings, ChangedFilesSettings, FeedbackLevelNotices, FoldWorkSettings, ChangedSettings, TurnNarrationSettings, ObservabilityPatch, ObservabilitySettings, WebAccessPatch, WebAccessSettings, SearxngProbe, DisplayCurrencyMode, DisplayCurrencySettings, ProgressWatchSettings, WorkspaceRoots } from "./boundary";
+import type { AskTimeoutSettings, ModStatus, ModsSettings, ModsSettingsEdit, SessionRefSettings, AutoArchiveSettings, ChangedFilesSettings, FeedbackLevelNotices, FoldWorkSettings, ChangedSettings, TurnNarrationSettings, WebAccessPatch, WebAccessSettings, SearxngProbe, DisplayCurrencyMode, DisplayCurrencySettings, ProgressWatchSettings, WorkspaceRoots } from "./boundary";
 import { mockMods } from "./mock_mods";
 import type { ScheduleBoard, ScheduleDraft, SchedulePreview, ScheduleResultView, ScheduleView } from "./schedule";
 import { HttpError } from "./http_error";
@@ -324,7 +324,7 @@ export class MockBoundary extends MockShell {
     return mockMods(this.modConfig.enabled);
   }
 
-  protected peerSettings: PeersSettings = { enabled: false, dispatch: false, release_projects: [], max_dispatch_depth: 1, max_dispatched_sessions: 8, open_nested: false, path: "/Users/you/.reasonix/config.toml", applies: "next_turn", pending: false, available: true };
+  protected peerSettings: PeersSettings = { enabled: false, dispatch: false, release_projects: [], max_dispatch_depth: 1, max_dispatched_sessions: 8, path: "/Users/you/.reasonix/config.toml", applies: "next_turn", pending: false, available: true };
 
   async peersSettings(): Promise<PeersSettings> {
     return { ...this.peerSettings, release_projects: [...this.peerSettings.release_projects] };
@@ -338,7 +338,6 @@ export class MockBoundary extends MockShell {
       dispatch: edit.dispatch ?? this.peerSettings.dispatch,
       max_dispatch_depth: edit.max_dispatch_depth ?? this.peerSettings.max_dispatch_depth,
       max_dispatched_sessions: edit.max_dispatched_sessions ?? this.peerSettings.max_dispatched_sessions,
-      open_nested: edit.open_nested ?? this.peerSettings.open_nested,
       release_projects: keep ? keep.map((path) => this.peerSettings.release_projects.find((p) => p.path === path) ?? { path, name: path.split(/[\\/]/).filter(Boolean).at(-1) ?? path }) : this.peerSettings.release_projects,
       pending: true,
     };
@@ -433,20 +432,6 @@ export class MockBoundary extends MockShell {
   async saveTurnNarrationSettings(level: TurnNarrationSettings["level"]): Promise<TurnNarrationSettings> {
     this.narration = { ...this.narration, level };
     return { ...this.narration };
-  }
-
-  private observability: ObservabilitySettings = {
-    enabled: false, endpoint: "", headerName: "", headerEnv: "", serviceName: "", headerEnvSet: false,
-    path: "/Users/you/.reasonix/config.toml", applies: "next_session",
-  };
-
-  async observabilitySettings(): Promise<ObservabilitySettings> {
-    return { ...this.observability };
-  }
-
-  async saveObservabilitySettings(patch: ObservabilityPatch): Promise<ObservabilitySettings> {
-    this.observability = { ...this.observability, ...patch };
-    return { ...this.observability };
   }
 
   private webAccess: WebAccessSettings = {

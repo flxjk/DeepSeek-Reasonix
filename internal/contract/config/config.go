@@ -27,7 +27,6 @@ type Config struct {
 	CLI              CLIConfig           `toml:"cli"`
 	Desktop          DesktopConfig       `toml:"desktop"`
 	Billing          BillingConfig       `toml:"billing"`
-	Telemetry        TelemetryConfig     `toml:"telemetry"`
 	Notifications    NotificationsConfig `toml:"notifications"`
 	ProgressWatch    ProgressWatchConfig `toml:"progress_watch"`
 	AutoArchive      AutoArchiveConfig   `toml:"auto_archive"`
@@ -54,8 +53,6 @@ type Config struct {
 	AutoSubmit bool `toml:"auto_submit"`
 	// Peers governs messages between sessions; see PeersConfig.
 	Peers PeersConfig `toml:"peers"`
-	// Observability governs the opt-in trace export. User/global only.
-	Observability ObservabilityConfig `toml:"observability"`
 	// Mods governs Claude Code mods; see ModsConfig.
 	Mods ModsConfig `toml:"mods"`
 	// Storage relocates the movable roots, keyed by RootID. User/global only.
@@ -144,43 +141,6 @@ func (e *systemPromptFileError) Unwrap() error { return errors.Join(e.errors...)
 func IsMissingSystemPromptFile(err error) bool {
 	var target *systemPromptFileError
 	return errors.As(err, &target) && target.allMissing
-}
-
-// TelemetryConfig controls content-free CLI usage metrics. It is user-global:
-// project reasonix.toml values are ignored so a cloned repository cannot opt a
-// user into reporting.
-type TelemetryConfig struct {
-	CLIMetrics string `toml:"cli_metrics"` // auto|on|off; empty means consent has not been requested
-}
-
-// CLITelemetryConfigured reports whether the user has made an explicit CLI
-// telemetry choice. The runtime policy still treats an absent value as auto,
-// but persistence must preserve absence until the first eligible consent prompt.
-func (c *Config) CLITelemetryConfigured() bool {
-	if c == nil {
-		return false
-	}
-	switch strings.ToLower(strings.TrimSpace(c.Telemetry.CLIMetrics)) {
-	case "auto", "on", "off":
-		return true
-	default:
-		return false
-	}
-}
-
-// CLITelemetryMode returns the normalized CLI telemetry policy.
-func (c *Config) CLITelemetryMode() string {
-	if c == nil {
-		return "auto"
-	}
-	switch strings.ToLower(strings.TrimSpace(c.Telemetry.CLIMetrics)) {
-	case "on":
-		return "on"
-	case "off":
-		return "off"
-	default:
-		return "auto"
-	}
 }
 
 // LoadWarnings returns non-fatal config load issues (corrupt files recovered in
@@ -635,24 +595,6 @@ func NormalizeReasoningLanguage(lang string) string {
 	default:
 		return "auto"
 	}
-}
-
-// DesktopTelemetry reports whether the desktop sends the anonymous daily ping.
-// It carries no conversation, key, or file data — see desktop/README.md.
-func (c *Config) DesktopTelemetry() bool {
-	if c == nil || c.Desktop.Telemetry == nil {
-		return true
-	}
-	return *c.Desktop.Telemetry
-}
-
-// DesktopMetrics reports whether the desktop sends aggregate desktop metrics —
-// anonymous (signal, bucket) counters, never content. Default on.
-func (c *Config) DesktopMetrics() bool {
-	if c == nil || c.Desktop.Metrics == nil {
-		return true
-	}
-	return *c.Desktop.Metrics
 }
 
 // StatuslineConfig configures a custom status line. Command, when set, is run at

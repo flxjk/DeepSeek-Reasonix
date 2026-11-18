@@ -5,20 +5,19 @@ import (
 	"reasonix/internal/contract/config"
 	"reasonix/internal/contract/event"
 	"reasonix/internal/contract/pricing"
-	"reasonix/internal/platform/otlp"
 	"reasonix/internal/state/stats"
 )
 
 // quotedSink wraps the frontend sink so every host consumer — stats recorder,
-// CLI metrics, ACP/eventwire bridges, Desktop — reads the same
+// ACP/eventwire bridges, Desktop — reads the same
 // occurrence-time quote. Order from the agent:
 //
-//	Coalesce → GoalUsageTee → Sync → CostQuote → [Recorder] → [OTLP] → frontend
-func quotedSink(cfg *config.Config, opts Options, trace *otlp.Exporter) (event.Sink, *event.QuoteContext) {
+//	Coalesce → GoalUsageTee → Sync → CostQuote → [Recorder] → frontend
+func quotedSink(cfg *config.Config, opts Options) (event.Sink, *event.QuoteContext) {
 	ctx := QuoteContextFor(cfg)
 	// Innermost is the frontend sink; the recorder sits after quoting so history
 	// JSONL stores the CostQuote.
-	quoted := otlp.NewSink(opts.Sink, trace, "reasonix")
+	quoted := opts.Sink
 	if opts.StatsSource.Valid() {
 		quoted = stats.NewRecorder(quoted, opts.roots().StatsDir(), opts.StatsSource.String())
 		stats.StartUploadMeter(opts.roots().StatsDir())

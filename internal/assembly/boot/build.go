@@ -30,7 +30,6 @@ import (
 	"reasonix/internal/platform/browser"
 	"reasonix/internal/platform/gitcmd"
 	"reasonix/internal/platform/lsp"
-	"reasonix/internal/platform/otlp"
 	"reasonix/internal/runtime/agent"
 	"reasonix/internal/runtime/delegation"
 	"reasonix/internal/safety/endpointclient"
@@ -51,7 +50,6 @@ type builder struct {
 	owner              *extension.RuntimeOwner
 	fileWriteReceipt   func(path string, hadPrior bool, prior []byte)
 	stderr             io.Writer
-	trace              *otlp.Exporter
 	root               string
 	repo               gitcmd.Repo // root's git identity, settled in load
 	roots              config.Roots
@@ -233,8 +231,7 @@ func (b *builder) load() error {
 	// One synchronized sink for every emitter: background jobs and sidecars
 	// emit from their own goroutines. The goal tee and the coalescer wrap it
 	// here, before the extension hub captures it, so agents emit through both.
-	b.trace = newTraceExporter(cfg, b.root, opts.Version, b.stderr)
-	quoted, quoteContext := quotedSink(cfg, opts, b.trace)
+	quoted, quoteContext := quotedSink(cfg, opts)
 	b.quoteContext = quoteContext
 	b.sink = control.NewGoalUsageTee(event.Coalesce(quoted, event.DefaultStreamDeltaWindow))
 	// Tag a shell result whose whole output is a diff, once, before the

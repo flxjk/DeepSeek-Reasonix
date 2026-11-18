@@ -1,0 +1,145 @@
+{
+  "generatedAt": "2026-11-10T21:10:00.239Z",
+  "model": "ggml-org/gemma-4-E4B-it-GGUF:Q8_0",
+  "maxChars": 24000,
+  "overlap": 2000,
+  "minChars": 400,
+  "targets": 19,
+  "chunks": 659,
+  "keptChunks": 88,
+  "perStudy": [
+    {
+      "study": "webgpu-ui-and-monorepo-fabric",
+      "kb": 926,
+      "chunks": 20,
+      "kept": 0,
+      "keptKb": 0
+    },
+    {
+      "study": "agentic-sdlc-and-mutation-memory",
+      "kb": 893,
+      "chunks": 14,
+      "kept": 0,
+      "keptKb": 0
+    },
+    {
+      "study": "neuro-symbolic-verification-in-engineering",
+      "kb": 806,
+      "chunks": 12,
+      "kept": 3,
+      "keptKb": 19
+    },
+    {
+      "study": "self-healing-typespec-meta-harness-architecture",
+      "kb": 804,
+      "chunks": 19,
+      "kept": 6,
+      "keptKb": 17
+    },
+    {
+      "study": "telemetry-arrow-abi-and-sandboxing",
+      "kb": 759,
+      "chunks": 19,
+      "kept": 4,
+      "keptKb": 13
+    },
+    {
+      "study": "nano-model-bim-query-compilers",
+      "kb": 707,
+      "chunks": 15,
+      "kept": 1,
+      "keptKb": 3
+    },
+    {
+      "study": "typespec-package-governance-architecture",
+      "kb": 624,
+      "chunks": 22,
+      "kept": 1,
+      "keptKb": 1
+    },
+    {
+      "study": "distributed-bim-architecture-analysis",
+      "kb": 566,
+      "chunks": 19,
+      "kept": 6,
+      "keptKb": 31
+    },
+    {
+      "study": "openusd-distillation-services-typespec-effect-four-and-wit-zero-three",
+      "kb": 491,
+      "chunks": 20,
+      "kept": 3,
+      "keptKb": 7
+    },
+    {
+      "study": "typespec-and-hey-api-gateway",
+      "kb": 426,
+      "chunks": 18,
+      "kept": 4,
+      "keptKb": 26
+    },
+    {
+      "study": "udast-bidirectional-documentation-architecture",
+      "kb": 390,
+      "chunks": 12,
+      "kept": 4,
+      "keptKb": 15
+    },
+    {
+      "study": "local-mac-pdf-to-typespec",
+      "kb": 389,
+      "chunks": 20,
+      "kept": 7,
+      "keptKb": 23
+    },
+    {
+      "study": "alloy-js-reactive-synthesis-architecture",
+      "kb": 379,
+      "chunks": 13,
+      "kept": 2,
+      "keptKb": 4
+    },
+    {
+      "study": "ai-planning-agent-specification",
+      "kb": 173,
+      "chunks": 19,
+      "kept": 8,
+      "keptKb": 29
+    },
+    {
+      "study": "core-rhex-bimly-adaptive-planning-research-two-zero-two-six-zero-nine-two-one",
+      "kb": 145,
+      "chunks": 94,
+      "kept": 10,
+      "keptKb": 12
+    },
+    {
+      "study": "core-rhex-bimly-rule-engine-deep-research-two-zero-two-six-zero-nine-two-one",
+      "kb": 135,
+      "chunks": 107,
+      "kept": 10,
+      "keptKb": 11
+    },
+    {
+      "study": "bimly-participant-tenancy-typespec-research",
+      "kb": 130,
+      "chunks": 80,
+      "kept": 5,
+      "keptKb": 10
+    },
+    {
+      "study": "typespec-rhex-platform-architecture",
+      "kb": 116,
+      "chunks": 95,
+      "kept": 9,
+      "keptKb": 7
+    },
+    {
+      "study": "bimly-core-contracts-deep-research",
+      "kb": 103,
+      "chunks": 41,
+      "kept": 5,
+      "keptKb": 13
+    }
+  ]
+}

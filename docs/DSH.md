@@ -10,8 +10,6 @@ reviewed: 2026-10-17
 <a href="./ACP.md">ACP</a>
 &nbsp;·&nbsp;
 <a href="https://github.com/deepseek-ai/deepseek-harness/tree/main/packages/subagent/subagent-acp">DSH subagent-acp</a>
-&nbsp;·&nbsp;
-<a href="https://reasonix.io">Reasonix website</a>
 
 ## Purpose
 

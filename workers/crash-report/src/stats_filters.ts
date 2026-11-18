@@ -1,5 +1,4 @@
 export type StatsFilters = {
-  surface: "desktop" | "cli";
   status: string;
   source: string;
   version: string;
@@ -32,7 +31,6 @@ export function statsFilters(url: URL): StatsFilters {
   const windowParam = limited(url, "window", 3);
   const exitCodeParam = limited(url, "exitCode", 16);
   return {
-    surface: limited(url, "surface", 7) === "cli" ? "cli" : "desktop",
     status: oneOf(limited(url, "status", 8), ["open", "resolved", "ignored"]),
     source: limited(url, "source", 32),
     version: limited(url, "version", 64),

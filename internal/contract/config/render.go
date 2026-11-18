@@ -76,15 +76,9 @@ func RenderTOMLForScope(c *Config, scope RenderScope) string {
 	}
 
 	if scope != RenderScopeProject {
-		if c.CLITelemetryConfigured() {
-			b.WriteString("[telemetry]\n")
-			fmt.Fprintf(&b, "cli_metrics = %q   # CLI content-free usage metrics: auto|on|off; auto requires a local interactive terminal\n\n", c.CLITelemetryMode())
-		}
-
 		renderProgressWatchSection(&b, c)
 		renderAutoArchiveSection(&b, c)
 		renderServeAndPeers(&b, c)
-		renderObservabilitySection(&b, c)
 		renderNotificationsSection(&b, c)
 	}
 

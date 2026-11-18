@@ -35,11 +35,6 @@ type Voting interface {
 	Vote(ctx context.Context, token, slug string, value int) (Vote, error)
 }
 
-// InstallReporter tells the registry one install landed.
-type InstallReporter interface {
-	ReportInstall(ctx context.Context, slug, installKey string) error
-}
-
 func votePath(slug, leaf string) (string, error) {
 	handle, name, err := SplitSlug(slug)
 	if err != nil {
@@ -76,22 +71,4 @@ func (c *Client) Vote(ctx context.Context, token, slug string, value int) (Vote,
 	var v Vote
 	err = c.authed(ctx, http.MethodPost, path, token, payload, maxVoteBody, &v)
 	return v, err
-}
-
-// ReportInstall sends the package slug and an anonymous key, nothing else:
-// no account token, no content, no version.
-func (c *Client) ReportInstall(ctx context.Context, slug, installKey string) error {
-	path, err := votePath(slug, "installed")
-	if err != nil {
-		return err
-	}
-	payload, _ := json.Marshal(map[string]string{"installId": installKey})
-	resp, body, err := c.send(ctx, http.MethodPost, path, nil, "", payload, maxVoteBody)
-	if err != nil {
-		return err
-	}
-	if resp.StatusCode < 200 || resp.StatusCode >= 300 {
-		return registryRefusal(resp.StatusCode, body)
-	}
-	return nil
 }

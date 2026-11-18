@@ -1,0 +1,660 @@
+{
+  "model": "ggml-org/gemma-4-E4B-it-GGUF:Q8_0",
+  "records": [
+    {
+      "studyId": "aistudio-eurocode-en-one-nine-nine-two-smt-verifier-prompt",
+      "ssotContractPath": "core/workflow/deep-research-typespec-pipeline.tsp",
+      "checkedOn": "2026-10-19",
+      "model": "ggml-org/gemma-4-E4B-it-GGUF:Q8_0",
+      "wallMs": 9418,
+      "found": 2,
+      "accepted": [
+        {
+          "statement": "The model must verify Clause 6.2.2 shear resistance V_Rd,c against the uploaded Eurocode PDF in File Search Store.",
+          "quote": "Verify Clause 6.2.2 shear resistance V_Rd,c against uploaded Eurocode PDF in File Search Store."
+        },
+        {
+          "statement": "The model must verify C_Rd,c = 0.18 / gamma_c with gamma_c = 1.50.",
+          "quote": "Verified C_Rd,c = 0.18 / gamma_c with gamma_c = 1.50; emitted CitationPageSpanLocator and Z3 unsat obligation."
+        }
+      ],
+      "rejected": []
+    },
+    {
+      "studyId": "aistudio-typespec-one-one-seven-strict-emitter-prompt",
+      "ssotContractPath": "core/workflow/deep-research-typespec-pipeline.tsp",
+      "checkedOn": "2026-10-19",
+      "model": "ggml-org/gemma-4-E4B-it-GGUF:Q8_0",
+      "wallMs": 4622,
+      "found": 1,
+      "accepted": [
+        {
+          "statement": "TypeSpec 1.17 contracts must emit zero comments.",
+          "quote": "Emit zero-comment TypeSpec 1.17 contracts using `init` nominal scalars, `valueof` discriminants, and pure @core/effect services."
+        }
+      ],
+      "rejected": []
+    },
+    {
+      "studyId": "core-hub-architect-planning-agent-prompt",
+      "ssotContractPath": "core/workflow/deep-research-typespec-pipeline.tsp",
+      "checkedOn": "2026-10-19",
+      "model": "ggml-org/gemma-4-E4B-it-GGUF:Q8_0",
+      "wallMs": 24084,
+      "found": 5,
+      "accepted": [
+        {
+          "statement": "TypeSpec is the semantic source of truth; TypeSpec is the requested baseline.",
+          "quote": "TypeSpec is the semantic source of truth; TypeSpec is the requested baseline."
+        },
+        {
+          "statement": "Core must never import RHEX or Bimly namespaces.",
+          "quote": "Core must never import RHEX or Bimly namespaces."
+        },
+        {
+          "statement": "The allowed dependency direction is Core primitives → Core capabilities → Core Hub composition → RHEX policy/composition → Bimly domain composition.",
+          "quote": "Enforce the allowed dependency direction: Core primitives → Core capabilities → Core Hub composition → RHEX policy/composition → Bimly domain composition."
+        },
+        {
+          "statement": "UI visibility is never authorization enforcement.",
+          "quote": "UI visibility is never authorization enforcement."
+        },
+        {
+          "statement": "Every operation must declare its actor/context requirements, input/output, typed errors, authorization scope, side effects, concurrency behavior, idempotency, cancellation, deadline, retries, audit consequences and compensation where relevant.",
+          "quote": "Every operation must declare its actor/context requirements, input/output, typed errors, authorization scope, side effects, concurrency behavior, idempotency, cancellation, deadline, retries, audit consequences and compensation where relevant."
+        }
+      ],
+      "rejected": []
+    },
+    {
+      "studyId": "core-rhex-bimly-research-ingestion-agent-prompt",
+      "ssotContractPath": "core/workflow/deep-research-typespec-pipeline.tsp",
+      "checkedOn": "2026-10-19",
+      "model": "ggml-org/gemma-4-E4B-it-GGUF:Q8_0",
+      "wallMs": 12363,
+      "found": 1,
+      "accepted": [],
+      "rejected": [
+        {
+          "statement": "CLI shims remain <= 30 lines and emit 0 bytes on exit code 0",
+          "reason": "quote not found in source"
+        }
+      ]
+    },
+    {
+      "studyId": "edge-coding-models-and-accelerators",
+      "ssotContractPath": "core/workflow/deep-research-typespec-pipeline.tsp",
+      "checkedOn": "2026-10-19",
+      "model": "ggml-org/gemma-4-E4B-it-GGUF:Q8_0",
+      "wallMs": 27345,
+      "found": 5,
+      "accepted": [
+        {
+          "statement": "On 8GB/12GB devices (iPhone 16 Pro / iPad Pro), models $\\le 3\\text{B}$ parameters fit comfortably with remaining headroom for app state.",
+          "quote": "On 8GB/12GB devices (iPhone 16 Pro / iPad Pro), models $\\le 3\\text{B}$ parameters fit comfortably with remaining headroom for app state."
+        },
+        {
+          "statement": "On macOS SDK 27.2 (24GB+ unified memory baseline on M-series chips), models up to $16\\text{B}$ MoE run with zero paging.",
+          "quote": "On macOS SDK 27.2 (24GB+ unified memory baseline on M-series chips), models up to $16\\text{B}$ MoE run with zero paging."
+        },
+        {
+          "statement": "Gradients are computed for low-rank adapter matrices $A \\in \\mathbb{R}^{r \\times d}$ and $B \\in \\mathbb{R}^{k \\times r}$ where $r=8$ or $r=16$.",
+          "quote": "Gradients computed for low-rank adapter matrices $A \\in \\mathbb{R}^{r \\times d}$ and $B \\in \\mathbb{R}^{k \\times r}$ ($r=8$ or $r=16$) while keeping base model weights quantized in 4-bit integer buffers."
+        },
+        {
+          "statement": "Training memory overhead is $\\sim 45\\text{ MB}$ additional VRAM for rank-16 adapters on a 1.5B model.",
+          "quote": "Training memory overhead: $\\sim 45\\text{ MB}$ additional VRAM for rank-16 adapters on a 1.5B model."
+        },
+        {
+          "statement": "Model execution engines expose standard WIT 0.3 interfaces.",
+          "quote": "Model execution engines expose standard WIT 0.3 interfaces (`interface model-runner { tokenize, infer-step, train-lora }`), enabling compilation into standard WebAssembly component modules."
+        }
+      ],
+      "rejected": []
+    },
+    {
+      "studyId": "google-ai-studio-programmatic-api-extraction",
+      "ssotContractPath": "core/workflow/deep-research-typespec-pipeline.tsp",
+      "checkedOn": "2026-10-19",
+      "model": "ggml-org/gemma-4-E4B-it-GGUF:Q8_0",
+      "wallMs": 27046,
+      "found": 4,
+      "accepted": [
+        {
+          "statement": "Every extracted prompt is persisted into a Markdown file in `docs/rhex/research/` and a dedicated `.research.tsp` file in `core/research/studies/`.",
+          "quote": "Channel 4 (Dual `.md` + `.research.tsp` Repository Persistence): Persists every extracted prompt and API inventory into `docs/rhex/research/*.md`, `core/research/studies/*.research.tsp`, and `generated/google-ai-studio-extracted-state.json`."
+        }
+      ],
+      "rejected": [
+        {
+          "statement": "The model `models/gemini-2.5-pro` has an input token limit of 1048576 and an output token limit of 65536.",
+          "reason": "no normative verb"
+        },
+        {
+          "statement": "The model `models/gemini-2.5-flash` has an input token limit of 1048576 and an output token limit of 65536.",
+          "reason": "no normative verb"
+        },
+        {
+          "statement": "The model `models/gemini-embedding-001` has an input token limit of 8192 and an output token limit of 1.",
+          "reason": "no normative verb"
+        }
+      ]
+    },
+    {
+      "studyId": "implementation-handoff",
+      "ssotContractPath": "core/workflow/deep-research-typespec-pipeline.tsp",
+      "checkedOn": "2026-10-19",
+      "model": "ggml-org/gemma-4-E4B-it-GGUF:Q8_0",
+      "wallMs": 16770,
+      "found": 4,
+      "accepted": [
+        {
+          "statement": "The IR schema must contain no compiler objects or product/provider imports.",
+          "quote": "IR schema | Platform architect | No compiler objects or product/provider imports"
+        },
+        {
+          "statement": "Missing or bypassed policy blocks must cause candidate admission to fail.",
+          "quote": "Mandatory validator | Compiler/security engineers | Missing or bypassed policy blocks candidate admission"
+        },
+        {
+          "statement": "A consumer that bypasses the TypeSpec validator must still be unable to publish an unqualified release.",
+          "quote": "A consumer that bypasses the TypeSpec validator must still be unable to publish an unqualified release."
+        }
+      ],
+      "rejected": [
+        {
+          "statement": "Agents cannot mark their own unverified work accepted, lower evidence thresholds, or alter policy to bypass a failure.",
+          "reason": "no normative verb"
+        }
+      ]
+    },
+    {
+      "studyId": "rhex-research-first-plan-two-zero-two-six-zero-nine-one-five",
+      "ssotContractPath": "core/workflow/deep-research-typespec-pipeline.tsp",
+      "checkedOn": "2026-10-19",
+      "model": "ggml-org/gemma-4-E4B-it-GGUF:Q8_0",
+      "wallMs": 24048,
+      "found": 5,
+      "accepted": [
+        {
+          "statement": "TypeSpec remains the Single Source of Truth (SSOT); the canonical semantic IR connects independent Effect, Restate, WIT, Arrow, and evidence emitters.",
+          "quote": "TypeSpec остаётся SSOT; canonical semantic IR соединяет независимые Effect, Restate, WIT, Arrow и evidence emitters."
+        },
+        {
+          "statement": "Four logical agent levels do not require four sequential RPC or LLM calls.",
+          "quote": "Четыре логических уровня агентов не требуют четырёх последовательных RPC или LLM calls."
+        },
+        {
+          "statement": "The Node version used is 26.8.2.",
+          "quote": "Версии комплекта: Node 26.8.2"
+        },
+        {
+          "statement": "The npm version used is 12.0.2.",
+          "quote": "Версии комплекта: Node 26.8.2, npm 12.0.2"
+        },
+        {
+          "statement": "The TypeScript version used is 7.0.2.",
+          "quote": "Версии комплекта: Node 26.8.2, npm 12.0.2, TypeScript 7.0.2"
+        }
+      ],
+      "rejected": []
+    },
+    {
+      "studyId": "typespec-tooling-ssot-guide",
+      "ssotContractPath": "core/workflow/deep-research-typespec-pipeline.tsp",
+      "checkedOn": "2026-10-19",
+      "model": "ggml-org/gemma-4-E4B-it-GGUF:Q8_0",
+      "wallMs": 26729,
+      "found": 4,
+      "accepted": [
+        {
+          "statement": "Zero toolchain digests, example pins, repository paths and native-driver paths must be replaced with real, reviewed values in the reference.",
+          "quote": "Zero toolchain digests, example pins, repository paths and native-driver paths must be replaced with real, reviewed values."
+        },
+        {
+          "statement": "A native plan never grants permission to execute.",
+          "quote": "A native plan says `authorization: \"none-plan-only\"`. It never grants permission to execute."
+        }
+      ],
+      "rejected": [
+        {
+          "statement": "The TypeSpec package pins the compiler and JSON Schema package to version 1.16.0.",
+          "reason": "no normative verb"
+        },
+        {
+          "statement": "The reference describes eight tasks, four worker environments, and six Bimly SDK target families.",
+          "reason": "no normative verb"
+        }
+      ]
+    },
+    {
+      "studyId": "validation-record",
+      "ssotContractPath": "core/workflow/deep-research-typespec-pipeline.tsp",
+      "checkedOn": "2026-10-19",
+      "model": "ggml-org/gemma-4-E4B-it-GGUF:Q8_0",
+      "wallMs": 16997,
+      "found": 5,
+      "accepted": [
+        {
+          "statement": "TypeScript compilation must be strict and have `skipLibCheck` enabled.",
+          "quote": "Strict project compilation; `skipLibCheck` enabled"
+        },
+        {
+          "statement": "TypeSpec checks must have auto decorators and union bases enabled, treating warnings as errors.",
+          "quote": "Auto decorators and union bases enabled; warnings treated as errors"
+        }
+      ],
+      "rejected": [
+        {
+          "statement": "If an operation metadata check fails, no artifacts must be emitted in a clean output directory.",
+          "reason": "quote not found in source"
+        },
+        {
+          "statement": "If a duplicate operation ID check fails, no artifacts must be emitted.",
+          "reason": "quote not found in source"
+        },
+        {
+          "statement": "If a union variant violates a base constraint, TypeSpec must reject it and emit no artifacts.",
+          "reason": "quote not found in source"
+        }
+      ]
+    },
+    {
+      "studyId": "ai-native-bim-aec-research",
+      "ssotContractPath": "core/workflow/deep-research-typespec-pipeline.tsp",
+      "checkedOn": "2026-10-19",
+      "model": "ggml-org/gemma-4-E4B-it-GGUF:Q8_0",
+      "wallMs": 25667,
+      "found": 5,
+      "accepted": [
+        {
+          "statement": "The platform must use IFC 4.3 as a supported exchange baseline.",
+          "quote": "Use IFC 4.3 as a supported exchange baseline; isolate IFC 5 experimentation."
+        },
+        {
+          "statement": "The platform must use OpenUSD for scene composition and visualization interchange.",
+          "quote": "Use OpenUSD for scene composition and visualization interchange."
+        },
+        {
+          "statement": "A validated function can run without LLM tokens.",
+          "quote": "A validated function can run without LLM tokens."
+        },
+        {
+          "statement": "Interactive navigation must achieve a p95 frame time at or below 33 ms.",
+          "quote": "p95 frame time at or below 33 ms; stretch target 16.7 ms"
+        }
+      ],
+      "rejected": [
+        {
+          "statement": "Arrow can share compatible buffers between runtimes in one process.",
+          "reason": "no normative verb"
+        }
+      ]
+    },
+    {
+      "studyId": "bimly-architecture-technical-review",
+      "ssotContractPath": "core/workflow/deep-research-typespec-pipeline.tsp",
+      "checkedOn": "2026-10-19",
+      "model": "ggml-org/gemma-4-E4B-it-GGUF:Q8_0",
+      "wallMs": 20829,
+      "found": 5,
+      "accepted": [
+        {
+          "statement": "Zero-copy is a property of a particular transfer with compatible ownership and layout.",
+          "quote": "Zero-copy is a property of a particular transfer with compatible ownership and layout."
+        },
+        {
+          "statement": "A 2 GB cap for 100 million source triangles is a benchmark hypothesis.",
+          "quote": "A 2 GB cap for 100 million source triangles is a benchmark hypothesis."
+        },
+        {
+          "statement": "SPSC queues require exactly one producer and consumer per queue.",
+          "quote": "SPSC queues require exactly one producer and consumer per queue."
+        },
+        {
+          "statement": "A million simulated cycles is a workload count, not a correctness proof.",
+          "quote": "A million simulated cycles is a workload count, not a correctness proof."
+        }
+      ],
+      "rejected": [
+        {
+          "statement": "Fast local checks can target 50 ms on a defined edit class.",
+          "reason": "no normative verb"
+        }
+      ]
+    },
+    {
+      "studyId": "bimly-engineering-reply-deep-research",
+      "ssotContractPath": "core/workflow/deep-research-typespec-pipeline.tsp",
+      "checkedOn": "2026-10-19",
+      "model": "ggml-org/gemma-4-E4B-it-GGUF:Q8_0",
+      "wallMs": 37307,
+      "found": 5,
+      "accepted": [
+        {
+          "statement": "The reply's correction rule for a complete scheduled-arrival trace is to record the actual schedule-to-outcome observations without generating another population of synthetic requests.",
+          "quote": "Keep the reply's correction rule for a complete scheduled-arrival trace: record the actual schedule-to-outcome observations without generating another population of synthetic requests."
+        },
+        {
+          "statement": "A maximum watermark does not prove every required object and consumer is ready.",
+          "quote": "A maximum watermark does not prove every required object and consumer is ready."
+        },
+        {
+          "statement": "Implementation gate requires demonstrating bounded peak memory under an enforced process limit, with source dependencies larger than RAM where that is a requirement.",
+          "quote": "Implementation gate: demonstrate bounded peak memory under an enforced process limit, with source dependencies larger than RAM where that is a requirement."
+        },
+        {
+          "statement": "Every accepted revision must refer to a logically complete entity-version map, implemented with shared immutable chunks, a persistent map, or a materialized snapshot plus a bounded delta chain.",
+          "quote": "Recommended baseline: every accepted revision refers to a logically complete entity-version map, implemented with shared immutable chunks, a persistent map, or a materialized snapshot plus a bounded delta chain."
+        },
+        {
+          "statement": "A complete spatial predicate must name the query and version, geometry/clearance envelope, frame, units, tolerances, semantic filters, temporal scope if relevant, and the revision against which it was evaluated.",
+          "quote": "A complete spatial predicate names the query and version, geometry/clearance envelope, frame, units, tolerances, semantic filters, temporal scope if relevant, and the revision against which it was evaluated."
+        }
+      ],
+      "rejected": []
+    },
+    {
+      "studyId": "bimly-express-arrow-typespec-research",
+      "ssotContractPath": "core/workflow/deep-research-typespec-pipeline.tsp",
+      "checkedOn": "2026-10-19",
+      "model": "ggml-org/gemma-4-E4B-it-GGUF:Q8_0",
+      "wallMs": 46701,
+      "found": 6,
+      "accepted": [
+        {
+          "statement": "The system must strictly preserve inheritance graphs and attribute origin slots during schema compilation.",
+          "quote": "Compile ISO 10303-11 (EXPRESS) schemas into a semantic intermediate representation, strictly preserve their inheritance graphs and attribute origin slots, and lower that representation into immutable Apache Arrow columnar batches grouped by observed runtime type combinations (archetype batches)."
+        },
+        {
+          "statement": "The RHEX core meta-framework must operate without hardcoded assumptions about building construction or IFC.",
+          "quote": "Platform-Agnostic Substrate: RHEX has zero hardcoded assumptions about building construction or IFC."
+        },
+        {
+          "statement": "Bimly client applications and BFF servers must never link or execute native C++/Python EXPRESS parsers, Arrow buffer builders, or memory mappers directly.",
+          "quote": "Client Isolation Law: Bimly client applications and BFF servers never link or execute native C++/Python EXPRESS parsers, Arrow buffer builders, or memory mappers directly."
+        },
+        {
+          "statement": "The memory cost for storing polymorphic type membership is approximately A * ceil(T/64) * 8 bytes.",
+          "quote": "A dense table for A observed archetypes and T entity types costs approximately: Memory Cost = A × ≥₁ ≠ T/64 ∘ 8 bytes"
+        },
+        {
+          "statement": "Ingestion of semantic attributes into Arrow columnar format must never invoke the geometry kernel.",
+          "quote": "Strict Geometry Decoupling Law: Ingestion of semantic attributes into Arrow columnar format MUST NEVER invoke the geometry kernel (e.g. Open Cascade / OCCT)."
+        }
+      ],
+      "rejected": [
+        {
+          "statement": "A new subtype can reuse old origin slots for a supertype projection while adding its own slots in new artifacts.",
+          "reason": "no normative verb"
+        }
+      ]
+    },
+    {
+      "studyId": "bimly-prioritized-research-agenda",
+      "ssotContractPath": "core/workflow/deep-research-typespec-pipeline.tsp",
+      "checkedOn": "2026-10-19",
+      "model": "ggml-org/gemma-4-E4B-it-GGUF:Q8_0",
+      "wallMs": 28126,
+      "found": 5,
+      "accepted": [
+        {
+          "statement": "Byte-identical exports are not the general interoperability criterion.",
+          "quote": "Byte-identical exports are not the general interoperability criterion."
+        },
+        {
+          "statement": "Ambiguous identity reconciliation must remain visible; proximity alone must not silently assign identity.",
+          "quote": "Ambiguous identity reconciliation must remain visible; proximity alone must not silently assign identity."
+        },
+        {
+          "statement": "A geometry-kernel selection matrix and adversarial corpus covering nearly coplanar faces, tiny gaps, large coordinates, self-intersections, and feature edits that change face numbering must be delivered.",
+          "quote": "Experiment and deliverable: a geometry-kernel selection matrix and adversarial corpus covering nearly coplanar faces, tiny gaps, large coordinates, self-intersections, and feature edits that change face numbering."
+        },
+        {
+          "statement": "A vendor/version/feature matrix and a round-trip loss report must be delivered for IFC fidelity.",
+          "quote": "Experiment and deliverable: a vendor/version/feature matrix and a round-trip loss report."
+        },
+        {
+          "statement": "Assert model invariants and recoverability must be done when injecting reorderings, duplicated operations, network partitions, and crashes.",
+          "quote": "Inject reorderings, duplicated operations, network partitions, and crashes. Assert model invariants and recoverability; make the scope of deterministic simulation explicit."
+        }
+      ],
+      "rejected": []
+    },
+    {
+      "studyId": "bimly-spatial-context-cost-and-realtime-optimisation",
+      "ssotContractPath": "core/workflow/deep-research-typespec-pipeline.tsp",
+      "checkedOn": "2026-10-19",
+      "model": "ggml-org/gemma-4-E4B-it-GGUF:Q8_0",
+      "wallMs": 30218,
+      "found": 5,
+      "accepted": [
+        {
+          "statement": "Camera movement and navigation must achieve 60 FPS on supported desktop fixtures, with a 30 FPS fallback for constrained devices.",
+          "quote": "Camera movement and navigation | 60 FPS on supported desktop fixture; 30 FPS constrained-device fallback"
+        },
+        {
+          "statement": "High-refresh interaction must operate with an 8.33 ms frame budget.",
+          "quote": "High-refresh interaction | Optional 120 FPS on qualified hardware | An 8.33 ms frame budget; do not promise across devices or charge for unattainable performance"
+        },
+        {
+          "statement": "Selection and immediate feedback must have a visible acknowledgement within 100 ms p95.",
+          "quote": "Selection and immediate feedback | Visible acknowledgement within 100 ms p95 | Use local scene/index data; label provisional results"
+        },
+        {
+          "statement": "Warm contextual queries must complete end-to-end within 250 ms p95 on the declared fixture.",
+          "quote": "Warm contextual query | ≤250 ms p95 end-to-end on declared fixture | Indexed bounds, authorised caches and bounded results"
+        },
+        {
+          "statement": "A B2C occasional project must have an explicit import and retention limit.",
+          "quote": "B2C occasional project | Understand one site and inspect clear findings | Small active-project allowance, standard display quality, explicit import/retention limits, refresh on request, spending off by default"
+        }
+      ],
+      "rejected": []
+    },
+    {
+      "studyId": "bimly-zero-token-mcp-architecture",
+      "ssotContractPath": "core/workflow/deep-research-typespec-pipeline.tsp",
+      "checkedOn": "2026-10-19",
+      "model": "ggml-org/gemma-4-E4B-it-GGUF:Q8_0",
+      "wallMs": 54203,
+      "found": 0,
+      "accepted": [],
+      "rejected": []
+    },
+    {
+      "studyId": "herdr-typespec-meta-harness-architecture-two-zero-two-six-zero-nine-two-one",
+      "ssotContractPath": "core/workflow/deep-research-typespec-pipeline.tsp",
+      "checkedOn": "2026-10-19",
+      "model": "ggml-org/gemma-4-E4B-it-GGUF:Q8_0",
+      "wallMs": 45891,
+      "found": 5,
+      "accepted": [
+        {
+          "statement": "A successful TypeSpec compilation must never start agents, install plugins, grant capabilities, publish an SDK, or modify a CAD model.",
+          "quote": "A successful TypeSpec compilation must never start agents, install plugins, grant capabilities, publish an SDK, or modify a CAD model."
+        },
+        {
+          "statement": "Core must not import RHEX.",
+          "quote": "Core must not import RHEX."
+        },
+        {
+          "statement": "RHEX must not import a platform instance or Bimly.",
+          "quote": "RHEX must not import a platform instance or Bimly."
+        }
+      ],
+      "rejected": [
+        {
+          "statement": "The emitter should select its declared surface, not indiscriminately interpret every namespace as its own protocol.",
+          "reason": "no normative verb"
+        },
+        {
+          "statement": "A public response that indirectly contains an internal approval token, absolute path, daemon executable or private task ",
+          "reason": "no normative verb"
+        }
+      ]
+    },
+    {
+      "studyId": "jev-oss-alternatives-effect-four-typespec-research-two-zero-two-six-zero-nine-two-two",
+      "ssotContractPath": "core/workflow/deep-research-typespec-pipeline.tsp",
+      "checkedOn": "2026-10-19",
+      "model": "ggml-org/gemma-4-E4B-it-GGUF:Q8_0",
+      "wallMs": 48969,
+      "found": 8,
+      "accepted": [
+        {
+          "statement": "Effect requires a distribution sum within 1e-6 of one.",
+          "quote": "Its HTTP serializer rounds probabilities to two decimal places; Effect requires a distribution sum within `1e-6` of one."
+        },
+        {
+          "statement": "The ModernBERT zero-shot model has 149.6M encoder cross-encoder.",
+          "quote": "ModernBERT zero-shot NLI | 149.6M encoder cross-encoder; downloadable two-label entailment model; Transformers/PyTorch, export qualification needed"
+        }
+      ],
+      "rejected": [
+        {
+          "statement": "Kev's HTTP serializer rounds probabilities to two decimal places.",
+          "reason": "no normative verb"
+        },
+        {
+          "statement": "The Kev-4B model card reports 9 GB GPU memory for bf16 serving.",
+          "reason": "no normative verb"
+        },
+        {
+          "statement": "The Kev-4B model has a fitted temperature of 2.14.",
+          "reason": "no normative verb"
+        },
+        {
+          "statement": "GLiClass Edge v3 uses 32.7M-parameter Ettin/ModernBERT uni-encoder with classification head.",
+          "reason": "no normative verb"
+        },
+        {
+          "statement": "The Kev encoder enforces an 8,192-token state-plus-question branch in serving.",
+          "reason": "no normative verb"
+        },
+        {
+          "statement": "The Kev training constants use a 384-token state budget.",
+          "reason": "no normative verb"
+        }
+      ]
+    },
+    {
+      "studyId": "meta-harness-requirements",
+      "ssotContractPath": "core/workflow/deep-research-typespec-pipeline.tsp",
+      "checkedOn": "2026-10-19",
+      "model": "ggml-org/gemma-4-E4B-it-GGUF:Q8_0",
+      "wallMs": 30688,
+      "found": 7,
+      "accepted": [
+        {
+          "statement": "Every contract declaration SHALL have ownership derived from the reviewed source package.",
+          "quote": "MH-001 | P0 / Core | Every contract declaration SHALL have ownership derived from the reviewed source package."
+        },
+        {
+          "statement": "Core SHALL reject dependencies on RHEX, Platform and Bimly through imports, types, defaults or critical metadata.",
+          "quote": "MH-002 | P0 / Core | Core SHALL reject dependencies on RHEX, Platform and Bimly through imports, types, defaults or critical metadata."
+        },
+        {
+          "statement": "Compilation SHALL only generate artifacts and diagnostics.",
+          "quote": "MH-003 | P0 / Core | Compilation SHALL only generate artifacts and diagnostics."
+        },
+        {
+          "statement": "The checked graph SHALL normalize into a versioned owned IR retaining source provenance.",
+          "quote": "MH-004 | P0 / Core | The checked graph SHALL normalize into a versioned owned IR retaining source provenance."
+        },
+        {
+          "statement": "Unknown mandatory semantics SHALL reject a target.",
+          "quote": "MH-005 | P0 / Core | Unknown mandatory semantics SHALL reject a target."
+        },
+        {
+          "statement": "Generated artifacts SHALL be deterministic for the declared build inputs.",
+          "quote": "MH-006 | P0 / Core | Generated artifacts SHALL be deterministic for the declared build inputs."
+        },
+        {
+          "statement": "Each output path SHALL have one owner and remain inside its output root.",
+          "quote": "MH-007 | P0 / Core | Each output path SHALL have one owner and remain inside its output root."
+        }
+      ],
+      "rejected": []
+    },
+    {
+      "studyId": "rhex-final-architecture",
+      "ssotContractPath": "core/workflow/deep-research-typespec-pipeline.tsp",
+      "checkedOn": "2026-10-19",
+      "model": "ggml-org/gemma-4-E4B-it-GGUF:Q8_0",
+      "wallMs": 48801,
+      "found": 5,
+      "accepted": [
+        {
+          "statement": "The native host must have a lifetime lock for its duration.",
+          "quote": "The host acquires a nonblocking kernel lock on a stable file and holds the descriptor until shutdown."
+        },
+        {
+          "statement": "The compiler process must run at most one active compilation per compiler instance.",
+          "quote": "The compiler process owns a native host adapter, parse cache, bounded SourceFile cache, configuration results, and at most one reusable Program per active compilation key."
+        }
+      ],
+      "rejected": [
+        {
+          "statement": "The reference deployment has P = 2W + I + C + K processes, with C at most W initially.",
+          "reason": "no normative verb"
+        },
+        {
+          "statement": "The input frame maximum size is 1 MiB, and the normal inline output maximum is 32 KiB.",
+          "reason": "quote not found in source"
+        },
+        {
+          "statement": "The control-plane latency under compiler load must be p95 under 50 ms for status/ping where supported.",
+          "reason": "quote not found in source"
+        }
+      ]
+    },
+    {
+      "studyId": "rhex-open-source-adoption-research",
+      "ssotContractPath": "core/workflow/deep-research-typespec-pipeline.tsp",
+      "checkedOn": "2026-10-19",
+      "model": "ggml-org/gemma-4-E4B-it-GGUF:Q8_0",
+      "wallMs": 64816,
+      "found": 0,
+      "accepted": [],
+      "rejected": []
+    },
+    {
+      "studyId": "rhex-performance-research-two-zero-two-six-zero-nine-one-five",
+      "ssotContractPath": "core/workflow/deep-research-typespec-pipeline.tsp",
+      "checkedOn": "2026-10-19",
+      "model": "ggml-org/gemma-4-E4B-it-GGUF:Q8_0",
+      "wallMs": 74609,
+      "found": 0,
+      "accepted": [],
+      "rejected": []
+    },
+    {
+      "studyId": "typespec-zero-advanced-research",
+      "ssotContractPath": "core/workflow/deep-research-typespec-pipeline.tsp",
+      "checkedOn": "2026-10-19",
+      "model": "ggml-org/gemma-4-E4B-it-GGUF:Q8_0",
+      "wallMs": 36882,
+      "found": 4,
+      "accepted": [],
+      "rejected": [
+        {
+          "statement": "The compiler package declares Node >=22.0.0.",
+          "reason": "no normative verb"
+        },
+        {
+          "statement": "The lab contains four compilable projects and 34 focused tests.",
+          "reason": "no normative verb"
+        },
+        {
+          "statement": "The accompanying FEATURE-MATRIX.csv inventories 106 capabilities.",
+          "reason": "no normative verb"
+        },
+        {
+          "statement": "The emitter supports OpenAPI versions 3.0.0, 3.1.0, and 3.2.0.",
+          "reason": "no normative verb"
+        }
+      ]
+    }
+  ]
+}

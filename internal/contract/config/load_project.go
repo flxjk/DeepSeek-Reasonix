@@ -15,7 +15,6 @@ type userGlobals struct {
 	storage                                   map[string]string
 	serve                                     ServeConfig
 	desktopLanguage, currency, billingDisplay string
-	telemetry                                 TelemetryConfig
 	statusline                                StatuslineConfig
 	progressWatch                             ProgressWatchConfig
 	autoArchive                               AutoArchiveConfig
@@ -27,18 +26,18 @@ func holdUserGlobals(c *Config) userGlobals {
 		cli: c.CLI, secrets: c.Secrets,
 		remote: c.Remote.Clone(), storage: maps.Clone(c.Storage), serve: c.Serve,
 		desktopLanguage: c.Desktop.Language, currency: c.Desktop.Currency, billingDisplay: c.Billing.DisplayCurrency,
-		telemetry: c.Telemetry, statusline: c.Statusline, progressWatch: c.ProgressWatch, autoArchive: c.AutoArchive, commandMode: c.UI.CommandMode,
+		statusline: c.Statusline, progressWatch: c.ProgressWatch, autoArchive: c.AutoArchive, commandMode: c.UI.CommandMode,
 	}
 }
 
 // restore puts the user's globals back: what a repository must not choose is
 // the update channel and formatter, secret protection, remote hosts, storage
-// and serve authentication, regional display, telemetry and key bindings.
+// and serve authentication, regional display and key bindings.
 func (g userGlobals) restore(c *Config) {
 	c.CLI, c.Secrets = g.cli, g.secrets
 	c.Remote, c.Storage, c.Serve = g.remote, g.storage, g.serve
 	c.Desktop.Language, c.Desktop.Currency, c.Billing.DisplayCurrency = g.desktopLanguage, g.currency, g.billingDisplay
-	c.Telemetry, c.Statusline, c.ProgressWatch, c.UI.CommandMode = g.telemetry, g.statusline, g.progressWatch, g.commandMode
+	c.Statusline, c.ProgressWatch, c.UI.CommandMode = g.statusline, g.progressWatch, g.commandMode
 	c.AutoArchive = g.autoArchive
 }
 

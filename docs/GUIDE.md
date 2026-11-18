@@ -150,10 +150,9 @@ allow = ["Bash(go test:*)"]                  # never prompted
 
 [peers]
 # enabled = true               # your sessions on this machine can message each other; unpaired messages wait for the receiving session's user to approve them; also a switch in Settings, applied at the next turn (user config only)
-# dispatch = true              # the model may hand a task to a session in another of your projects, via dispatch_to_project (the session it opens sends its final answer back on its own), and ask you to open folders as projects with open_projects (one card lists every path; nothing is added or trusted until you approve it, and no mode answers it for you, except the open_nested switch below); needs enabled; turning it on is your consent for those sessions' tasks and replies, no card, and a project in your sidebar you have not decided about is trusted by being named; the opened session keeps the sender's model, preset, approval mode and planning, so a YOLO sender opens a YOLO session that answers the target project's ask rules too (deny rules still hold) (user config only)
+# dispatch = true              # the model may hand a task to a session in another of your projects, via dispatch_to_project (the session it opens sends its final answer back on its own), and ask you to open folders as projects with open_projects (one card lists every path; nothing is added or trusted until you approve it, and no mode answers it for you); needs enabled; turning it on is your consent for those sessions' tasks and replies, no card, and a project in your sidebar you have not decided about is trusted by being named; the opened session keeps the sender's model, preset, approval mode and planning, so a YOLO sender opens a YOLO session that answers the target project's ask rules too (deny rules still hold) (user config only)
 # max_dispatch_depth = 1       # how many sessions deep a dispatch may chain; 0 removes the ceiling (user config only)
 # max_dispatched_sessions = 8  # sessions one session may keep open from its dispatches; 0 removes the ceiling (user config only)
-# open_nested = false          # open_projects adds folders inside the session's own workspace without a card; also a switch in Settings (user config only)
 # release_projects = []        # projects that take messages from your other sessions without the card; their own approvals and sandbox still apply; they start over a pause the host set itself (session switch, unreadable @ reference, reopen) but never over one you pressed (user config only)
 
 [mods]
@@ -222,92 +221,6 @@ it writes can invalidate what a verification just proved. The table reaches the
 local bash tool only — a remote workspace and `reasonix review` build their own
 sandbox and do not carry it.
 
-### CLI telemetry
-
-> The project is no longer maintained. The final release sends no ping,
-> counter or report, and `reasonix report send` is refused; the text below
-> describes the earlier behaviour.
-
-The CLI can send a once-per-day anonymous active-install ping and bounded,
-content-free event counters to `https://crash.reasonix.io`. Configure the
-user-global policy with:
-
-```bash
-reasonix config telemetry          # print the effective mode
-reasonix config telemetry auto     # default: local interactive TTY only
-reasonix config telemetry on       # also allow local headless `reasonix run`
-reasonix config telemetry off      # disable and delete pending counter files
-```
-
-On the first eligible release-build interactive session, Reasonix explains the
-exact data boundary and asks once before any telemetry request. The prompt is
-`[Y/n]`: pressing Enter, `y`, or `yes` stores `auto`; `n` or `no` stores `off`
-and deletes pending counters. After the choice is saved, enabled reporting is
-silent and the prompt is not shown again. If the preference cannot be saved,
-nothing is uploaded.
-
-Reporting is always disabled in CI, development builds, and when
-`DO_NOT_TRACK` is set or `REASONIX_TELEMETRY=0`. Under `auto`, redirected/piped
-or otherwise non-interactive sessions do not report. When no choice has been
-saved yet, these ineligible sessions neither prompt nor report. Network failures
-after consent are silent and never change stdout, stderr, or the process exit
-code; unsent counters stay in a bounded local queue for a later invocation.
-
-The ping contains a dedicated random 128-bit CLI install ID, CLI version, OS,
-architecture, and the `cli` surface marker. This ID is separate from the desktop
-install ID and is not an account, hardware, repository, or session identifier.
-
-Counter batches use that same ID for daily active-install deduplication and
-contain only fixed buckets such as CLI mode/profile, permission/session mode,
-turn latency, finish reason, cache-hit range, generic Provider/tool error class,
-compaction, recovery counters, per-turn token-volume buckets, workspace-lease
-contention buckets, and normalized UI language.
-
-Closing the prompt without answering (end of input, Ctrl+D) stores nothing and
-uploads nothing; it asks again the next time.
-
-Reasonix never uploads prompts, answers, reasoning, tool names/arguments/output,
-paths, repositories/branches, session IDs, exact token or cost values,
-Provider/model names, base URLs, or environment variables.
-
-### Trace export (OpenTelemetry)
-
-Reasonix can hand each turn to your own observability stack as OpenTelemetry
-GenAI traces. It is off, and nothing leaves the machine, until your user config
-switches it on and names a collector:
-
-```toml
-[observability.otlp]
-enabled = true
-endpoint = "http://localhost:4318"   # OTLP/HTTP; /v1/traces is appended
-header_name = "Authorization"        # optional: the header carrying a credential
-header_env = "OTEL_EXPORTER_AUTH"    # the variable holding its value, never the value
-service_name = "reasonix"            # optional
-```
-
-- **What is sent.** One trace per turn: an `invoke_agent` span, a `chat` span per
-  model attempt (provider, model, token counts, finish reason), and an
-  `execute_tool` span per tool call (tool name, failure class), nested under the
-  tool that delegated the work.
-- **What is never sent.** Prompts, answers, tool arguments and results, file
-  paths and error text. Spans are built from typed event fields through one fixed
-  attribute set, and a name that does not look like a name is sent as `unknown`.
-- **Who decides.** Only your user config. A repository's `reasonix.toml` cannot
-  switch it on or move it; the ignored key is reported at load.
-- **Credentials.** `header_env` must be an `OTEL_*` or `REASONIX_OTEL_*` variable, so no
-  setting can read an unrelated secret. A credential is refused over plain `http`
-  to any host but loopback, the endpoint may not contain user info, and redirects
-  are not followed.
-- **Failure.** Export never blocks a turn: a slow or dead collector drops spans
-  from a bounded queue.
-- **Stability.** The upstream conventions are marked Development (read
-  2026-10-18); every payload carries `reasonix.semconv_experimental = true` and
-  attribute names can change. Not run against a real backend: built against the
-  OTLP/HTTP JSON encoding and tested with a local collector.
-
-Studio has the same switches under Settings, Network. A save reaches sessions
-opened afterwards.
-
 ### CLI crash reports
 
 An unhandled Go panic that reaches the CLI entrypoint is saved locally as a sanitized report under
@@ -328,10 +241,9 @@ reasonix report delete [ID]     # delete without sending
 ```
 
 Piped or redirected `reasonix report` calls only preview and never prompt or
-send. The CLI telemetry setting does not auto-send or auto-delete
-these separately reviewed reports. Runtime fatal throws, operating-system kills,
-and panics in unwrapped background goroutines cannot be recovered by Go and do
-not produce this local report.
+send. Nothing auto-sends or auto-deletes these separately reviewed reports.
+Runtime fatal throws, operating-system kills, and panics in unwrapped background
+goroutines cannot be recovered by Go and do not produce this local report.
 
 ## Web frontend
 
@@ -1543,7 +1455,7 @@ For coding-quality reports, run `reasonix doctor quality <branch-id-or-path>`
 (add `--json` for structured output). This reads the selected session but emits
 only content-free counts and profile categories: model family, runtime profile,
 collaboration / approval modes, message and tool-call counts, verification and persisted
-compaction-summary counts, plus desktop token/cache telemetry when available.
+compaction-summary counts, plus desktop token/cache usage when available.
 It omits transcript text, paths, session identifiers, tool arguments and output,
 endpoints, and custom model names, so the result is suitable for a public issue
 or Discussion. This differs from `reasonix doctor session`, whose support zip
@@ -2664,13 +2576,6 @@ question and the task is **not sent**: answer there, then ask to dispatch again.
 For a folder not yet in your project list, add it yourself, or let the model
 request `open_projects`; its card lists the paths and requires your explicit
 approval even in YOLO mode before adding or trusting them.
-
-One setting relaxes this:
-
-- With the user-only `peers.open_nested = true` (also a switch in Settings), a call whose folders are all strictly inside the asking session's own workspace, after links are resolved, is added and trusted without the card, and a notice lists the paths.
-- Any folder outside the workspace brings the card for the whole call.
-- It is off by default, and a project's `reasonix.toml` cannot turn it on.
-- A trusted folder's configuration can run programs, so turn it on only for a repository you trust.
 
 `open_projects` is unavailable in plan mode until the plan is approved.
 

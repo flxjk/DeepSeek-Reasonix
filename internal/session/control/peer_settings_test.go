@@ -205,7 +205,7 @@ func TestReleaseProjectsMustBeAbsolutePathsAndAreReplacedWhole(t *testing.T) {
 
 func TestRememberingAnApprovalReleasesThisProjectAndDenyCannotRemember(t *testing.T) {
 	f := newPeerFixture(t)
-	setDispatchSwitch(t, true, false)
+	t.Setenv("REASONIX_HOME", testenv.TempDir(t))
 	f.c.workspaceRoot = testenv.TempDir(t)
 	f.send(t, "m1", "first")
 	f.send(t, "m2", "second")
@@ -229,7 +229,7 @@ func TestRememberingAnApprovalReleasesThisProjectAndDenyCannotRemember(t *testin
 
 func TestRememberingAMessageThatIsNotHeldWritesNothing(t *testing.T) {
 	f := newPeerFixture(t)
-	setDispatchSwitch(t, true, false)
+	t.Setenv("REASONIX_HOME", testenv.TempDir(t))
 	f.c.workspaceRoot = testenv.TempDir(t)
 	if err := f.c.ResolvePeerMessageRemembering("nope", true, PeerRememberProject); !errors.Is(err, ErrPeerNotHeld) {
 		t.Fatalf("unknown id: %v", err)
@@ -258,27 +258,5 @@ func TestTheDispatchCeilingsAreSettingsTheUserCanRaiseRemoveAndNotMakeNegative(t
 	}
 	if after := f.c.PeersSettings(); after.MaxDispatchDepth != 3 {
 		t.Fatal("a refused ceiling changed the file")
-	}
-}
-
-func TestOpeningNestedFoldersWithoutAskingIsOffByDefaultAndTheUsersToTurnOn(t *testing.T) {
-	f := newStandbyFixture(t)
-	if f.c.PeersSettings().OpenNested {
-		t.Fatal("opening folders without a card is on by default")
-	}
-	on := true
-	got, err := f.c.SavePeersSettings(PeersPatch{OpenNested: &on})
-	if err != nil || !got.OpenNested {
-		t.Fatalf("saved = %+v, %v; want open_nested on", got, err)
-	}
-	if again := f.c.PeersSettings(); !again.OpenNested {
-		t.Fatal("open_nested did not survive a read-back")
-	}
-	if _, err := f.c.SavePeersSettings(PeersPatch{}); err != nil || !f.c.PeersSettings().OpenNested {
-		t.Fatalf("an empty patch changed open_nested (err %v)", err)
-	}
-	off := false
-	if got, err := f.c.SavePeersSettings(PeersPatch{OpenNested: &off}); err != nil || got.OpenNested {
-		t.Fatalf("turned off = %+v, %v", got, err)
 	}
 }

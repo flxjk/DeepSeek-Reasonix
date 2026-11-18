@@ -365,7 +365,7 @@ Exit statuses of `reasonix run`:
 
 ### Redacted machine interfaces
 
-Use the dedicated event flag when an automation needs lifecycle telemetry but
+Use the dedicated event flag when an automation needs lifecycle events but
 must not receive prompts, reasoning, tool arguments, tool output, or approval
 text:
 
@@ -573,7 +573,7 @@ single-key shortcuts.
 
 The responsive footer keeps interaction state on the left and, when space
 allows, places model, effort, and execution setting on the right. Its second row shows
-available repository and session telemetry such as cache hit rate, context use,
+available repository and session statistics such as cache hit rate, context use,
 compaction headroom, background jobs, and balance. `ready` means the composer is
 idle; that slot changes when a picker, approval, image paste, shell mode, or
 other interaction needs attention. Narrow terminals move or compact complete

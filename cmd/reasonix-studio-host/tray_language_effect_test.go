@@ -37,8 +37,6 @@ func TestAssembledTrayLanguage(t *testing.T) {
 			t.Setenv("REASONIX_LANG", tt.env)
 			t.Setenv("LANG", tt.locale)
 			cfg := config.Default()
-			disabled := false
-			cfg.Desktop.Telemetry, cfg.Desktop.Metrics = &disabled, &disabled
 			if err := cfg.SetDesktopLanguage(tt.desktop); err != nil {
 				t.Fatal(err)
 			}

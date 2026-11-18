@@ -748,20 +748,9 @@ type Messages struct {
 	ReportSentDeleteFailedFmt string
 	ReportUsageBody           string
 
-	// First eligible interactive CLI telemetry consent.
-	CLITelemetryConsentNotice           string
-	CLITelemetryConsentPrompt           string
-	CLITelemetryConsentInvalid          string
-	CLITelemetryConsentSaveFailedFmt    string
-	CLITelemetryConsentCleanupFailedFmt string
-
 	// usage / help
 	UsageBody             string // full multi-line help text
 	StandaloneConsoleHint string
-	// MinttyConsoleHint is shown instead of the usage text when stdin or stdout is a Cygwin or MSYS terminal, which a Windows program cannot drive as a console.
-	MinttyConsoleHint string
-	// OpenedNestedWithoutAskingFmt is the notice after open_projects added folders inside the workspace on the user's standing setting; the arguments are a count and the paths.
-	OpenedNestedWithoutAskingFmt string
 
 	// Feedback is the /feedback list standing and refusal wording.
 	Feedback FeedbackText

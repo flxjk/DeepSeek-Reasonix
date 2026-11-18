@@ -159,10 +159,9 @@ allow = ["Bash(go test:*)"]                  # 从不询问
 
 [peers]
 # enabled = true               # 本机你的各个会话可以互发消息；未配对会话的消息要对方会话的用户批准；设置里也有开关，下个回合起生效（只认用户级配置）
-# dispatch = true              # 模型可用 dispatch_to_project 把任务交给你另一个项目里的会话（对方做完会自己把最终答复送回来），也可用 open_projects 请你把文件夹开成项目（一张卡逐条列出路径，你批准前不会加入也不会被信任，任何模式都不会代你回答，下面的 open_nested 开关除外）；需要 enabled；打开就是你对这些会话的任务和回信的总同意，不再出审批卡；新开的会话沿用发起方的模型、预设、审批档位和计划模式，所以 YOLO 的发起方开出的也是 YOLO 会话，会连目标项目的“要问我”规则一起答掉（拒绝规则仍然生效）（只认用户级配置）
+# dispatch = true              # 模型可用 dispatch_to_project 把任务交给你另一个项目里的会话（对方做完会自己把最终答复送回来），也可用 open_projects 请你把文件夹开成项目（一张卡逐条列出路径，你批准前不会加入也不会被信任，任何模式都不会代你回答）；需要 enabled；打开就是你对这些会话的任务和回信的总同意，不再出审批卡；新开的会话沿用发起方的模型、预设、审批档位和计划模式，所以 YOLO 的发起方开出的也是 YOLO 会话，会连目标项目的“要问我”规则一起答掉（拒绝规则仍然生效）（只认用户级配置）
 # max_dispatch_depth = 1       # 派发最多能连着开几层会话；0 表示不限（只认用户级配置）
 # max_dispatched_sessions = 8  # 一个会话通过派发最多同时开着几个会话；0 表示不限（只认用户级配置）
-# open_nested = false          # open_projects 打开会话自己工作区之内的文件夹时不弹审批卡；设置里也有开关（只认用户级配置）
 # release_projects = []        # 这些项目收到你其它会话的消息时不弹批准卡；它们自己的审批与沙盒照旧；宿主自己设的暂停（切换会话、@ 引用读不了、重新打开）不拦它们，你主动按下的暂停会拦住，消息留在队列里（只认用户级配置）
 
 [mods]
@@ -216,44 +215,6 @@ bash allowlist 或信任提示。Plan 与常规模式使用相同的 Permissions
 内容都可能让刚完成的验证失效。该表只作用于本地 bash 工具：远程工作区和 `reasonix review`
 各自构建沙箱，不会带上它。
 
-### CLI 上报统计
-
-> 项目已停止维护。最后一个版本不再发送任何 ping、计数或报告，
-> `reasonix report send` 会被拒绝；以下内容描述的是此前的行为。
-
-CLI 可以向 `https://crash.reasonix.io` 发送每日最多一次的匿名活跃安装 ping，
-以及有界、完全不含内容的事件计数。使用以下用户全局命令配置：
-
-```bash
-reasonix config telemetry          # 查看当前生效模式
-reasonix config telemetry auto     # 默认：仅本机交互式 TTY
-reasonix config telemetry on       # 也允许本机 headless `reasonix run`
-reasonix config telemetry off      # 关闭并删除待发送计数文件
-```
-
-正式版 CLI 第一次在符合条件的交互式终端启动时，会先明确说明数据边界，并在任何
-telemetry 请求之前只询问一次。提示为 `[Y/n]`：直接回车、输入 `y` 或 `yes` 会保存为
-`auto`；输入 `n` 或 `no` 会保存为 `off` 并删除待发送计数。选择保存后不再提示，允许的
-后续上报保持静默。如果偏好设置保存失败，则不会上传任何内容。
-
-在 CI、开发构建中始终关闭；设置 `DO_NOT_TRACK` 或
-`REASONIX_TELEMETRY=0` 也会关闭。`auto` 模式下，重定向、pipe 或其他非交互会话
-不会上报。尚未保存选择时，这些不符合条件的会话既不会提示，也不会上报。授权后的
-网络失败完全静默，不会改变 stdout、stderr 或进程退出码；未发送计数只会保存在有
-数量和时效上限的本地队列中，等待后续启动重试。
-
-ping 包含一个 CLI 专用的随机 128-bit 安装 ID、CLI 版本、OS、架构和 `cli` surface
-标记。这个 ID 与桌面端安装 ID 分离，不是账号、硬件、仓库或 session 标识。
-
-计数批次使用同一个 ID 做每日活跃安装去重，只包含固定 bucket，例如 CLI 模式、
-运行配置档、权限/会话模式、turn 延迟、finish reason、cache hit 区间、通用
-Provider/工具错误分类、compaction、恢复计数、每轮 token 量级区间、工作区写锁争用区间和归一化界面语言。
-
-不回答就关闭提示（输入结束、Ctrl+D）不会保存任何选择，也不会上传；下次启动会再问。
-
-Reasonix 绝不会上传 prompt、回答、reasoning、工具名/参数/输出、路径、仓库/分支、
-session ID、精确 token/费用、Provider/model 名称、base URL 或环境变量。
-
 ### CLI 崩溃报告
 
 当未处理的 Go panic 到达 CLI 入口调用栈时，Reasonix 会把脱敏报告保存在
@@ -271,10 +232,9 @@ reasonix report send [ID]       # 明确发送；成功后才删除本地副本
 reasonix report delete [ID]     # 不发送，直接删除
 ```
 
-通过 pipe 或重定向运行 `reasonix report` 时只会预览，不会询问或发送。CLI telemetry
-设置不会自动发送或自动删除这些
-需要单独审阅的报告。Go 无法恢复 runtime fatal throw、操作系统强制终止，以及未包装
-后台 goroutine 中的 panic，因此这些情况不会生成本地报告。
+通过 pipe 或重定向运行 `reasonix report` 时只会预览，不会询问或发送。这些需要单独
+审阅的报告不会被自动发送或自动删除。Go 无法恢复 runtime fatal throw、操作系统强制
+终止，以及未包装后台 goroutine 中的 panic，因此这些情况不会生成本地报告。
 
 ## Web 前端
 
@@ -1165,7 +1125,7 @@ Docker Desktop（Linux 虚拟机、Debian 12、bubblewrap 0.8.0）上，用每�
 反馈编码质量问题时，可运行 `reasonix doctor quality <branch-id-or-path>`（加
 `--json` 输出结构化结果）。命令会读取指定 session，但只输出不含内容的计数与
 Profile 分类：模型家族、运行模式、协作/审批模式、消息和工具调用数、验证与已持久化的
-compaction 摘要数，以及可用时的桌面端 token/cache telemetry。结果不会包含对话正文、
+compaction 摘要数，以及可用时的桌面端 token/cache 用量。结果不会包含对话正文、
 路径、session 标识、工具参数与输出、服务端点或自定义模型名，适合粘贴到公开 Issue
 或 Discussion。它不同于 `reasonix doctor session`：后者生成的支持 zip 含完整未脱敏
 会话，只能在可信支持渠道分享。
@@ -1953,13 +1913,6 @@ dispatch = true
 对于尚未加入项目列表的文件夹，可以自己添加，
 或让模型通过 `open_projects` 请求；其审批卡会列出路径，即使在 YOLO 模式下也必须
 由你明确批准，才会添加或信任。
-
-有一个设置可以放宽这一条：
-
-- 用户级配置 `peers.open_nested = true`（设置里也有开关）开启后，一次调用里的文件夹只要全部严格位于发起会话自己的工作区之内（解析链接之后），就直接添加并信任，不弹卡，并用通知列出这些路径。
-- 只要有一个文件夹在工作区之外，整次调用仍然弹卡。
-- 默认关闭，项目里的 `reasonix.toml` 无法开启它。
-- 被信任的文件夹里的配置可以运行程序，请只在你信任这个仓库时开启。
 
 计划模式下不能使用 `open_projects`，需要先批准计划。
 

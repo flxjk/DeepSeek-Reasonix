@@ -8,7 +8,6 @@ import (
 	"net/http"
 	"os"
 	"path/filepath"
-	"reasonix/internal/base/netclient"
 	"runtime"
 	"strings"
 	"sync"
@@ -211,11 +210,5 @@ func TestLoadUnknownIDOnEmptyStoreReturnsNotFound(t *testing.T) {
 	}
 	if want := `CLI crash report "deadbeef" not found`; err.Error() != want {
 		t.Fatalf("error = %q, want %q", err.Error(), want)
-	}
-}
-
-func TestSendIsRetired(t *testing.T) {
-	if err := Send(context.Background(), Report{}, netclient.ProxySpec{}); !errors.Is(err, ErrRetired) {
-		t.Fatalf("Send = %v, want ErrRetired", err)
 	}
 }

@@ -45,7 +45,6 @@ import (
 	"reasonix/internal/platform/instanceid"
 	"reasonix/internal/platform/notify"
 	"reasonix/internal/platform/remotecloud"
-	"reasonix/internal/platform/telemetry"
 	"reasonix/internal/platform/update"
 	// Kinds register from init, so a binary builds only what it links. Without
 	// these every Anthropic model answers "unknown kind" at switch time.
@@ -396,12 +395,6 @@ func assemble(ctx context.Context, logs, handshakeTo io.Writer, shell shellIdent
 	}
 	bc := serve.NewBroadcaster()
 	paneSink := decorate(bc)
-	if cfg.DesktopTelemetry() || cfg.DesktopMetrics() {
-		reporter := telemetry.Start(studioTelemetryOptions(ctx, cfg, shell.version))
-		if cfg.DesktopMetrics() {
-			paneSink = reporter.Wrap(paneSink)
-		}
-	}
 	phases.mark(startupSinks)
 	root := launchWorkspace(shell.exe)
 	phases.mark(startupWorkspace)
@@ -539,29 +532,6 @@ func startCloudRemote(ctx context.Context, cfg *config.Config, logs io.Writer, t
 	go host.Run(ctx)
 }
 
-// desktopTelemetryOn reads the user-level setting as it is now. A file that does
-// not parse is not consent, and neither the project config nor a migration
-// rewrite is involved; a missing file keeps the documented default (on).
-func desktopTelemetryOn() bool {
-	cfg, err := config.LoadForEditReadOnlyStrict(config.UserConfigPath())
-	return err == nil && cfg != nil && cfg.DesktopTelemetry()
-}
-
-func studioTelemetryOptions(ctx context.Context, cfg *config.Config, studioVersion string) telemetry.Options {
-	return telemetry.Options{
-		Context:      ctx,
-		Mode:         "on",
-		Version:      studioVersion,
-		Surface:      surface.Studio,
-		SuppressPing: !cfg.DesktopTelemetry(),
-		PingAllowed:  desktopTelemetryOn,
-		HomeDir:      config.ReasonixHomeDir(),
-		Interactive:  true,
-		Proxy:        cfg.NetworkProxySpec(),
-		Language:     cfg.Language,
-	}
-}
-
 // hostServeConfig is the user's serve settings with their authentication taken
 // out. Studio's boundary is the loopback gate, and both gates read one cookie:
 // a configured token left in place would have the hub refuse the credential
@@ -620,7 +590,4 @@ func grantHostCapabilities(srv *serve.Server) {
 	srv.AllowAccountAuth()
 	srv.AllowProviderEdit()
 	srv.AllowLocalDesktop()
-	if telemetry.ReleaseVersion(version) {
-		srv.AllowMarketInstallReport()
-	}
 }

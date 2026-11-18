@@ -145,7 +145,6 @@ func cliCompletionRootSpec() cliCompletionSpec {
 			completionSpec("reasoning-language", []cliCompletionFlag{completionFlag("--local", cliCompletionNoValue), help}),
 			completionSpec("compact-ratio", []cliCompletionFlag{completionFlag("--local", cliCompletionNoValue), help}),
 			completionSpec("currency", []cliCompletionFlag{completionFlag("--local", cliCompletionNoValue), help}),
-			completionSpec("telemetry", []cliCompletionFlag{help}),
 		),
 		completionSpec("init", []cliCompletionFlag{help}),
 		completionSpec("login", []cliCompletionFlag{help}),

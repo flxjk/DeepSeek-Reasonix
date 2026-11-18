@@ -15,7 +15,6 @@ import (
 
 func newPeerSession(t *testing.T, peersDir, name string) *Controller {
 	t.Helper()
-	setDispatchSwitch(t, true, false)
 	dir := testenv.TempDir(t)
 	path := filepath.Join(dir, "sessions", name+".jsonl")
 	if err := os.MkdirAll(filepath.Dir(path), 0o700); err != nil {

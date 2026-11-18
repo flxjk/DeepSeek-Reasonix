@@ -39,6 +39,5 @@ func TestMain(m *testing.M) {
 	// A stated home has no process variable to carry this, and the OS keychain
 	// is not isolated by the disposable home.
 	_ = os.Setenv("REASONIX_CREDENTIALS_STORE", "file")
-	feedbackRetired = false
 	testenv.RunWithIsolatedUserState(m)
 }

@@ -1,7 +1,6 @@
-// Ingest + dashboard for desktop crash/feedback/performance reports and the
-// anonymous launch ping. Frontend reports are user-initiated; native fatal and
-// lifecycle reports are sent on the next launch under the same opt-out desktop
-// telemetry gate as pings.
+// Ingest + dashboard for desktop crash/feedback/performance reports. Frontend
+// reports are user-initiated; native fatal and lifecycle reports are sent on
+// the next launch.
 import { z } from "zod";
 import type { Env } from "./env";
 import { html, redirect } from "./shell";
@@ -51,223 +50,6 @@ export { diagnosticWindowWhere, effectiveGroupSeverity, isDevelopmentGroup } fro
 const MAX_BODY_BYTES = 96 * 1024;
 const LATEST_SAMPLES_PER_GROUP = 5;
 const GROUP_PATH_RE = /^\/stats\/group\/((?:dev:)?[0-9a-f]{64})$/;
-
-const ClientSurface = z.enum(["desktop", "cli"]);
-type ClientSurfaceName = z.infer<typeof ClientSurface>;
-
-type TelemetryTableNames = {
-  pings: "pings" | "cli_pings";
-  metrics: "metrics" | "cli_metrics";
-};
-
-const TELEMETRY_TABLES: Record<ClientSurfaceName, TelemetryTableNames> = {
-  desktop: { pings: "pings", metrics: "metrics" },
-  cli: { pings: "cli_pings", metrics: "cli_metrics" },
-};
-
-export function telemetryTableNames(surface: ClientSurfaceName): TelemetryTableNames {
-  return TELEMETRY_TABLES[surface];
-}
-
-export const CLI_TELEMETRY_SCHEMA_SQL = [
-  `CREATE TABLE IF NOT EXISTS cli_pings (
-     date TEXT NOT NULL,
-     install_id TEXT NOT NULL,
-     version TEXT NOT NULL,
-     os TEXT NOT NULL,
-     arch TEXT NOT NULL,
-     os_version TEXT NOT NULL DEFAULT '',
-     os_build INTEGER NOT NULL DEFAULT 0,
-     os_revision INTEGER NOT NULL DEFAULT 0,
-     channel TEXT NOT NULL DEFAULT '',
-     distro_id TEXT NOT NULL DEFAULT '',
-     distro_version TEXT NOT NULL DEFAULT '',
-     kernel_version TEXT NOT NULL DEFAULT '',
-     session_type TEXT NOT NULL DEFAULT '',
-     runtime_engine TEXT NOT NULL DEFAULT '',
-     runtime_version TEXT NOT NULL DEFAULT '',
-     gpu_mode TEXT NOT NULL DEFAULT '',
-     opens INTEGER NOT NULL DEFAULT 1,
-     PRIMARY KEY (date, install_id)
-   )`,
-  `CREATE TABLE IF NOT EXISTS cli_metrics (
-     date TEXT NOT NULL,
-     version TEXT NOT NULL,
-     os TEXT NOT NULL,
-     signal TEXT NOT NULL,
-     bucket TEXT NOT NULL,
-     count INTEGER NOT NULL DEFAULT 0,
-     PRIMARY KEY (date, version, os, signal, bucket)
-   )`,
-  // No secondary indexes: each primary key already leads with `date`, which is
-  // what every dashboard query filters on. See migrate-window-index-fix.sql.
-] as const;
-
-const cliTelemetrySchemaPromises = new WeakMap<object, Promise<void>>();
-
-export function ensureCLITelemetrySchema(env: Pick<Env, "DB">): Promise<void> {
-  const key = env.DB as unknown as object;
-  const existing = cliTelemetrySchemaPromises.get(key);
-  if (existing) return existing;
-  const creation = env.DB
-    .batch(CLI_TELEMETRY_SCHEMA_SQL.map((sql) => env.DB.prepare(sql)))
-    .then(() => undefined)
-    .catch((err) => {
-      cliTelemetrySchemaPromises.delete(key);
-      throw err;
-    });
-  cliTelemetrySchemaPromises.set(key, creation);
-  return creation;
-}
-
-export const Ping = z.object({
-  installId: z.string().regex(/^[0-9a-f]{32}$/),
-  version: z.string().min(1).max(64),
-  os: z.string().min(1).max(32),
-  arch: z.string().min(1).max(32),
-  osVersion: z.string().max(128).optional(),
-  osBuild: z.number().int().min(0).max(1_000_000).optional(),
-  osRevision: z.number().int().min(0).max(1_000_000).optional(),
-  channel: z.string().max(32).optional(),
-  distroId: z.string().max(64).optional(),
-  distroVersion: z.string().max(64).optional(),
-  kernelVersion: z.string().max(128).optional(),
-  sessionType: z.enum(["wayland", "x11", "remote", "unknown"]).optional(),
-  runtimeEngine: z.enum(["webview2", "webkitgtk", "unknown"]).optional(),
-  runtimeVersion: z.string().max(128).optional(),
-  gpuMode: z.enum(["enabled", "disabled", "always", "on_demand", "unknown"]).optional(),
-  surface: ClientSurface.default("desktop"),
-});
-
-// Opt-in aggregate client metrics: a per-launch snapshot of (signal, bucket)
-// counters. The optional surface-specific random install id deduplicates DAU;
-// there is no user content. Unknown signals are discarded before storage so
-// older workers can accept batches from newer clients safely.
-const METRIC_SIGNALS = [
-  "finish_reason",
-  "empty_final",
-  "provider_error",
-  "cache_hit",
-  "tool_error",
-  "updater_error",
-  "updater_event",
-  "compaction",
-  "turns",
-  "desktop_hang",
-  "desktop_hang_age",
-  "desktop_exit",
-  "desktop_exit_phase",
-  "desktop_uptime",
-  "desktop_install",
-  "desktop_update_transition",
-  "desktop_restore",
-  "desktop_webview2_failure",
-  "desktop_webview2_outcome",
-  "desktop_web_runtime_failure",
-  "desktop_web_runtime_outcome",
-  "desktop_web_runtime_dropped",
-  "desktop_legacy_exit",
-  "desktop_legacy_exit_phase",
-  "cli_mode",
-  "cli_profile",
-  "cli_permission_mode",
-  "cli_session_mode",
-  "cli_turn_latency",
-  "cli_exit",
-  "recovery_failure",
-  "recovery_rule_continue",
-  "recovery_review_continue",
-  "recovery_human_prompt",
-  "recovery_human_continue",
-  "recovery_human_revise",
-  "recovery_review_error",
-  "recovery_repeat_prompt",
-  "recovery_review_latency",
-  "client_surface",
-  "client_version",
-  "settings_language",
-  "settings_desktop_layout",
-  "settings_theme",
-  "settings_theme_style",
-  "settings_close_behavior",
-  "settings_display_mode",
-  "settings_status_bar_style",
-  "settings_status_bar_items_count",
-  "settings_check_updates",
-  "settings_default_model",
-  "settings_planner_model",
-  "settings_subagent_model",
-  "settings_subagent_effort",
-  "settings_reasoning_language",
-  "settings_provider_count",
-  "settings_provider_access_count",
-  "settings_provider_access",
-  "settings_bot_enabled",
-  "settings_bot_model",
-  "settings_bot_tool_approval",
-  "settings_bot_allowlist",
-  "settings_bot_allow_all",
-  "settings_bot_qq_enabled",
-  "settings_bot_feishu_enabled",
-  "settings_bot_weixin_enabled",
-  "settings_bot_connection_count",
-  "settings_bot_connection_provider",
-  "settings_bot_connection_enabled",
-  "settings_bot_connection_status",
-  "settings_bot_connection_model",
-  "settings_bot_connection_approval",
-] as const;
-
-type MetricSignal = (typeof METRIC_SIGNALS)[number];
-
-const METRIC_SIGNAL_SET: ReadonlySet<string> = new Set(METRIC_SIGNALS);
-
-const KnownMetricCounter = z.object({
-  signal: z.enum(METRIC_SIGNALS),
-  bucket: z
-    .string()
-    .min(1)
-    .max(96)
-    .regex(/^[a-z0-9_]+$/),
-  count: z.number().int().min(1).max(1_000_000),
-});
-
-const UnknownMetricCounter = z
-  .object({
-    signal: z
-      .string()
-      .min(1)
-      .max(96)
-      .refine((signal) => !METRIC_SIGNAL_SET.has(signal)),
-  })
-  .passthrough()
-  .transform(() => null);
-
-export const Metrics = z.object({
-  version: z.string().min(1).max(64),
-  os: z.string().min(1).max(32),
-  arch: z.string().max(32).optional(),
-  osBuild: z.number().int().min(0).max(1_000_000).optional(),
-  osRevision: z.number().int().min(0).max(1_000_000).optional(),
-  channel: z.string().max(32).optional(),
-  distroId: z.string().max(64).optional(),
-  distroVersion: z.string().max(64).optional(),
-  kernelVersion: z.string().max(128).optional(),
-  sessionType: z.enum(["wayland", "x11", "remote", "unknown"]).optional(),
-  runtimeEngine: z.enum(["webview2", "webkitgtk", "unknown"]).optional(),
-  runtimeVersion: z.string().max(128).optional(),
-  gpuMode: z.enum(["enabled", "disabled", "always", "on_demand", "unknown"]).optional(),
-  surface: ClientSurface.default("desktop"),
-  counters: z
-    .array(z.union([KnownMetricCounter, UnknownMetricCounter]))
-    .min(1)
-    .max(128)
-    .transform((counters) =>
-      counters.filter(
-        (counter): counter is z.infer<typeof KnownMetricCounter> & { signal: MetricSignal } => counter !== null,
-      ),
-    ),
-});
 
 type FingerprintInput = {
   kind: string;
@@ -687,72 +469,6 @@ async function handleReport(request: Request, env: Env): Promise<Response> {
   return new Response("ok", { status: 202 });
 }
 
-async function handlePing(request: Request, env: Env): Promise<Response> {
-  const ip = request.headers.get("cf-connecting-ip") ?? "unknown";
-  const { success } = await env.PING_LIMITER.limit({ key: ip });
-  if (!success) return new Response("rate limited", { status: 429 });
-
-  const raw = await readJSON(request);
-  if (raw instanceof Response) return raw;
-  const parsed = Ping.safeParse(raw);
-  if (!parsed.success) return new Response("bad request", { status: 400 });
-  const p = parsed.data;
-  const tables = telemetryTableNames(p.surface);
-
-  try {
-    if (p.surface === "cli") await ensureCLITelemetrySchema(env);
-    await env.DB.prepare(
-      `INSERT INTO ${tables.pings} (
-         date, install_id, version, os, arch, os_version, os_build, os_revision, channel,
-         distro_id, distro_version, kernel_version, session_type, runtime_engine, runtime_version, gpu_mode, opens
-       )
-       VALUES (date('now'), ?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9, ?10, ?11, ?12, ?13, ?14, ?15, 1)
-       ON CONFLICT (date, install_id) DO UPDATE SET
-         opens = opens + 1, version = ?2, os_version = ?5, os_build = ?6, os_revision = ?7,
-         channel = ?8, distro_id = ?9, distro_version = ?10, kernel_version = ?11,
-         session_type = ?12, runtime_engine = ?13, runtime_version = ?14, gpu_mode = ?15`,
-    )
-      .bind(
-        p.installId, p.version, p.os, p.arch, p.osVersion ?? "", p.osBuild ?? 0, p.osRevision ?? 0,
-        p.channel ?? "", p.distroId ?? "", p.distroVersion ?? "", p.kernelVersion ?? "",
-        p.sessionType ?? "", p.runtimeEngine ?? "", p.runtimeVersion ?? "", p.gpuMode ?? "",
-      )
-      .run();
-  } catch (err) {
-    return storageUnavailable("ping", err);
-  }
-
-  return new Response("ok", { status: 202 });
-}
-
-async function handleMetrics(request: Request, env: Env): Promise<Response> {
-  const ip = request.headers.get("cf-connecting-ip") ?? "unknown";
-  const { success } = await env.METRICS_LIMITER.limit({ key: ip });
-  if (!success) return new Response("rate limited", { status: 429 });
-
-  const raw = await readJSON(request);
-  if (raw instanceof Response) return raw;
-  const parsed = Metrics.safeParse(raw);
-  if (!parsed.success) return new Response("bad request", { status: 400 });
-  const m = parsed.data;
-  if (m.counters.length === 0) return new Response("ok", { status: 202 });
-  const tables = telemetryTableNames(m.surface);
-
-  try {
-    if (m.surface === "cli") await ensureCLITelemetrySchema(env);
-    const upsert = env.DB.prepare(
-      `INSERT INTO ${tables.metrics} (date, version, os, signal, bucket, count)
-       VALUES (date('now'), ?1, ?2, ?3, ?4, ?5)
-       ON CONFLICT (date, version, os, signal, bucket) DO UPDATE SET
-         count = count + ?5`,
-    );
-    await env.DB.batch(m.counters.map((c) => upsert.bind(m.version, m.os, c.signal, c.bucket, c.count)));
-  } catch (err) {
-    return storageUnavailable("metrics", err);
-  }
-  return new Response("ok", { status: 202 });
-}
-
 const UserAction = z.object({
   action: z.enum(["role", "delete"]),
   userId: z.coerce.number().int().positive(),
@@ -810,12 +526,11 @@ export function newestReleaseVersion(versions: string[]): string {
   return parsed[0]?.version ?? "";
 }
 
-async function latestObservedVersion(env: Env, surface: ClientSurfaceName): Promise<string> {
-  const table = telemetryTableNames(surface).pings;
-  // Require independent installations and use pings as the sole source of
-  // release truth. A single synthetic diagnostic must never promote v9.9.9 (or
-  // a prerelease) to "latest" for every report group.
-  const sql = `SELECT version FROM ${table}
+async function latestObservedVersion(env: Env): Promise<string> {
+  // Require independent installations and use the retained launch rows as the
+  // sole source of release truth. A single synthetic diagnostic must never
+  // promote v9.9.9 (or a prerelease) to "latest" for every report group.
+  const sql = `SELECT version FROM pings
     WHERE date >= date('now', '-29 day') AND version <> ''
     GROUP BY version HAVING COUNT(DISTINCT install_id) >= 2`;
   const rows = await env.DB.prepare(sql).all<{ version: string }>();
@@ -830,14 +545,13 @@ type OverviewCounts = {
   criticalOpenReports: number;
 };
 
-async function latestAdoptionPct(env: Env, latestVersion: string, days: 7 | 30, surface: ClientSurfaceName): Promise<number | null> {
+async function latestAdoptionPct(env: Env, latestVersion: string, days: 7 | 30): Promise<number | null> {
   if (!latestVersion) return null;
-  const table = telemetryTableNames(surface).pings;
   const row = await env.DB.prepare(
     `SELECT
       COUNT(DISTINCT install_id) AS total_installs,
       COUNT(DISTINCT CASE WHEN version = ?1 THEN install_id END) AS latest_installs
-    FROM ${table} WHERE date >= date('now', '${currentWindowSince(days)}')`,
+    FROM pings WHERE date >= date('now', '${currentWindowSince(days)}')`,
   )
     .bind(latestVersion)
     .first<{ total_installs: number; latest_installs: number }>();
@@ -846,16 +560,7 @@ async function latestAdoptionPct(env: Env, latestVersion: string, days: 7 | 30, 
   return (Number(row?.latest_installs ?? 0) / total) * 100;
 }
 
-async function diagnosticOverview(env: Env, latestVersion: string, days: 7 | 30, surface: ClientSurfaceName): Promise<OverviewCounts> {
-  if (surface === "cli") {
-    return {
-      latestAdoptionPct: await latestAdoptionPct(env, latestVersion, days, surface),
-      openReports: 0,
-      newLatestReports: 0,
-      regressedReports: 0,
-      criticalOpenReports: 0,
-    };
-  }
+async function diagnosticOverview(env: Env, latestVersion: string, days: 7 | 30): Promise<OverviewCounts> {
   // Keep the overview's red state aligned with the effective severity used by
   // the diagnostics list. Historical rows retain their stored severity, so
   // known browser notices and development builds must be discounted here too.
@@ -889,7 +594,7 @@ async function diagnosticOverview(env: Env, latestVersion: string, days: 7 | 30,
       ).first<{ open_reports: number; new_latest_reports: number; regressed_reports: number; critical_open_reports: number }>();
   const [row, adoptionPct] = await Promise.all([
     diagnosticCounts,
-    latestAdoptionPct(env, latestVersion, days, surface),
+    latestAdoptionPct(env, latestVersion, days),
   ]);
   return {
     latestAdoptionPct: adoptionPct,
@@ -908,13 +613,12 @@ function previousWindowUntil(days: 7 | 30): string {
   return currentWindowSince(days);
 }
 
-async function metricRows(env: Env, days: 7 | 30, surface: ClientSurfaceName, previous = false): Promise<{ signal: string; bucket: string; total: number }[]> {
+async function metricRows(env: Env, days: 7 | 30, previous = false): Promise<{ signal: string; bucket: string; total: number }[]> {
   const where = previous
     ? `date >= date('now', '${previousWindowSince(days)}') AND date < date('now', '${previousWindowUntil(days)}')`
     : `date >= date('now', '${currentWindowSince(days)}')`;
-  const table = telemetryTableNames(surface).metrics;
   const rows = await env.DB.prepare(
-    `SELECT signal, bucket, SUM(count) AS total FROM ${table} WHERE ${where} GROUP BY signal, bucket ORDER BY signal, total DESC`,
+    `SELECT signal, bucket, SUM(count) AS total FROM metrics WHERE ${where} GROUP BY signal, bucket ORDER BY signal, total DESC`,
   ).all<{ signal: string; bucket: string; total: number }>();
   return rows.results;
 }
@@ -929,15 +633,11 @@ async function handleStats(request: Request, env: Env, user: User, activeModule:
   const filters = statsFilters(url);
   const days = filters.windowDays;
   const since = currentWindowSince(days);
-  const surface = activeModule === "diagnostics" ? "desktop" : filters.surface;
-  if (activeModule === "diagnostics") filters.surface = "desktop";
-  if (surface === "cli") await ensureCLITelemetrySchema(env);
-  const pingsTable = telemetryTableNames(surface).pings;
   const bars = (sql: string) => env.DB.prepare(sql).all<Bar>().then((r) => r.results);
   const pingVersions = () =>
-    bars(`SELECT version AS label, COUNT(DISTINCT install_id) AS users FROM ${pingsTable} WHERE date >= date('now', '${since}') GROUP BY label ORDER BY users DESC LIMIT 15`);
+    bars(`SELECT version AS label, COUNT(DISTINCT install_id) AS users FROM pings WHERE date >= date('now', '${since}') GROUP BY label ORDER BY users DESC LIMIT 15`);
   const pingPlatforms = () =>
-    bars(`SELECT os || ' ' || arch AS label, COUNT(DISTINCT install_id) AS users FROM ${pingsTable} WHERE date >= date('now', '${since}') GROUP BY label ORDER BY users DESC`);
+    bars(`SELECT os || ' ' || arch AS label, COUNT(DISTINCT install_id) AS users FROM pings WHERE date >= date('now', '${since}') GROUP BY label ORDER BY users DESC`);
 
   let daily: { date: string; users: number; opens: number }[] = [];
   let versions: Bar[] = [];
@@ -963,15 +663,15 @@ async function handleStats(request: Request, env: Env, user: User, activeModule:
   let latestVersion = "";
 
   if (activeModule === "usage") {
-    latestVersion = await latestObservedVersion(env, surface);
+    latestVersion = await latestObservedVersion(env);
     const [dailyR, versionsR, platformsR, metricsR, overviewR] = await Promise.all([
       env.DB.prepare(
-        `SELECT date, COUNT(*) AS users, SUM(opens) AS opens FROM ${pingsTable} WHERE date >= date('now', '${since}') GROUP BY date`,
+        `SELECT date, COUNT(*) AS users, SUM(opens) AS opens FROM pings WHERE date >= date('now', '${since}') GROUP BY date`,
       ).all<{ date: string; users: number; opens: number }>(),
       pingVersions(),
       pingPlatforms(),
-      metricRows(env, days, surface),
-      diagnosticOverview(env, latestVersion, days, surface),
+      metricRows(env, days),
+      diagnosticOverview(env, latestVersion, days),
     ]);
     daily = dailyR.results;
     versions = versionsR;
@@ -979,7 +679,7 @@ async function handleStats(request: Request, env: Env, user: User, activeModule:
     metrics = metricsR;
     overview = overviewR;
   } else if (activeModule === "diagnostics") {
-    latestVersion = await latestObservedVersion(env, "desktop");
+    latestVersion = await latestObservedVersion(env);
     const [crashesR, sourcesR, facets, linkedSince] = await Promise.all([
       crashGroups(env, filters, latestVersion),
       bars(`SELECT source AS label, COUNT(*) AS users FROM groups WHERE ${diagnosticWindowWhere(days)} GROUP BY source ORDER BY users DESC`),
@@ -993,11 +693,11 @@ async function handleStats(request: Request, env: Env, user: User, activeModule:
     diagnosticFacets = facets;
     installationLinkedSince = linkedSince?.value ?? "";
   } else if (activeModule === "preferences") {
-    metrics = await metricRows(env, days, surface);
+    metrics = await metricRows(env, days);
   } else {
     const [metricsR, previousMetricsR] = await Promise.all([
-      metricRows(env, days, surface),
-      metricRows(env, days, surface, true),
+      metricRows(env, days),
+      metricRows(env, days, true),
     ]);
     metrics = metricsR;
     previousMetrics = previousMetricsR;
@@ -1230,16 +930,14 @@ async function handleCommunityAction(
 // the regression baseline, are not date-partitioned, and their growth is
 // already bounded by per-group sampling. Without this purge the database
 // grows until D1's size cap, at which point every ingest write starts
-// throwing (all of /v1/ping, /v1/metrics and /v1/report 500 while reads keep
-// working — exactly the 2026-07-03 stats blackout).
+// throwing (reports 500ing while reads keep working — exactly the 2026-07-03
+// stats blackout).
 const RETENTION = [
   { table: "report_daily", keepDays: 30 },
   { table: "report_installations", keepDays: 30 },
   { table: "report_event_dimensions", keepDays: 30 },
   { table: "pings", keepDays: 30 },
   { table: "metrics", keepDays: 60 },
-  { table: "cli_pings", keepDays: 30 },
-  { table: "cli_metrics", keepDays: 60 },
 ] as const;
 // Deletes run in rowid chunks so a run never holds one giant transaction.
 // Steady state is one expired day per table; the chunk cap is a backstop that
@@ -1252,17 +950,11 @@ const RETENTION_MAX_CHUNKS = 200;
 // (the retention cron, manual runs) falls through to the purge.
 const SENTINEL_CRON = "17 1,7,13,19 * * *";
 // Ingest sentinel. The 2026-07-03 blackout went unnoticed for ten days because
-// clients swallow ping failures by design and nothing watched the write path.
-// Four times a day (hours chosen so the UTC day always has >1h of traffic;
-// ~14k DAU means a healthy hour is never empty) this probes the two failure
-// shapes independently:
-//   1. canary write into `pings` (immediately deleted) — catches writes
-//      throwing, e.g. the D1 size cap, regardless of traffic;
-//   2. today's real ping and open totals compared with the previous run —
-//      catches ingest dying upstream of the worker (edge blocking, client
-//      regression) even after the UTC day already has traffic.
-// Alerts go to the optional ALERT_WEBHOOK secret; without it they still land
-// in the worker logs. While broken this fires at most 4 alerts/day.
+// clients swallow write failures by design and nothing watched the write path.
+// Four times a day this canary-writes one row into `pings` (immediately
+// deleted) to catch writes throwing, e.g. the D1 size cap, regardless of
+// traffic. Alerts go to the optional ALERT_WEBHOOK secret; without it they
+// still land in the worker logs. While broken this fires at most 4 alerts/day.
 const CANARY_INSTALL_ID = "ffffffffffffffffffffffffffffffff";
 
 function errText(err: unknown): string {
@@ -1301,55 +993,6 @@ async function runIngestSentinel(env: Env): Promise<void> {
   } catch (err) {
     problems.push(`canary write failed: ${errText(err)}`);
   }
-  try {
-    // Auto-create the one-row checkpoint so existing databases do not need a
-    // manual migration before this worker version is deployed.
-    await env.DB.prepare(
-      `CREATE TABLE IF NOT EXISTS ingest_sentinel_state (
-         id INTEGER PRIMARY KEY CHECK (id = 1),
-         day TEXT NOT NULL,
-         ping_count INTEGER NOT NULL,
-         open_count INTEGER NOT NULL,
-         checked_at TEXT NOT NULL
-       )`,
-    ).run();
-    const row = await env.DB.prepare(
-      `SELECT date('now') AS day,
-              COUNT(*) AS ping_count,
-              COALESCE(SUM(opens), 0) AS open_count
-       FROM pings
-       WHERE date = date('now') AND install_id <> ?1`,
-    )
-      .bind(CANARY_INSTALL_ID)
-      .first<{ day: string; ping_count: number; open_count: number }>();
-    const day = row?.day ?? "";
-    const pingCount = Number(row?.ping_count ?? 0);
-    const openCount = Number(row?.open_count ?? 0);
-    const previous = await env.DB.prepare(
-      "SELECT day, ping_count, open_count, checked_at FROM ingest_sentinel_state WHERE id = 1",
-    ).first<{ day: string; ping_count: number; open_count: number; checked_at: string }>();
-    if (!pingCount) {
-      problems.push("no launch pings recorded today (UTC)");
-    } else if (
-      previous?.day === day &&
-      pingCount <= Number(previous.ping_count) &&
-      openCount <= Number(previous.open_count)
-    ) {
-      problems.push(
-        `launch ping totals unchanged since ${previous.checked_at} UTC (${pingCount} install rows, ${openCount} opens)`,
-      );
-    }
-    await env.DB.prepare(
-      `INSERT INTO ingest_sentinel_state (id, day, ping_count, open_count, checked_at)
-       VALUES (1, ?1, ?2, ?3, datetime('now'))
-       ON CONFLICT (id) DO UPDATE SET
-         day = ?1, ping_count = ?2, open_count = ?3, checked_at = datetime('now')`,
-    )
-      .bind(day, pingCount, openCount)
-      .run();
-  } catch (err) {
-    problems.push(`ping progress check failed: ${errText(err)}`);
-  }
   if (!problems.length) return;
   const message = `crash.reasonix.io ingest sentinel: ${problems.join("; ")} — https://crash.reasonix.io/stats`;
   console.error(message);
@@ -1357,11 +1000,6 @@ async function runIngestSentinel(env: Env): Promise<void> {
 }
 
 async function purgeExpiredStatsRows(env: Env): Promise<void> {
-  try {
-    await ensureCLITelemetrySchema(env);
-  } catch (err) {
-    console.error("retention: CLI telemetry schema unavailable", err);
-  }
   for (const { table, keepDays } of RETENTION) {
     // Keep exactly the newest `keepDays` dates: today plus keepDays-1 back,
     // matching the `date >= date('now', '-{keepDays-1} day')` reads.
@@ -1404,8 +1042,6 @@ export default {
     }
 
     if (path === "/v1/report" && method === "POST") return handleReport(request, env);
-    if (path === "/v1/ping" && method === "POST") return handlePing(request, env);
-    if (path === "/v1/metrics" && method === "POST") return handleMetrics(request, env);
 
     // Skill/MCP registry API — the folded Hono app handles its own auth, CORS
     // and rate limiting against the registry database (public reads + publish,
@@ -1461,8 +1097,6 @@ export default {
 
     if (
       path === "/v1/report" ||
-      path === "/v1/ping" ||
-      path === "/v1/metrics" ||
       path === "/login" ||
       path === "/register" ||
       path === "/logout" ||

@@ -1,4 +1,3 @@
-import { FEEDBACK_RETIRED } from "../feedbackchannel";
 import { t } from "../i18n";
 import type { AgentPort } from "../port/port";
 import { ChangedFilesSetting } from "./ChangedFilesSetting";
@@ -29,7 +28,7 @@ export function ChatDisplaySettings({ port }: { port: AgentPort }) {
       </SectionCard>
       <SectionCard title={t("settings.notices_card")}>
         <NewAnswerSection />
-        {!FEEDBACK_RETIRED && <FeedbackLevelNoticeSetting port={port} />}
+        <FeedbackLevelNoticeSetting port={port} />
       </SectionCard>
     </>
   );

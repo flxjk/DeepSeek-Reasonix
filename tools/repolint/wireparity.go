@@ -20,7 +20,6 @@ const (
 	tsRemoteFile    = "desktop/frontend-next/src/port/remote.ts"
 	tsSessionFile   = "desktop/frontend-next/src/port/session.ts"
 	tsSubagentFile  = "desktop/frontend-next/src/port/subagent.ts"
-	tsProcessFile   = "desktop/frontend-next/src/port/process.ts"
 	tsVersionFile   = "desktop/frontend-next/src/port/version.ts"
 	tsModelFile     = "desktop/frontend-next/src/port/model.ts"
 	tsMcpFile       = "desktop/frontend-next/src/port/mcp.ts"
@@ -121,9 +120,6 @@ var mirroredWireTypesHead = []wireMirror{
 	// a task it can only call by its short preview.
 	{"internal/tools/jobs/jobs_view.go", "View", tsSessionFile, "JobEntry"},
 	{"internal/frontend/serve/subagents.go", "subagentRunView", tsSubagentFile, "SubagentRun"},
-	// What the session has running now. A state or cause the page cannot read is
-	// work drawn as running that is waiting on something.
-	{"internal/frontend/serve/processes.go", "processView", tsProcessFile, "ProcessEntry"},
 	{"internal/frontend/serve/subagents.go", "subagentTranscriptView", tsSubagentFile, "SubagentTranscript"},
 	{"internal/frontend/serve/session_usage.go", "SourceUsage", tsSessionFile, "SourceUsage"},
 	{"internal/frontend/serve/session_usage.go", "ColdStartUsage", tsSessionFile, "ColdStartUsage"},
@@ -201,7 +197,6 @@ var mirroredWireTypesHead = []wireMirror{
 	{"internal/session/control/display_currency.go", "DisplayCurrencySettings", tsBoundaryFile, "DisplayCurrencySettings"},
 	{"internal/session/control/progress_watch_settings.go", "ProgressWatchSettings", tsBoundaryFile, "ProgressWatchSettings"},
 	{"internal/session/control/changed_files_settings.go", "ChangedFilesSettings", tsBoundaryFile, "ChangedFilesSettings"},
-	{"internal/session/control/observability_settings.go", "ObservabilitySettings", tsBoundaryFile, "ObservabilitySettings"},
 	{"internal/session/control/schedules.go", "ScheduleDraft", tsScheduleFile, "ScheduleDraft"},
 	{"internal/session/control/schedules.go", "ScheduleView", tsScheduleFile, "ScheduleView"},
 	{"internal/session/control/schedules.go", "ScheduleRunView", tsScheduleFile, "ScheduleRunView"},

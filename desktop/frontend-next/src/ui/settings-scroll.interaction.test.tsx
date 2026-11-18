@@ -96,16 +96,16 @@ it("lands on an initial anchor and scrolls it into view", async () => {
 
 it("waits for a delayed setting before starting the landing feedback lifetime", async () => {
   const port = new MockPort();
-  const saved = await port.observabilitySettings();
+  const saved = await port.updateMode();
   let finish!: (value: typeof saved) => void;
-  vi.spyOn(port, "observabilitySettings").mockReturnValue(new Promise((resolve) => { finish = resolve; }));
+  vi.spyOn(port, "updateMode").mockReturnValue(new Promise((resolve) => { finish = resolve; }));
   vi.useFakeTimers();
   const scroll = anchorScrolling();
-  draw("account:trace-export", port);
+  draw("common:update-mode", port);
   await act(async () => { await vi.advanceTimersByTimeAsync(1200); });
-  expect(document.querySelector('[data-setting="trace-export"]')).toBeNull();
+  expect(document.querySelector('[data-setting="update-mode"]')).toBeNull();
   await act(async () => { finish(saved); });
-  const target = document.querySelector<HTMLElement>('[data-setting="trace-export"]')!;
+  const target = document.querySelector<HTMLElement>('[data-setting="update-mode"]')!;
   expect(target.getAttribute("data-landed")).toBe("");
   expect(target.hasAttribute("data-landed")).toBe(true);
   expect(scroll.mock.contexts).toContain(screen.getByRole("tabpanel"));
@@ -114,15 +114,15 @@ it("waits for a delayed setting before starting the landing feedback lifetime", 
 
 it("lands on a searched setting that arrives after navigation", async () => {
   const port = new MockPort();
-  const saved = await port.observabilitySettings();
+  const saved = await port.updateMode();
   let finish!: (value: typeof saved) => void;
-  vi.spyOn(port, "observabilitySettings").mockReturnValue(new Promise((resolve) => { finish = resolve; }));
+  vi.spyOn(port, "updateMode").mockReturnValue(new Promise((resolve) => { finish = resolve; }));
   const scroll = anchorScrolling();
   draw("session", port);
-  await userEvent.type(screen.getByRole("textbox", { name: "搜索设置" }), "追踪导出");
-  await userEvent.click(await screen.findByRole("option", { name: /追踪导出/ }));
+  await userEvent.type(screen.getByRole("textbox", { name: "搜索设置" }), "更新方式");
+  await userEvent.click(await screen.findByRole("option", { name: /更新方式/ }));
   await act(async () => { finish(saved); });
-  const target = document.querySelector<HTMLElement>('[data-setting="trace-export"]')!;
+  const target = document.querySelector<HTMLElement>('[data-setting="update-mode"]')!;
   expect(target.getAttribute("data-landed")).toBe("");
   expect(target.hasAttribute("data-landed")).toBe(true);
   expect(scroll.mock.contexts).toContain(screen.getByRole("tabpanel"));
@@ -131,15 +131,15 @@ it("lands on a searched setting that arrives after navigation", async () => {
 
 it("cancels a pending landing when the user chooses another category", async () => {
   const port = new MockPort();
-  const saved = await port.observabilitySettings();
+  const saved = await port.updateMode();
   let finish!: (value: typeof saved) => void;
-  vi.spyOn(port, "observabilitySettings").mockReturnValue(new Promise((resolve) => { finish = resolve; }));
-  draw("account:trace-export", port);
+  vi.spyOn(port, "updateMode").mockReturnValue(new Promise((resolve) => { finish = resolve; }));
+  draw("common:update-mode", port);
   await userEvent.click(screen.getByRole("tab", { name: /^数据/ }));
   await act(async () => { finish(saved); });
-  await userEvent.click(screen.getByRole("tab", { name: /^账号/ }));
+  await userEvent.click(screen.getByRole("tab", { name: /^常用/ }));
   const target = await waitFor(() => {
-    const found = document.querySelector<HTMLElement>('[data-setting="trace-export"]');
+    const found = document.querySelector<HTMLElement>('[data-setting="update-mode"]');
     expect(found).toBeTruthy();
     return found!;
   });

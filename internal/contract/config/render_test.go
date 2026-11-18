@@ -240,7 +240,6 @@ func TestRenderTOMLRoundTrips(t *testing.T) {
 	orig.Desktop.DefaultToolApprovalMode = "auto"
 	orig.Desktop.CheckUpdates = new(false)
 	orig.Desktop.UpdateChannel = "preview"
-	orig.Desktop.Telemetry = new(false)
 	orig.Notifications.Enabled = true
 	orig.Notifications.TurnDone = true
 	orig.Notifications.ApprovalRequest = true

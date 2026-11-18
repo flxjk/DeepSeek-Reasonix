@@ -27,7 +27,7 @@ cat <<EOF
 cask "reasonix" do
   postflight_steps do
     if OS.mac?
-      run "/usr/bin/xattr", args: ["-dr", "com.apple.quarantine", "{{staged_path}}/reasonix"]
+      system_command "/usr/bin/xattr", args: ["-dr", "com.apple.quarantine", "#{staged_path}/reasonix"]
     end
   end
 

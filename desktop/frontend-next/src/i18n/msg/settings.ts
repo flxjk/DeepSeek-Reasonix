@@ -239,7 +239,6 @@ export const SETTINGS: Messages = {
   "settings.versions_hint": { zh: "当前版本、可用更新、回退", en: "Current version, available updates, rolling back" },
 
   "settings.logs_hint": { zh: "出问题时附上的日志位置", en: "Where the logs to attach when something goes wrong are" },
-  "settings.trace_hint": { zh: "把执行轨迹导出给开发者排查", en: "Export execution traces for a developer to look into" },
   "settings.about_note": { zh: "社区与贡献者、赞助在这里展示，不是开关。", en: "The community, contributors and sponsorship are shown here; they are not switches." },
   "settings.look_at": { zh: "查看", en: "View" },
 

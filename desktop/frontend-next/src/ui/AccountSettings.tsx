@@ -7,7 +7,6 @@ import { Group } from "./Group";
 import { Logs } from "./Logs";
 import { SectionCard } from "./SectionCard";
 import { Sponsor } from "./Sponsor";
-import { TraceExport } from "./TraceExport";
 import { Versions } from "./Versions";
 
 interface Props {
@@ -33,7 +32,6 @@ export function AccountSettings({ port, homePort, state, unread, reload }: Props
         <Group id="logs" title={t("about.logs_and_abnormal_exit_records")} hint={t("settings.logs_hint")}>
           <Logs port={homePort} />
         </Group>
-        <TraceExport port={port} />
       </SectionCard>
       <SectionCard title={t("settings.about")}>
         <p className="srow-desc">{t("settings.about_note")}</p>

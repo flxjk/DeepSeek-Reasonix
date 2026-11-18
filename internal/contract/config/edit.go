@@ -372,33 +372,6 @@ func (c *Config) SetCLIUpdateChannel(channel string) error {
 	return nil
 }
 
-// SetDesktopTelemetry sets whether the desktop sends the anonymous daily ping.
-func (c *Config) SetDesktopTelemetry(enabled bool) error {
-	c.Desktop.Telemetry = &enabled
-	return nil
-}
-
-// SetDesktopMetrics sets whether the desktop sends aggregate desktop metrics.
-func (c *Config) SetDesktopMetrics(enabled bool) error {
-	c.Desktop.Metrics = &enabled
-	return nil
-}
-
-// SetCLITelemetryMode sets the user-global content-free CLI metrics policy.
-func (c *Config) SetCLITelemetryMode(mode string) error {
-	switch strings.ToLower(strings.TrimSpace(mode)) {
-	case "", "auto":
-		c.Telemetry.CLIMetrics = "auto"
-	case "on":
-		c.Telemetry.CLIMetrics = "on"
-	case "off":
-		c.Telemetry.CLIMetrics = "off"
-	default:
-		return fmt.Errorf("cli_metrics %q: must be auto|on|off", mode)
-	}
-	return nil
-}
-
 // SetDesktopConversationWidth sets the max transcript width preference.
 // full widens the transcript; full-all the composer too; custom uses WidthPercent.
 func (c *Config) SetDesktopConversationWidth(width string) error {

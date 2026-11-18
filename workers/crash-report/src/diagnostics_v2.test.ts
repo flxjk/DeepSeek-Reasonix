@@ -2,7 +2,6 @@ import { describe, expect, it } from "vitest";
 // @ts-expect-error Node 22+ provides node:sqlite; Worker production code does not import it.
 import { DatabaseSync } from "node:sqlite";
 import worker, {
-  CLI_TELEMETRY_SCHEMA_SQL,
   Report,
   isDevelopmentReport,
   newestReleaseVersion,
@@ -100,15 +99,10 @@ describe("diagnostics v2 compatibility and privacy", () => {
     })).toBe(true);
   });
 
-  it("keeps fresh, migrated, and runtime-bootstrap schemas aligned", () => {
+  it("keeps fresh and migrated schemas aligned", () => {
     const legacy = `
       CREATE TABLE reports (id INTEGER PRIMARY KEY);
       CREATE TABLE pings (
-        date TEXT NOT NULL, install_id TEXT NOT NULL, version TEXT NOT NULL, os TEXT NOT NULL,
-        arch TEXT NOT NULL, os_version TEXT NOT NULL DEFAULT '', opens INTEGER NOT NULL DEFAULT 1,
-        PRIMARY KEY (date, install_id)
-      );
-      CREATE TABLE cli_pings (
         date TEXT NOT NULL, install_id TEXT NOT NULL, version TEXT NOT NULL, os TEXT NOT NULL,
         arch TEXT NOT NULL, os_version TEXT NOT NULL DEFAULT '', opens INTEGER NOT NULL DEFAULT 1,
         PRIMARY KEY (date, install_id)
@@ -117,25 +111,18 @@ describe("diagnostics v2 compatibility and privacy", () => {
         date TEXT NOT NULL, signal TEXT NOT NULL, bucket TEXT NOT NULL, install_id TEXT NOT NULL,
         version TEXT NOT NULL, os TEXT NOT NULL, PRIMARY KEY (date, signal, bucket, install_id)
       );
-      CREATE TABLE cli_metric_users (
-        date TEXT NOT NULL, signal TEXT NOT NULL, bucket TEXT NOT NULL, install_id TEXT NOT NULL,
-        version TEXT NOT NULL, os TEXT NOT NULL, PRIMARY KEY (date, signal, bucket, install_id)
-      );
     `;
     const columns = (db: DatabaseSync, table: string) =>
       db.prepare(`PRAGMA table_info(${table})`).all().map((row: Record<string, unknown>) => String(row.name));
     const fresh = new DatabaseSync(":memory:");
     const migrated = new DatabaseSync(":memory:");
-    const runtimeBootstrap = new DatabaseSync(":memory:");
     try {
       fresh.exec(freshSchemaSQL);
       migrated.exec(legacy);
       migrated.exec(diagnosticsMigrationSQL);
-      runtimeBootstrap.exec(CLI_TELEMETRY_SCHEMA_SQL.join(";\n"));
       const additiveColumns: Record<string, string[]> = {
         reports: ["webview2", "web_runtime"],
         pings: ["os_build", "os_revision", "distro_id", "session_type", "runtime_engine", "gpu_mode"],
-        cli_pings: ["os_build", "os_revision", "distro_id", "session_type", "runtime_engine", "gpu_mode"],
       };
       for (const [table, expected] of Object.entries(additiveColumns)) {
         expect(columns(migrated, table)).toEqual(expect.arrayContaining(expected));
@@ -145,16 +132,12 @@ describe("diagnostics v2 compatibility and privacy", () => {
       for (const table of ["report_daily", "report_installations", "report_event_dimensions", "diagnostics_meta"]) {
         expect(columns(migrated, table)).toEqual(columns(fresh, table));
       }
-      for (const table of ["cli_pings"]) {
-        expect(columns(runtimeBootstrap, table)).toEqual(columns(fresh, table));
-      }
       expect(classifyDiagnosticsV2Schema(
         migrated.prepare(diagnosticsV2SchemaQuery).all(),
       ).state).toBe("complete");
     } finally {
       fresh.close();
       migrated.close();
-      runtimeBootstrap.close();
     }
     expect(diagnosticsMigrationSQL).not.toMatch(/\bDROP\b/);
   });

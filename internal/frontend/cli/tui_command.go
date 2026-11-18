@@ -36,10 +36,6 @@ func runTUI(args []string, version string) int {
 		return code
 	}
 	if !term.IsTerminal(int(os.Stdin.Fd())) || !term.IsTerminal(int(os.Stdout.Fd())) {
-		if hint := minttyHint(os.Stdin, os.Stdout, onCygwinPty); hint != "" {
-			fmt.Fprint(os.Stderr, hint)
-			return 2
-		}
 		fmt.Fprintln(os.Stderr, i18n.M.ErrorPrefix, "reasonix tui needs an interactive terminal; use `reasonix run` for scripts")
 		return 2
 	}
@@ -87,10 +83,7 @@ func runTUI(args []string, version string) int {
 	}
 	bc := serve.NewBroadcaster()
 	cfg, _ := config.Load()
-	reporter := startTUITelemetry(cfg, version, profile, *f.permissionMode,
-		cliTelemetrySessionMode(resumePath != "", strings.TrimSpace(*f.resume) != "", *f.copy),
-		os.Stdin, os.Stdout, os.Stderr)
-	ctrl, err := setupProfileWithOverrides(ctx, *f.model, *f.maxSteps, false, tuiSink(withNotifications(bc, cfg), reporter), profile, cliBuildOverrides{
+	ctrl, err := setupProfileWithOverrides(ctx, *f.model, *f.maxSteps, false, withNotifications(bc, cfg), profile, cliBuildOverrides{
 		AgentComposition: freshCompositionName(*f.agentComposition, resumed), Composition: resumedComposition(resumed),
 		Version: version, WorkspaceRoot: workspaceRoot, OnSessionRecovered: cliSessionRecoveredHandler(leases),
 		Effort: f.effortOverride(), PermissionAllow: allowed, AdditionalDirs: f.addDirs,
@@ -140,7 +133,6 @@ func runTUI(args []string, version string) int {
 		QuitCommands:  builtinSlashNames("/quit"),
 		Statusline:    statuslineRunner(cfg),
 	})
-	reporter.RecordRecovery(ctrl.DrainRecoveryMetrics())
 	if err != nil {
 		fmt.Fprintln(os.Stderr, i18n.M.ErrorPrefix, err)
 		return 1

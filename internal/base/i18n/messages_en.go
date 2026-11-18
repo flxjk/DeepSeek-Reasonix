@@ -737,15 +737,7 @@ var English = Messages{
   reasonix report send [ID]       send a reviewed report and delete it after success
   reasonix report delete [ID]     delete a local report without sending`,
 
-	CLITelemetryConsentNotice:           "Reasonix can send anonymous, content-free CLI usage statistics to crash.reasonix.io: a random install ID, version, OS, and fixed quality buckets. It never sends prompts, answers, code, paths, model or tool content, or environment variables. You can disable this later with `reasonix config telemetry off`.",
-	CLITelemetryConsentPrompt:           "Allow anonymous CLI usage statistics?",
-	CLITelemetryConsentInvalid:          "Please answer y or n.",
-	CLITelemetryConsentSaveFailedFmt:    "CLI telemetry remains disabled because the preference could not be saved: %v",
-	CLITelemetryConsentCleanupFailedFmt: "CLI telemetry is disabled, but pending statistics could not be deleted: %v",
-
-	MinttyConsoleHint:            "The Reasonix terminal UI needs a Windows console, and this terminal (Git Bash / mintty) is not one.\nRun it from cmd, PowerShell or Windows Terminal. `reasonix run \"task\"` still works from here.\n",
-	OpenedNestedWithoutAskingFmt: "Opened %d folder(s) inside this project without asking, as the setting allows (Settings > Agent behavior > Messages between sessions): %s",
-	StandaloneConsoleHint:        "This is the Reasonix command-line tool; run it from a terminal such as PowerShell.\nFor the desktop app, install Reasonix Studio (ReasonixStudio-windows-amd64-installer.exe):\n  https://github.com/esengine/DeepSeek-Reasonix/releases?q=studio-v&expanded=true\n\nPress Enter to close this window.\n",
+	StandaloneConsoleHint: "This is the Reasonix command-line tool; run it from a terminal such as PowerShell.\nFor the desktop app, install Reasonix Studio (ReasonixStudio-windows-amd64-installer.exe):\n  https://github.com/esengine/DeepSeek-Reasonix/releases?q=studio-v&expanded=true\n\nPress Enter to close this window.\n",
 	UsageBody: `reasonix — a config- and plugin-driven coding agent (multi-model)
 
 Usage:
@@ -760,7 +752,6 @@ Usage:
   reasonix setup [path]                                 interactive config wizard; writes reasonix.toml (+ .env)
   reasonix config reasoning-language [auto|zh|en]        configure visible reasoning language
   reasonix config compact-ratio [--local] [PERCENT]       configure automatic compaction threshold
-  reasonix config telemetry [auto|on|off]                configure content-free CLI usage metrics
   reasonix report [list|show|send|delete] [ID]           review and explicitly send local CLI crash reports
   reasonix mcp <add|remove|list|import>                 manage MCP servers in reasonix.toml
   reasonix login | whoami | logout                      sign in to reasonix.io (forum and crash follow-ups only)

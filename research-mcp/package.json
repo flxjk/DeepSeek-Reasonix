@@ -1,0 +1,29 @@
+{
+  "name": "research-mcp",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Model Context Protocol server over the rhex research corpus: traversable research-to-code bindings, authority-ranked invariants, and verifiable citations.",
+  "main": "src/server.mjs",
+  "bin": {
+    "research-mcp": "src/server.mjs"
+  },
+  "scripts": {
+    "build": "node src/canonicalize.mjs",
+    "start": "node src/server.mjs",
+    "test": "node test/verify.mjs",
+    "verify": "node src/canonicalize.mjs && node test/verify.mjs"
+  },
+  "engines": {
+    "node": ">=22.5.0"
+  },
+  "dependencies": {},
+  "rhex": {
+    "corpus": "docs/research",
+    "contractRoots": [
+      "core/research/studies",
+      "docs/research",
+      "docs/rhex/research"
+    ]
+  }
+}

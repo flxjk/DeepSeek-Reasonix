@@ -103,7 +103,7 @@ const totalsOf = (st: SessionStatus) => ({
   incompleteReason: st.sessionCostQuote?.incompleteReason,
 });
 
-function PaneView({ port, hub, rt, title, active, visible, sideHost, side, onFocus, onReport, onSessionChanged, onTurnDone, pulse, findPulse, findTogglePulse = 0, filesPulse = 0, terminalPulse = 0, viewRequest, sessionRef, onSettings, onFeedback, onOpenSession, needsProject, onOpenProject, onKeepHere, connect, theme, dockW, dockMax, onDockW, manualBrowser = false, onManualBrowser, alert, failure }: PaneProps) {
+function PaneView({ port, hub, rt, title, active, visible, sideHost, side, onFocus, onReport, onSessionChanged, onTurnDone, pulse, findPulse, findTogglePulse = 0, filesPulse = 0, terminalPulse = 0, viewRequest, sessionRef, onSettings, onFeedback, onOpenSession, needsProject, onOpenProject, onKeepHere, connect, theme, dockW, dockMax, onDockW, manualBrowser = false, onManualBrowser, alert }: PaneProps) {
   const [s, dispatch] = useReducer(reduce, initialState);
   const [traj, trajDispatch] = useReducer(reduceTraj, initialTraj);
   const [sessionRead, setSessionRead] = useState<SessionRead>({ kind: "pending" });
@@ -200,7 +200,6 @@ function PaneView({ port, hub, rt, title, active, visible, sideHost, side, onFoc
   }, [pacer]);
 
   const readJob = useCallback((id: string) => port.jobOutput(id), [port]);
-  const readProcesses = useCallback(() => port.processes(), [port]);
   const refreshStatus = useStatusRefresh(port, applyStatus, statusRead);
 
   const [wallet, refreshWallet] = useWallet(port, accountOf(status?.modelRef));
@@ -673,7 +672,6 @@ function PaneView({ port, hub, rt, title, active, visible, sideHost, side, onFoc
           wallet={wallet} hideAmounts={hideAmounts} tasks={rail.tasks} jobs={jobs} onSettings={onSettings}
           onCancelJob={(id) => cancelJob(port, id, notify, refreshStatus).then(() => {})}
           onReadJob={readJob}
-          onReadProcesses={readProcesses}
           onOpenRun={openRun} onStopCall={(id) => void port.stopToolCall(id).catch(notify)}
           onClearJobs={(ids) => setClearedJobs((was) => new Set([...was, ...ids]))}
           onOpenJob={jobsLive.open}
@@ -684,7 +682,6 @@ function PaneView({ port, hub, rt, title, active, visible, sideHost, side, onFoc
             both are dismissed one at a time, so nothing else bounds how many can
             be on screen at once. */}
         <div className="composenotes">
-          {failure}
           {s.error && (
             <ErrorBar text={s.error} onDismiss={() => dispatch({ kind: "__error", text: "" } as never)} onReport={onFeedback} />
           )}

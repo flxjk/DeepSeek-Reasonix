@@ -1,0 +1,2728 @@
+{
+  "generatedAt": "2026-11-10T00:00:00.000Z",
+  "entries": [
+    {
+      "studyId": "autonomous-sdlc-moe-features",
+      "title": "Ten Advanced Features for Scalable Mixture-of-Experts (MoE) Architecture in Autonomous AI-First SDLC",
+      "ssotContractPath": "core/agent/moe/emitter-management-moe.tsp",
+      "originalSsotPath": "core/agent/moe/emitter-management-moe.tsp",
+      "bindingTrust": "specific",
+      "bindingResolves": true,
+      "fanIn": 1,
+      "domain": "core",
+      "capability": "agent-moe-emitter-management-moe",
+      "checkedOn": "2026-10-02",
+      "ageDays": 39,
+      "fresh": true,
+      "markdownPath": "docs/rhex/research/autonomous-sdlc-moe-features.md",
+      "markdownBytes": 1755,
+      "groundedSources": 1,
+      "invariants": [
+        {
+          "statement": "Doubly-stochastic routing matrix P satisfies rowSum(P) == 1 and colSum(P) == 1",
+          "source": "contract",
+          "measurable": true,
+          "structural": true,
+          "normative": true,
+          "score": 130
+        }
+      ],
+      "topScore": 130,
+      "meanScore": 130,
+      "rank": 1
+    },
+    {
+      "studyId": "birkhoff-moe-condorcet-moa-consensus-synthesis",
+      "title": "Sparse MoE Birkhoff-von Neumann Routing & MoA Condorcet/Borda AST Consensus Synthesis",
+      "ssotContractPath": "core/agent/moe/emitter-mixture-of-agents.tsp",
+      "originalSsotPath": "core/agent/moe/emitter-mixture-of-agents.tsp",
+      "bindingTrust": "specific",
+      "bindingResolves": true,
+      "fanIn": 3,
+      "domain": "core",
+      "capability": "agent-moe-emitter-mixture-of-agents",
+      "checkedOn": "2026-10-19",
+      "ageDays": 22,
+      "fresh": true,
+      "markdownPath": "docs/rhex/research/birkhoff-moe-condorcet-moa-consensus-synthesis.md",
+      "markdownBytes": 1901,
+      "groundedSources": 1,
+      "invariants": [
+        {
+          "statement": "Doubly-stochastic routing matrix P satisfies rowSum(P) == 1 and colSum(P) == 1 via Sinkhorn-Knopp normalization",
+          "source": "contract",
+          "measurable": true,
+          "structural": true,
+          "normative": true,
+          "score": 130
+        }
+      ],
+      "topScore": 130,
+      "meanScore": 130,
+      "rank": 2
+    },
+    {
+      "studyId": "autonomous-sdlc-core-emitters-plugins",
+      "title": "Ten Advanced Features for AI-First SDLC: Core Packages, Emitters, and Plugins",
+      "ssotContractPath": "core/effect-typespec-emitter/plugin/catalog.tsp",
+      "originalSsotPath": "core/effect-typespec-emitter/plugin/catalog.tsp",
+      "bindingTrust": "specific",
+      "bindingResolves": true,
+      "fanIn": 2,
+      "domain": "core",
+      "capability": "effect-typespec-emitter-plugin-catalog",
+      "checkedOn": "2026-10-02",
+      "ageDays": 39,
+      "fresh": true,
+      "markdownPath": "docs/rhex/research/autonomous-sdlc-core-emitters-plugins.md",
+      "markdownBytes": 1743,
+      "groundedSources": 1,
+      "invariants": [
+        {
+          "statement": "Zero raw node:* imports in emitter adapters; 100% programmatic emission from TypeSpec contracts",
+          "source": "contract",
+          "measurable": true,
+          "structural": true,
+          "normative": false,
+          "score": 115
+        }
+      ],
+      "topScore": 115,
+      "meanScore": 115,
+      "rank": 3
+    },
+    {
+      "studyId": "runtime-adapters",
+      "title": "Native runtime adapter research",
+      "ssotContractPath": "core/tool/harness/harness.tsp",
+      "originalSsotPath": "core/tool/harness/harness.tsp",
+      "bindingTrust": "specific",
+      "bindingResolves": true,
+      "fanIn": 1,
+      "domain": "core",
+      "capability": "tool-harness-harness",
+      "checkedOn": "2026-09-17",
+      "ageDays": 54,
+      "fresh": true,
+      "markdownPath": "docs/rhex/research/runtime-adapters.md",
+      "markdownBytes": 1481,
+      "groundedSources": 1,
+      "invariants": [
+        {
+          "statement": "All runtime adapters route through @core/bootstrap and @core/ipc-kernel with zero raw Node built-in leaks",
+          "source": "contract",
+          "measurable": true,
+          "structural": true,
+          "normative": false,
+          "score": 115
+        }
+      ],
+      "topScore": 115,
+      "meanScore": 115,
+      "rank": 4
+    },
+    {
+      "studyId": "structural-eurocode-en-one-nine-nine-two-distillation",
+      "title": "Structural Eurocode EN 1992-1-1 Statutory Clause & Limit State Distillation",
+      "ssotContractPath": "core/research/structural-eurocode.tsp",
+      "originalSsotPath": "core/research/structural-eurocode.tsp",
+      "bindingTrust": "specific",
+      "bindingResolves": true,
+      "fanIn": 1,
+      "domain": "core",
+      "capability": "research-structural-eurocode",
+      "checkedOn": "2026-10-19",
+      "ageDays": 22,
+      "fresh": true,
+      "markdownPath": "docs/rhex/research/structural-eurocode-en1992-distillation.md",
+      "markdownBytes": 1867,
+      "groundedSources": 1,
+      "invariants": [
+        {
+          "statement": "Zero floating-point hallucination: all structural coefficients are extracted via Tier-0 deterministic table parsers",
+          "source": "contract",
+          "measurable": true,
+          "structural": true,
+          "normative": false,
+          "score": 115
+        }
+      ],
+      "topScore": 115,
+      "meanScore": 115,
+      "rank": 5
+    },
+    {
+      "studyId": "notebooklm-grounded-corpus-and-audio-overview-synthesis",
+      "title": "upstream model provider NotebookLM Grounded Sources, Citation Pins, Audio Overview Dialogues & Studio Synthesis",
+      "ssotContractPath": "core/providers/google/notebooklm-conversation-synthesis.tsp",
+      "originalSsotPath": "core/providers/google/notebooklm-conversation-synthesis.tsp",
+      "bindingTrust": "specific",
+      "bindingResolves": true,
+      "fanIn": 1,
+      "domain": "core",
+      "capability": "providers-google-notebooklm-conversation-synthesis",
+      "checkedOn": "2026-10-19",
+      "ageDays": 22,
+      "fresh": true,
+      "markdownPath": "docs/rhex/research/notebooklm-grounded-corpus-and-audio-overview-synthesis.md",
+      "markdownBytes": 2271,
+      "groundedSources": 1,
+      "invariants": [
+        {
+          "statement": "All 7 NotebookLM workspaces in NotebookLmDistilledCorpusCatalog carry populated grounded sources and BLAKE3 digests",
+          "source": "contract",
+          "measurable": false,
+          "structural": true,
+          "normative": false,
+          "score": 90
+        },
+        {
+          "statement": "NotebookLmSynthesisArtifactUnion enforces zero-envelope constrained polymorphic discrimination",
+          "source": "contract",
+          "measurable": true,
+          "structural": true,
+          "normative": false,
+          "score": 115
+        }
+      ],
+      "topScore": 115,
+      "meanScore": 103,
+      "rank": 6
+    },
+    {
+      "studyId": "autonomous-sdlc-advanced-core-emitters-plugins",
+      "title": "Ten Advanced Features for AI-First SDLC Architecture: Engine Room Core Packages, Emitters, and Plugins",
+      "ssotContractPath": "core/effect-typespec-emitter/plugin/catalog.tsp",
+      "originalSsotPath": "core/effect-typespec-emitter/plugin/catalog.tsp",
+      "bindingTrust": "specific",
+      "bindingResolves": true,
+      "fanIn": 2,
+      "domain": "core",
+      "capability": "effect-typespec-emitter-plugin-catalog",
+      "checkedOn": "2026-10-02",
+      "ageDays": 39,
+      "fresh": true,
+      "markdownPath": "docs/rhex/research/autonomous-sdlc-advanced-core-emitters-plugins.md",
+      "markdownBytes": 1805,
+      "groundedSources": 1,
+      "invariants": [
+        {
+          "statement": "CLI shims remain <= 30 lines and emit 0 bytes on exit code 0",
+          "source": "contract",
+          "measurable": true,
+          "structural": false,
+          "normative": true,
+          "score": 110
+        }
+      ],
+      "topScore": 110,
+      "meanScore": 110,
+      "rank": 7
+    },
+    {
+      "studyId": "context-retrieval-memory-tools",
+      "title": "Context Retrieval, Memory, and Extraction Tools for Autonomous Software Engineering Agents",
+      "ssotContractPath": "core/context/architecture/levels.tsp",
+      "originalSsotPath": "core/context/architecture/levels.tsp",
+      "bindingTrust": "specific",
+      "bindingResolves": true,
+      "fanIn": 1,
+      "domain": "core",
+      "capability": "context-architecture-levels",
+      "checkedOn": "2026-10-02",
+      "ageDays": 39,
+      "fresh": true,
+      "markdownPath": "docs/rhex/research/context-retrieval-memory-tools.md",
+      "markdownBytes": 1695,
+      "groundedSources": 1,
+      "invariants": [
+        {
+          "statement": "Conversation share remains <= 0.10 via token-tools slice retrieval and artifact citations",
+          "source": "contract",
+          "measurable": true,
+          "structural": false,
+          "normative": true,
+          "score": 110
+        }
+      ],
+      "topScore": 110,
+      "meanScore": 110,
+      "rank": 8
+    },
+    {
+      "studyId": "aistudio-typespec-one-one-seven-strict-emitter-prompt",
+      "title": "model provider studio Prompt: TypeSpec 1.17 Strict Contract & Effect v4 Emitter Workbench",
+      "ssotContractPath": "core/workflow/deep-research-typespec-pipeline.tsp",
+      "originalSsotPath": "core/workflow/deep-research-typespec-pipeline.tsp",
+      "bindingTrust": "default",
+      "bindingResolves": true,
+      "fanIn": 61,
+      "domain": "core",
+      "capability": "workflow-deep-research-typespec-pipeline",
+      "checkedOn": "2026-10-19",
+      "ageDays": 22,
+      "fresh": true,
+      "markdownPath": "docs/rhex/research/aistudio-typespec-one-one-seven-strict-emitter-prompt.md",
+      "markdownBytes": 1115,
+      "groundedSources": 1,
+      "invariants": [
+        {
+          "statement": "TypeSpec 1.17 contracts must emit zero comments.",
+          "source": "derived",
+          "measurable": true,
+          "structural": true,
+          "normative": true,
+          "score": 105,
+          "quote": "Emit zero-comment TypeSpec 1.17 contracts using `init` nominal scalars, `valueof` discriminants, and pure @core/effect services."
+        }
+      ],
+      "topScore": 105,
+      "meanScore": 105,
+      "rank": 9
+    },
+    {
+      "studyId": "autonomous-sdlc-herdr-features",
+      "title": "Ten Advanced Features for HERDR Autonomous Swarm Multiplexer, Hardware Enclaves, and High-Speed Reactive Terminal Fabric",
+      "ssotContractPath": "core/compute/apple-silicon-m5.tsp",
+      "originalSsotPath": "core/compute/apple-silicon-m5.tsp",
+      "bindingTrust": "specific",
+      "bindingResolves": true,
+      "fanIn": 2,
+      "domain": "core",
+      "capability": "compute-apple-silicon-m5",
+      "checkedOn": "2026-10-02",
+      "ageDays": 39,
+      "fresh": true,
+      "markdownPath": "docs/rhex/research/autonomous-sdlc-herdr-features.md",
+      "markdownBytes": 1722,
+      "groundedSources": 1,
+      "invariants": [
+        {
+          "statement": "Epoch fencing tokens (leaseGeneration) reject stale zombie worker writes deterministically",
+          "source": "contract",
+          "measurable": false,
+          "structural": true,
+          "normative": true,
+          "score": 105
+        }
+      ],
+      "topScore": 105,
+      "meanScore": 105,
+      "rank": 10
+    },
+    {
+      "studyId": "core-rhex-bimly-adaptive-planning-research-two-zero-two-six-zero-nine-two-one",
+      "title": "Adaptive planning and workload distribution for Core / RHEX / Bimly",
+      "ssotContractPath": "core/workflow/deep-research-typespec-pipeline.tsp",
+      "originalSsotPath": "core/workflow/deep-research-typespec-pipeline.tsp",
+      "bindingTrust": "default",
+      "bindingResolves": true,
+      "fanIn": 61,
+      "domain": "core",
+      "capability": "workflow-deep-research-typespec-pipeline",
+      "checkedOn": "2026-10-19",
+      "ageDays": 22,
+      "fresh": true,
+      "markdownPath": "docs/rhex/research/core-rhex-bimly-adaptive-planning-research-two-zero-two-six-zero-nine-two-one.md",
+      "markdownBytes": 148232,
+      "groundedSources": 1,
+      "invariants": [
+        {
+          "statement": "Basis points must be integers between 0 and 10,000.",
+          "source": "derived",
+          "measurable": false,
+          "structural": false,
+          "normative": true,
+          "score": 60,
+          "quote": "Basis points are integers in 0..10,000"
+        },
+        {
+          "statement": "Exactly one entry must exist per principal route, and the desired shares must total 10,000.",
+          "source": "derived",
+          "measurable": false,
+          "structural": true,
+          "normative": true,
+          "score": 80,
+          "quote": "Exactly one entry per principal route; desired shares total 10,000"
+        },
+        {
+          "statement": "External-disabled profiles must have external desired, lower, and upper set to 0.",
+          "source": "derived",
+          "measurable": false,
+          "structural": false,
+          "normative": true,
+          "score": 60,
+          "quote": "External-disabled profiles have external desired/lower/upper = 0"
+        },
+        {
+          "statement": "Route selection must have a p99 latency of 5 ms or less.",
+          "source": "derived",
+          "measurable": true,
+          "structural": true,
+          "normative": true,
+          "score": 105,
+          "quote": "Route selection | p99 ≤ 5 ms | Warm deterministic policy, cached metadata, ≤32 routes; excludes durable reservation"
+        },
+        {
+          "statement": "Dispatch admission must have a p95 latency of 50 ms or less.",
+          "source": "derived",
+          "measurable": true,
+          "structural": false,
+          "normative": true,
+          "score": 85,
+          "quote": "Dispatch admission | p95 ≤ 50 ms | Same-region small-work profile including required ledger transaction"
+        },
+        {
+          "statement": "Adaptive overhead must be less than or equal to 1% of accounted worker compute in the measured profile.",
+          "source": "derived",
+          "measurable": false,
+          "structural": false,
+          "normative": true,
+          "score": 60,
+          "quote": "Adaptive overhead | ≤1% of accounted worker compute in the measured profile | Includes router and controller; verify separately from fixed-cost services"
+        }
+      ],
+      "topScore": 105,
+      "meanScore": 75,
+      "rank": 11
+    },
+    {
+      "studyId": "apple-silicon-m-five-metal-icb-zero-gc-synthesis",
+      "title": "Apple Silicon M5 Unified Memory, Metal ICB & Zero-GC Binary IPC Kernel Synthesis",
+      "ssotContractPath": "core/compute/apple-silicon-m5.tsp",
+      "originalSsotPath": "core/compute/apple-silicon-m5.tsp",
+      "bindingTrust": "specific",
+      "bindingResolves": true,
+      "fanIn": 2,
+      "domain": "core",
+      "capability": "compute-apple-silicon-m5",
+      "checkedOn": "2026-10-19",
+      "ageDays": 22,
+      "fresh": true,
+      "markdownPath": "docs/rhex/research/apple-silicon-m5-metal-icb-zero-gc-synthesis.md",
+      "markdownBytes": 1836,
+      "groundedSources": 1,
+      "invariants": [
+        {
+          "statement": "TurboFan 32-bit packed DecisionWord32 evaluates 1,000,000 rules in <= 15.0ms with zero branch misprediction",
+          "source": "contract",
+          "measurable": true,
+          "structural": false,
+          "normative": false,
+          "score": 95
+        }
+      ],
+      "topScore": 95,
+      "meanScore": 95,
+      "rank": 12
+    },
+    {
+      "studyId": "autonomous-sdlc-cyber-resilience-features",
+      "title": "Ten Advanced Features for Autonomous Cyber-Resilience, Supply Chain Sovereign Attestation, and Self-Repairing Infrastructure",
+      "ssotContractPath": "core/policy/zero-token-zta.tsp",
+      "originalSsotPath": "core/policy/zero-token-zta.tsp",
+      "bindingTrust": "specific",
+      "bindingResolves": true,
+      "fanIn": 1,
+      "domain": "core",
+      "capability": "policy-zero-token-zta",
+      "checkedOn": "2026-10-02",
+      "ageDays": 39,
+      "fresh": true,
+      "markdownPath": "docs/rhex/research/autonomous-sdlc-cyber-resilience-features.md",
+      "markdownBytes": 1797,
+      "groundedSources": 1,
+      "invariants": [
+        {
+          "statement": "Default deny external boundaries; 100% offline-first pnpm catalog resolution",
+          "source": "contract",
+          "measurable": false,
+          "structural": true,
+          "normative": false,
+          "score": 90
+        }
+      ],
+      "topScore": 90,
+      "meanScore": 90,
+      "rank": 13
+    },
+    {
+      "studyId": "autonomous-sdlc-ten-advanced-features",
+      "title": "Ten Advanced, Future-Proof Architectural Features for Enterprise AI-First SDLC",
+      "ssotContractPath": "core/workflow/deep-research-typespec-pipeline.tsp",
+      "originalSsotPath": "core/workflow/deep-research-typespec-pipeline.tsp",
+      "bindingTrust": "specific",
+      "bindingResolves": true,
+      "fanIn": 61,
+      "domain": "core",
+      "capability": "workflow-deep-research-typespec-pipeline",
+      "checkedOn": "2026-10-02",
+      "ageDays": 39,
+      "fresh": true,
+      "markdownPath": "docs/rhex/research/autonomous-sdlc-ten-advanced-features.md",
+      "markdownBytes": 1768,
+      "groundedSources": 1,
+      "invariants": [
+        {
+          "statement": "Every candidate AST mutation passes deterministic structural and semantic gates prior to admission",
+          "source": "contract",
+          "measurable": false,
+          "structural": true,
+          "normative": false,
+          "score": 90
+        }
+      ],
+      "topScore": 90,
+      "meanScore": 90,
+      "rank": 14
+    },
+    {
+      "studyId": "google-colab-vertex-jupyter-notebook-distillation",
+      "title": "upstream model provider Colab Enterprise, Vertex AI Workbench & Local Jupyter (`.ipynb`) Cross-Cell AST Distillation",
+      "ssotContractPath": "core/google/notebook-models.tsp",
+      "originalSsotPath": "core/google/notebook-models.tsp",
+      "bindingTrust": "specific",
+      "bindingResolves": true,
+      "fanIn": 1,
+      "domain": "core",
+      "capability": "google-notebook-models",
+      "checkedOn": "2026-10-19",
+      "ageDays": 22,
+      "fresh": true,
+      "markdownPath": "docs/rhex/research/google-colab-vertex-jupyter-notebook-distillation.md",
+      "markdownBytes": 2064,
+      "groundedSources": 1,
+      "invariants": [
+        {
+          "statement": "NotebookResearchPersistenceBinding links every distilled .ipynb notebook to its saved .md and dedicated .research.tsp files",
+          "source": "contract",
+          "measurable": false,
+          "structural": true,
+          "normative": false,
+          "score": 90
+        }
+      ],
+      "topScore": 90,
+      "meanScore": 90,
+      "rank": 15
+    },
+    {
+      "studyId": "scalable-mixture-of-experts-architectures",
+      "title": "Scalable Mixture-of-Experts (MoE) and Mixture-of-Agents (MoA) Architectures for Deterministic Code Synthesis",
+      "ssotContractPath": "core/agent/moe/emitter-mixture-of-agents.tsp",
+      "originalSsotPath": "core/agent/moe/emitter-mixture-of-agents.tsp",
+      "bindingTrust": "specific",
+      "bindingResolves": true,
+      "fanIn": 3,
+      "domain": "core",
+      "capability": "agent-moe-emitter-mixture-of-agents",
+      "checkedOn": "2026-10-19",
+      "ageDays": 22,
+      "fresh": true,
+      "markdownPath": "docs/rhex/research/scalable-mixture-of-experts-architectures.md",
+      "markdownBytes": 1877,
+      "groundedSources": 1,
+      "invariants": [
+        {
+          "statement": "All multi-agent TypeSpec emission routes through the 8 verified MoA topologies in core/agent/moe/emitter-mixture-of-agents.tsp",
+          "source": "contract",
+          "measurable": false,
+          "structural": true,
+          "normative": false,
+          "score": 90
+        }
+      ],
+      "topScore": 90,
+      "meanScore": 90,
+      "rank": 16
+    },
+    {
+      "studyId": "autonomous-software-engineering-lifecycle",
+      "title": "Architecture and Foundations of AI-First Autonomous Software Engineering Lifecycles",
+      "ssotContractPath": "core/workflow/deep-research-typespec-pipeline.tsp",
+      "originalSsotPath": "core/workflow/deep-research-typespec-pipeline.tsp",
+      "bindingTrust": "specific",
+      "bindingResolves": true,
+      "fanIn": 61,
+      "domain": "core",
+      "capability": "workflow-deep-research-typespec-pipeline",
+      "checkedOn": "2026-10-02",
+      "ageDays": 39,
+      "fresh": true,
+      "markdownPath": "docs/rhex/research/autonomous-software-engineering-lifecycle.md",
+      "markdownBytes": 1967,
+      "groundedSources": 1,
+      "invariants": [
+        {
+          "statement": "Restate owns durable execution logs while Effect v4 owns local resource scoping and fiber supervision",
+          "source": "contract",
+          "measurable": false,
+          "structural": false,
+          "normative": false,
+          "score": 70
+        },
+        {
+          "statement": "Every verified fix backports transactionally into Level-0 TypeSpec contracts",
+          "source": "contract",
+          "measurable": false,
+          "structural": true,
+          "normative": false,
+          "score": 90
+        }
+      ],
+      "topScore": 90,
+      "meanScore": 80,
+      "rank": 17
+    },
+    {
+      "studyId": "ai-tool-capabilities",
+      "title": "Twenty-tool capability research matrix",
+      "ssotContractPath": "core/ai-tool/capability-registry.tsp",
+      "originalSsotPath": "core/ai-tool/capability-registry.tsp",
+      "bindingTrust": "specific",
+      "bindingResolves": true,
+      "fanIn": 1,
+      "domain": "core",
+      "capability": "ai-tool-capability-registry",
+      "checkedOn": "2026-09-17",
+      "ageDays": 54,
+      "fresh": true,
+      "markdownPath": "docs/rhex/research/ai-tool-capabilities.md",
+      "markdownBytes": 2068,
+      "groundedSources": 2,
+      "invariants": [
+        {
+          "statement": "All AI harnesses consume a single canonical TypeSpec SSOT without vendor lock-in",
+          "source": "contract",
+          "measurable": false,
+          "structural": false,
+          "normative": false,
+          "score": 55
+        },
+        {
+          "statement": "Dedicated TypeSpec emitters and pure Effect v4 services back every registered AI tool",
+          "source": "contract",
+          "measurable": false,
+          "structural": true,
+          "normative": false,
+          "score": 90
+        }
+      ],
+      "topScore": 90,
+      "meanScore": 73,
+      "rank": 18
+    },
+    {
+      "studyId": "google-ai-studio-workbench-and-developer-api",
+      "title": "model provider studio Workbench, System Instructions, Structured Outputs, Live API & multimodal AI harness Developer API Synthesis",
+      "ssotContractPath": "core/providers/google/google-ai-studio-api.tsp",
+      "originalSsotPath": "core/providers/google/google-ai-studio-api.tsp",
+      "bindingTrust": "specific",
+      "bindingResolves": true,
+      "fanIn": 1,
+      "domain": "core",
+      "capability": "providers-google-google-ai-studio-api",
+      "checkedOn": "2026-10-19",
+      "ageDays": 22,
+      "fresh": true,
+      "markdownPath": "docs/rhex/research/google-ai-studio-workbench-and-developer-api.md",
+      "markdownBytes": 3073,
+      "groundedSources": 3,
+      "invariants": [
+        {
+          "statement": "Every model provider studio prompt preset, grounding trace, and API pipeline is codified in core/providers/frontier model providers-ai-studio-api.tsp",
+          "source": "contract",
+          "measurable": false,
+          "structural": false,
+          "normative": false,
+          "score": 55
+        },
+        {
+          "statement": "AiStudioSystemPromptOutcome is discriminated inside DistilledConversationOutcomeUnion",
+          "source": "contract",
+          "measurable": false,
+          "structural": true,
+          "normative": false,
+          "score": 90
+        }
+      ],
+      "topScore": 90,
+      "meanScore": 73,
+      "rank": 19
+    },
+    {
+      "studyId": "autonomous-sdlc-engine-room-features",
+      "title": "Ten Advanced Features for AI-First SDLC Architecture: Engine Room Substrates, Emitters, and Plugins",
+      "ssotContractPath": "core/tool/ipc/ipc-kernel.tsp",
+      "originalSsotPath": "core/tool/ipc/ipc-kernel.tsp",
+      "bindingTrust": "specific",
+      "bindingResolves": false,
+      "fanIn": 1,
+      "domain": "core",
+      "capability": "tool-ipc-ipc-kernel",
+      "checkedOn": "2026-10-02",
+      "ageDays": 39,
+      "fresh": true,
+      "markdownPath": "docs/rhex/research/autonomous-sdlc-engine-room-features.md",
+      "markdownBytes": 1731,
+      "groundedSources": 1,
+      "invariants": [
+        {
+          "statement": "Sub-millisecond (< 0.8ms) IPC round-trip latency via pre-allocated slab BufferPool recycling",
+          "source": "contract",
+          "measurable": true,
+          "structural": false,
+          "normative": false,
+          "score": 85
+        }
+      ],
+      "topScore": 85,
+      "meanScore": 85,
+      "rank": 20
+    },
+    {
+      "studyId": "core-rhex-bimly-rule-engine-deep-research-two-zero-two-six-zero-nine-two-one",
+      "title": "Rule engines for an autonomous TypeSpec platform",
+      "ssotContractPath": "core/workflow/deep-research-typespec-pipeline.tsp",
+      "originalSsotPath": "core/workflow/deep-research-typespec-pipeline.tsp",
+      "bindingTrust": "default",
+      "bindingResolves": true,
+      "fanIn": 61,
+      "domain": "core",
+      "capability": "workflow-deep-research-typespec-pipeline",
+      "checkedOn": "2026-10-19",
+      "ageDays": 22,
+      "fresh": true,
+      "markdownPath": "docs/rhex/research/core-rhex-bimly-rule-engine-deep-research-two-zero-two-six-zero-nine-two-one.md",
+      "markdownBytes": 138233,
+      "groundedSources": 1,
+      "invariants": [
+        {
+          "statement": "Small local predicate group p99 must be less than or equal to 1 ms under warm in-process evaluation with declared bounded input and no external I/O.",
+          "source": "derived",
+          "measurable": true,
+          "structural": false,
+          "normative": true,
+          "score": 85,
+          "quote": "Small local predicate group | p99 ≤ 1 ms | Warm in-process evaluation, declared bounded input, no external I/O"
+        },
+        {
+          "statement": "Request authorization p99 must be less than or equal to 5 ms on a same-host path including fact assembly/serialization.",
+          "source": "derived",
+          "measurable": true,
+          "structural": false,
+          "normative": true,
+          "score": 85,
+          "quote": "Request authorization | p99 ≤ 5 ms | Same-host path including fact assembly/serialization; separate distributed profile"
+        },
+        {
+          "statement": "Expensive engineering validation must have an interactive acknowledgement less than or equal to 100 ms.",
+          "source": "derived",
+          "measurable": true,
+          "structural": false,
+          "normative": true,
+          "score": 85,
+          "quote": "Expensive engineering validation | Interactive acknowledgement ≤ 100 ms | Actual completion is asynchronous and measured separately"
+        }
+      ],
+      "topScore": 85,
+      "meanScore": 85,
+      "rank": 21
+    },
+    {
+      "studyId": "web-gui-cdp-harvester-architecture-synthesis",
+      "title": "Zero-Token Web GUI Conversation & Deep Research Harvester Architecture (multimodal AI harness, AI Studio, NotebookLM)",
+      "ssotContractPath": "core/providers/google/gemini-web-gui-harvester.tsp",
+      "originalSsotPath": "core/providers/google/gemini-web-gui-harvester.tsp",
+      "bindingTrust": "specific",
+      "bindingResolves": true,
+      "fanIn": 1,
+      "domain": "core",
+      "capability": "providers-google-gemini-web-gui-harvester",
+      "checkedOn": "2026-10-19",
+      "ageDays": 22,
+      "fresh": true,
+      "markdownPath": "docs/rhex/research/web-gui-cdp-harvester-architecture-synthesis.md",
+      "markdownBytes": 2068,
+      "groundedSources": 1,
+      "invariants": [
+        {
+          "statement": "Never spawn unauthenticated headless browsers against upstream model provider login walls; borrow authenticated user tabs via CDP",
+          "source": "contract",
+          "measurable": false,
+          "structural": false,
+          "normative": true,
+          "score": 85
+        }
+      ],
+      "topScore": 85,
+      "meanScore": 85,
+      "rank": 22
+    },
+    {
+      "studyId": "bimly-spatial-context-cost-and-realtime-optimisation",
+      "title": "Bimly Spatial Context: Cost and Real-Time Optimisation",
+      "ssotContractPath": "core/workflow/deep-research-typespec-pipeline.tsp",
+      "originalSsotPath": "core/workflow/deep-research-typespec-pipeline.tsp",
+      "bindingTrust": "default",
+      "bindingResolves": true,
+      "fanIn": 61,
+      "domain": "core",
+      "capability": "workflow-deep-research-typespec-pipeline",
+      "checkedOn": "2026-10-19",
+      "ageDays": 22,
+      "fresh": true,
+      "markdownPath": "docs/rhex/research/bimly-spatial-context-cost-and-realtime-optimisation.md",
+      "markdownBytes": 23393,
+      "groundedSources": 1,
+      "invariants": [
+        {
+          "statement": "Camera movement and navigation must achieve 60 FPS on supported desktop fixtures, with a 30 FPS fallback for constrained devices.",
+          "source": "derived",
+          "measurable": true,
+          "structural": false,
+          "normative": true,
+          "score": 85,
+          "quote": "Camera movement and navigation | 60 FPS on supported desktop fixture; 30 FPS constrained-device fallback"
+        },
+        {
+          "statement": "High-refresh interaction must operate with an 8.33 ms frame budget.",
+          "source": "derived",
+          "measurable": true,
+          "structural": false,
+          "normative": true,
+          "score": 85,
+          "quote": "High-refresh interaction | Optional 120 FPS on qualified hardware | An 8.33 ms frame budget; do not promise across devices or charge for unattainable performance"
+        },
+        {
+          "statement": "Selection and immediate feedback must have a visible acknowledgement within 100 ms p95.",
+          "source": "derived",
+          "measurable": true,
+          "structural": false,
+          "normative": true,
+          "score": 85,
+          "quote": "Selection and immediate feedback | Visible acknowledgement within 100 ms p95 | Use local scene/index data; label provisional results"
+        },
+        {
+          "statement": "Warm contextual queries must complete end-to-end within 250 ms p95 on the declared fixture.",
+          "source": "derived",
+          "measurable": true,
+          "structural": false,
+          "normative": true,
+          "score": 85,
+          "quote": "Warm contextual query | ≤250 ms p95 end-to-end on declared fixture | Indexed bounds, authorised caches and bounded results"
+        },
+        {
+          "statement": "A B2C occasional project must have an explicit import and retention limit.",
+          "source": "derived",
+          "measurable": false,
+          "structural": true,
+          "normative": true,
+          "score": 80,
+          "quote": "B2C occasional project | Understand one site and inspect clear findings | Small active-project allowance, standard display quality, explicit import/retention limits, refresh on request, spending off by default"
+        }
+      ],
+      "topScore": 85,
+      "meanScore": 84,
+      "rank": 23
+    },
+    {
+      "studyId": "typespec-and-hey-api-gateway",
+      "title": "**Schema-Driven HTTP/3, WebTransport, and QUIC Datagram API Gateway Architecture on Node.js 26.10 with TypeSpec, Hey API, and sqlc**",
+      "ssotContractPath": "core/workflow/deep-research-typespec-pipeline.tsp",
+      "originalSsotPath": "core/workflow/deep-research-typespec-pipeline.tsp",
+      "bindingTrust": "default",
+      "bindingResolves": true,
+      "fanIn": 61,
+      "domain": "core",
+      "capability": "workflow-deep-research-typespec-pipeline",
+      "checkedOn": "2026-10-19",
+      "ageDays": 22,
+      "fresh": true,
+      "markdownPath": "docs/rhex/research/typespec-and-hey-api-gateway.md",
+      "markdownBytes": 436513,
+      "groundedSources": 1,
+      "invariants": [
+        {
+          "statement": "Emitter implementations must avoid calling Node's node:fs module directly during AST emission.",
+          "source": "derived",
+          "measurable": false,
+          "structural": true,
+          "normative": true,
+          "score": 80,
+          "quote": "To maintain strict compatibility across Node.js, web browsers, and in-memory compiler test harnesses, emitter implementations must avoid calling Node's node:fs module directly during AST emission, relying instead on emitFile or context.program.host.writeFile with paths constructed via resolvePath and sanitized via sanitizePathSegment6."
+        },
+        {
+          "statement": "The gateway exposes a native node:quic HTTP/3 and RFC 9221/9297 datagram server on port 4433.",
+          "source": "derived",
+          "measurable": false,
+          "structural": true,
+          "normative": true,
+          "score": 80,
+          "quote": "At runtime, it exposes a native node:quic HTTP/3 and RFC 9221/9297 datagram server on port 4433"
+        },
+        {
+          "statement": "The gateway exposes a W3C WebTransport server on port 4443.",
+          "source": "derived",
+          "measurable": false,
+          "structural": true,
+          "normative": true,
+          "score": 80,
+          "quote": "and a W3C WebTransport server (@moq/web-transport) on port 4443"
+        },
+        {
+          "statement": "The maximum frame size must be 1200 bytes to remain safely within standard UDP Path MTU limits.",
+          "source": "derived",
+          "measurable": true,
+          "structural": false,
+          "normative": true,
+          "score": 85,
+          "quote": "Encoding maxFrameSize (1200 bytes to remain safely within standard UDP Path MTU limits), maxPendingDatagrams, and datagramDropPolicy ('drop-oldest') directly inside TypeSpec @quicDatagram decorators ensures that backpressure and queue-eviction boundaries are enforced inside node:quic's C++ ngtcp2 layer before UDP packet floods can trigger V8 garbage-collection pauses4."
+        }
+      ],
+      "topScore": 85,
+      "meanScore": 81,
+      "rank": 24
+    },
+    {
+      "studyId": "typespec-tooling-ssot-guide",
+      "title": "TypeSpec tooling SSOT — Core, RHEX and Bimly",
+      "ssotContractPath": "core/workflow/deep-research-typespec-pipeline.tsp",
+      "originalSsotPath": "core/workflow/deep-research-typespec-pipeline.tsp",
+      "bindingTrust": "default",
+      "bindingResolves": true,
+      "fanIn": 61,
+      "domain": "core",
+      "capability": "workflow-deep-research-typespec-pipeline",
+      "checkedOn": "2026-10-19",
+      "ageDays": 22,
+      "fresh": true,
+      "markdownPath": "docs/rhex/research/typespec-tooling-ssot-guide.md",
+      "markdownBytes": 11663,
+      "groundedSources": 1,
+      "invariants": [
+        {
+          "statement": "Zero toolchain digests, example pins, repository paths and native-driver paths must be replaced with real, reviewed values in the reference.",
+          "source": "derived",
+          "measurable": true,
+          "structural": false,
+          "normative": true,
+          "score": 85,
+          "quote": "Zero toolchain digests, example pins, repository paths and native-driver paths must be replaced with real, reviewed values."
+        },
+        {
+          "statement": "A native plan never grants permission to execute.",
+          "source": "derived",
+          "measurable": false,
+          "structural": false,
+          "normative": true,
+          "score": 45,
+          "quote": "A native plan says `authorization: \"none-plan-only\"`. It never grants permission to execute."
+        }
+      ],
+      "topScore": 85,
+      "meanScore": 65,
+      "rank": 25
+    },
+    {
+      "studyId": "distributed-bim-architecture-analysis",
+      "title": "**Distributed Concurrency, Modulo-8 Partitioned Outbox Consensus, and Dual-PDP Governance for ISO 19650 BIM Common Data Environments**",
+      "ssotContractPath": "core/workflow/deep-research-typespec-pipeline.tsp",
+      "originalSsotPath": "core/workflow/deep-research-typespec-pipeline.tsp",
+      "bindingTrust": "default",
+      "bindingResolves": true,
+      "fanIn": 61,
+      "domain": "core",
+      "capability": "workflow-deep-research-typespec-pipeline",
+      "checkedOn": "2026-10-19",
+      "ageDays": 22,
+      "fresh": true,
+      "markdownPath": "docs/rhex/research/distributed-bim-architecture-analysis.md",
+      "markdownBytes": 579680,
+      "groundedSources": 1,
+      "invariants": [
+        {
+          "statement": "Every committed database state on every replica must obey the declared invariant predicate.",
+          "source": "derived",
+          "measurable": false,
+          "structural": false,
+          "normative": true,
+          "score": 45,
+          "quote": "global validity, ensuring every committed database state on every replica obeys the declared invariant predicate ![][image1];"
+        },
+        {
+          "statement": "Any local transaction that would violate the invariant must locally abort.",
+          "source": "derived",
+          "measurable": false,
+          "structural": false,
+          "normative": true,
+          "score": 60,
+          "quote": "meaning any local transaction that would violate ![][image1] locally aborts3."
+        },
+        {
+          "statement": "For all invariant-valid common ancestor states and all pairs of invariant-valid transaction sequences over a set of transactions, the merged state must remain invariant-valid.",
+          "source": "derived",
+          "measurable": false,
+          "structural": false,
+          "normative": true,
+          "score": 60,
+          "quote": "for all ![][image1]\\-valid common ancestor states ![][image19] and all pairs of ![][image1]\\-valid transaction sequences ![][image20] over ![][image13] starting from ![][image21], the merged state remains ![][image1]\\-valid20:"
+        },
+        {
+          "statement": "Every information container ID must conform to the 7-field hyphen-delimited structure PROJECT-ORIGINATOR-VOLUME-LEVEL-TYPE-ROLE-NUMBER, containing zero whitespace characters.",
+          "source": "derived",
+          "measurable": true,
+          "structural": false,
+          "normative": true,
+          "score": 85,
+          "quote": "First, every information container ID must conform to the 7-field hyphen-delimited structure PROJECT-ORIGINATOR-VOLUME-LEVEL-TYPE-ROLE-NUMBER (for example, 123-ARUP-A1-ZZ-M3-A-0001 for an architectural 3D model in Zone A1, or WZ1-ZIG-V4-01-M1-A-001 with status and revision metadata S01-P01), containing zero whitespace characters5."
+        },
+        {
+          "statement": "Role-specific volume codes must not collide across disciplines.",
+          "source": "derived",
+          "measurable": false,
+          "structural": false,
+          "normative": true,
+          "score": 60,
+          "quote": "Second, as required by BS 1192 and ISO 19650 numbering guidelines, role-specific volume codes must not collide across disciplines—for instance, if the structural engineering team (Role == \"S\") reserves volume code \"S1\", the security engineering team (Role == \"Y\" or \"E\") is prohibited from assigning \"S1\" to a security volume5."
+        },
+        {
+          "statement": "Containers in the WIP state must carry status code S0 and a preliminary revision code P01..Pn.",
+          "source": "derived",
+          "measurable": false,
+          "structural": false,
+          "normative": true,
+          "score": 60,
+          "quote": "Containers in the WIP state must carry status code S0 and a preliminary revision code P01..Pn29."
+        }
+      ],
+      "topScore": 85,
+      "meanScore": 62,
+      "rank": 26
+    },
+    {
+      "studyId": "local-mac-pdf-to-typespec",
+      "title": "**State-of-the-Art Document-to-TypeSpec Conversion: Architecture for High-Efficiency Local Execution on Apple Silicon**",
+      "ssotContractPath": "core/workflow/deep-research-typespec-pipeline.tsp",
+      "originalSsotPath": "core/workflow/deep-research-typespec-pipeline.tsp",
+      "bindingTrust": "default",
+      "bindingResolves": true,
+      "fanIn": 61,
+      "domain": "core",
+      "capability": "workflow-deep-research-typespec-pipeline",
+      "checkedOn": "2026-10-19",
+      "ageDays": 22,
+      "fresh": true,
+      "markdownPath": "docs/rhex/research/local-mac-pdf-to-typespec.md",
+      "markdownBytes": 398169,
+      "groundedSources": 1,
+      "invariants": [
+        {
+          "statement": "MinerU2.5 is a 1.2B-parameter domain-specific VLM.",
+          "source": "derived",
+          "measurable": false,
+          "structural": false,
+          "normative": false,
+          "score": 45,
+          "quote": "Its flagship accuracy engine, **MinerU2.5**, is a 1.2B-parameter domain-specific VLM that dynamically adjusts decoding parameters (frequency_penalty and presence_penalty) based on detected layout types (e.g., applying higher penalties to prose paragraphs to prevent repetition loops and lower penalties to tables where repeated numerical tokens are valid)1."
+        },
+        {
+          "statement": "MinerU 4.0's default non-NVIDIA installation requires roughly 0.8 GB for the basic tier.",
+          "source": "derived",
+          "measurable": false,
+          "structural": false,
+          "normative": true,
+          "score": 60,
+          "quote": "Crucially for macOS deployments, MinerU 4.0's default non-NVIDIA installation executes small pipeline models on ONNX CPU inference and serves its VLM engine natively over **llama.cpp**, requiring roughly 0.8 GB for the basic tier and 2 GB for the standard GGUF tier19."
+        },
+        {
+          "statement": "MinerU 4.0's default non-NVIDIA installation requires 2 GB for the standard GGUF tier.",
+          "source": "derived",
+          "measurable": false,
+          "structural": false,
+          "normative": true,
+          "score": 60,
+          "quote": "Crucially for macOS deployments, MinerU 4.0's default non-NVIDIA installation executes small pipeline models on ONNX CPU inference and serves its VLM engine natively over **llama.cpp**, requiring roughly 0.8 GB for the basic tier and 2 GB for the standard GGUF tier19."
+        },
+        {
+          "statement": "PaddleOCR-VL-1.6 requires only approximately 2 GB of FP16 memory or approximately 1 GB in INT8.",
+          "source": "derived",
+          "measurable": false,
+          "structural": false,
+          "normative": true,
+          "score": 60,
+          "quote": "PaddleOCR-VL-1.6 (0.9B) is an Apache-2.0 licensed, 0.9B-parameter model supporting over 100 languages that achieves a headline 96.33% overall score on OmniDocBench v1.6 and leads the independent Table TEDS leaderboard at 94.76% (ahead of frontier code model at 82.95%), while requiring only ~2 GB of FP16 memory or ~1 GB in INT825."
+        },
+        {
+          "statement": "IBM Docling requires the use of Native Metal (MPS) or mlx-vlm (version >= 0.7.0) for local execution.",
+          "source": "derived",
+          "measurable": true,
+          "structural": false,
+          "normative": true,
+          "score": 85,
+          "quote": "Native Metal (MPS) + mlx-vlm (>=0.7.0)24"
+        },
+        {
+          "statement": "TableFormer must run in accurate mode when configuring the DocumentConverter pipeline.",
+          "source": "derived",
+          "measurable": false,
+          "structural": false,
+          "normative": true,
+          "score": 60,
+          "quote": "pipeline_options.table_structure_options.mode = TableFormerMode.ACCURATE"
+        },
+        {
+          "statement": "The pipeline must be configured to generate picture images.",
+          "source": "derived",
+          "measurable": false,
+          "structural": false,
+          "normative": true,
+          "score": 45,
+          "quote": "pipeline_options.generate_picture_images = True"
+        },
+        {
+          "statement": "The pipeline must be configured to perform chart extraction.",
+          "source": "derived",
+          "measurable": false,
+          "structural": false,
+          "normative": true,
+          "score": 45,
+          "quote": "pipeline_options.do_chart_extraction = True"
+        },
+        {
+          "statement": "The local LLM must be configured to use a temperature of 0.0 when calling the local LLM endpoint.",
+          "source": "derived",
+          "measurable": false,
+          "structural": false,
+          "normative": true,
+          "score": 45,
+          "quote": "\"temperature\": 0.0,"
+        },
+        {
+          "statement": "The local LLM must be configured to generate a maximum of 4096 tokens.",
+          "source": "derived",
+          "measurable": true,
+          "structural": false,
+          "normative": true,
+          "score": 85,
+          "quote": "\"max_tokens\": 4096,"
+        },
+        {
+          "statement": "The local LLM must be retried up to 4 times if the initial compilation fails.",
+          "source": "derived",
+          "measurable": false,
+          "structural": false,
+          "normative": true,
+          "score": 45,
+          "quote": "for attempt in range(1, max_retries + 1):"
+        }
+      ],
+      "topScore": 85,
+      "meanScore": 58,
+      "rank": 27
+    },
+    {
+      "studyId": "openusd-distillation-services-typespec-effect-four-and-wit-zero-three",
+      "title": "**Programmatic Distillation of OpenUSD into a TypeSpec, Effect 4, and WIT 0.3 Architecture with OpenExec**",
+      "ssotContractPath": "core/workflow/deep-research-typespec-pipeline.tsp",
+      "originalSsotPath": "core/workflow/deep-research-typespec-pipeline.tsp",
+      "bindingTrust": "default",
+      "bindingResolves": true,
+      "fanIn": 61,
+      "domain": "core",
+      "capability": "workflow-deep-research-typespec-pipeline",
+      "checkedOn": "2026-10-19",
+      "ageDays": 22,
+      "fresh": true,
+      "markdownPath": "docs/rhex/research/openusd-distillation-services-typespec-effect-four-and-wit-zero-three.md",
+      "markdownBytes": 502536,
+      "groundedSources": 1,
+      "invariants": [
+        {
+          "statement": "The core budget for formalizing the underlying algebraic structures of OpenUSD must be between 50 and 250 lines of code.",
+          "source": "derived",
+          "measurable": true,
+          "structural": false,
+          "normative": true,
+          "score": 85,
+          "quote": "Distilling the monolithic PixarAnimationStudios/OpenUSD C++ repository into a modern, type-safe, cross-boundary software stack—comprising a TypeSpec interface definition layer7, an Effect 4.0 runtime validation and functional effect system9, and a WebAssembly Component Model WIT 0.3.1 binary contract11—requires formalizing the underlying algebraic structures of OpenUSD so that 1:1 semantic parity can be achieved within a strict 50–250 lines-of-code (LOC) core budget."
+        },
+        {
+          "statement": "The runtime must be decomposed into eight orthogonal services.",
+          "source": "derived",
+          "measurable": false,
+          "structural": false,
+          "normative": true,
+          "score": 45,
+          "quote": "the runtime must be decomposed into eight orthogonal services that mirror the internal module boundaries of PixarAnimationStudios/OpenUSD."
+        },
+        {
+          "statement": "The submodule's native C++ core must not violate the 50–250 LOC constraint.",
+          "source": "derived",
+          "measurable": false,
+          "structural": false,
+          "normative": true,
+          "score": 45,
+          "quote": "which would violate both the 50–250 LOC constraint and strict behavioral parity"
+        },
+        {
+          "statement": "The Host Runtime must target Wasmtime 46+.",
+          "source": "derived",
+          "measurable": false,
+          "structural": false,
+          "normative": true,
+          "score": 45,
+          "quote": "Rust + C++20 Host Runtime targeting Wasmtime 46+"
+        },
+        {
+          "statement": "The compiler module is 46 lines of code",
+          "source": "derived",
+          "measurable": true,
+          "structural": false,
+          "normative": false,
+          "score": 70,
+          "quote": "// File: packages/core-openusd/emitter.ts (46 LOC)"
+        }
+      ],
+      "topScore": 85,
+      "meanScore": 58,
+      "rank": 28
+    },
+    {
+      "studyId": "udast-bidirectional-documentation-architecture",
+      "title": "**Lossless Bidirectional UDAST Documentation-as-Code (CHG-006) and In-RAM TypeSpec / tsgo Reverse Patching Architecture**",
+      "ssotContractPath": "core/workflow/deep-research-typespec-pipeline.tsp",
+      "originalSsotPath": "core/workflow/deep-research-typespec-pipeline.tsp",
+      "bindingTrust": "default",
+      "bindingResolves": true,
+      "fanIn": 61,
+      "domain": "core",
+      "capability": "workflow-deep-research-typespec-pipeline",
+      "checkedOn": "2026-10-19",
+      "ageDays": 22,
+      "fresh": true,
+      "markdownPath": "docs/rhex/research/udast-bidirectional-documentation-architecture.md",
+      "markdownBytes": 399258,
+      "groundedSources": 1,
+      "invariants": [
+        {
+          "statement": "The plugin itself accepts no runtime parameters and does not transform directives into rendered output.",
+          "source": "derived",
+          "measurable": false,
+          "structural": false,
+          "normative": false,
+          "score": 30,
+          "quote": "A critical operational nuance of remark-directive (v3.0.0 and v4.0.0) is that the plugin itself accepts no runtime parameters and does not transform directives into rendered output; it solely makes directive syntax parseable into mdast nodes and serializable back to Markdown11."
+        },
+        {
+          "statement": "resolveCompilerOptions must bind strictly to the virtual SystemHost without fallback to disk-based NodeHost resolution.",
+          "source": "derived",
+          "measurable": false,
+          "structural": false,
+          "normative": true,
+          "score": 60,
+          "quote": "Ensure resolveCompilerOptions binds strictly to the virtual SystemHost without fallback to disk-based NodeHost resolution."
+        },
+        {
+          "statement": "directiveToMarkdown must be configured with preferShortcut: true and collapseEmptyAttributes: true to guarantee zero syntactic churn during agentic round-trips.",
+          "source": "derived",
+          "measurable": true,
+          "structural": false,
+          "normative": true,
+          "score": 85,
+          "quote": "By explicitly configuring directiveToMarkdown with preferShortcut: true and collapseEmptyAttributes: true, #step-chg006-02 and .critical-path serialize identically to their authored shorthand rather than expanding into verbose id=\"step-chg006-02\" class=\"critical-path\" strings, guaranteeing zero syntactic churn during agentic round-trips11."
+        },
+        {
+          "statement": "A LoroDoc instance must never share a PeerID across concurrent tabs, worker threads, or coding agent processes.",
+          "source": "derived",
+          "measurable": false,
+          "structural": false,
+          "normative": true,
+          "score": 45,
+          "quote": "First, a LoroDoc instance must never share a PeerID across concurrent tabs, worker threads, or coding agent processes, nor should fixed PeerIDs be assigned to specific users or agent roles, as doing so causes permanent document divergence14."
+        },
+        {
+          "statement": "@bimly/udast-engine initializes all sub-containers (attributes map and content LoroText) upfront when a LoroTreeNode is instantiated.",
+          "source": "derived",
+          "measurable": false,
+          "structural": false,
+          "normative": false,
+          "score": 45,
+          "quote": "Consequently, @bimly/udast-engine initializes all sub-containers (attributes map and content LoroText) upfront when a LoroTreeNode is instantiated, and uses mergeable primitives such as node.data.ensureMergeableList(\"diagnostics\") whenever a child list may be lazily populated by concurrent compiler workers13."
+        },
+        {
+          "statement": "Relational rules and composite rules must use all when subsequent rules depend on meta-variables captured by an earlier pattern.",
+          "source": "derived",
+          "measurable": false,
+          "structural": false,
+          "normative": true,
+          "score": 60,
+          "quote": "when composing complex structural queries in NapiConfig, relational rules (inside, has with field) and composite rules (all, any, not) must use all whenever subsequent rules depend on meta-variables ($VAR or $$$ARGS) captured by an earlier pattern"
+        },
+        {
+          "statement": "The TypeScript project must be initialized with zero disk I/O.",
+          "source": "derived",
+          "measurable": true,
+          "structural": false,
+          "normative": true,
+          "score": 85,
+          "quote": "1\\. Initialize in-RAM ts-morph project with zero disk I/O"
+        },
+        {
+          "statement": "The Loro CRDT document must have its change merge interval set to 50.",
+          "source": "derived",
+          "measurable": false,
+          "structural": false,
+          "normative": true,
+          "score": 45,
+          "quote": "this.loroDoc.setChangeMergeInterval(50);"
+        }
+      ],
+      "topScore": 85,
+      "meanScore": 57,
+      "rank": 29
+    },
+    {
+      "studyId": "self-healing-typespec-meta-harness-architecture",
+      "title": "**Autonomous Zero-Token Compiler Evolution, Mutant-to-Spec Contract Hardening, and Epistemic Negative Knowledge Governance in TypeSpec Meta-Harnesses**",
+      "ssotContractPath": "core/workflow/deep-research-typespec-pipeline.tsp",
+      "originalSsotPath": "core/workflow/deep-research-typespec-pipeline.tsp",
+      "bindingTrust": "default",
+      "bindingResolves": true,
+      "fanIn": 61,
+      "domain": "core",
+      "capability": "workflow-deep-research-typespec-pipeline",
+      "checkedOn": "2026-10-19",
+      "ageDays": 22,
+      "fresh": true,
+      "markdownPath": "docs/rhex/research/self-healing-typespec-meta-harness-architecture.md",
+      "markdownBytes": 822920,
+      "groundedSources": 1,
+      "invariants": [
+        {
+          "statement": "The final set of false positives must be empty after dis-unification.",
+          "source": "derived",
+          "measurable": false,
+          "structural": false,
+          "normative": true,
+          "score": 45,
+          "quote": "assert(falsePositives.length === 0, \"Dis-unification failed to eliminate all false positives\");"
+        },
+        {
+          "statement": "The round-trip AST match must be exact modulo trivia for every episode.",
+          "source": "derived",
+          "measurable": false,
+          "structural": false,
+          "normative": true,
+          "score": 45,
+          "quote": "assert(astEqualModuloTrivia(patched, ep.afterRedNode.text()), \"Round-trip AST mismatch\");"
+        },
+        {
+          "statement": "The summary.md file contains the newest 20 issues in full, and older issues are listed by ID.",
+          "source": "derived",
+          "measurable": false,
+          "structural": false,
+          "normative": false,
+          "score": 30,
+          "quote": "Surfaced in summary.md (newest 20 in full, older by ID) and triggers precheck_file warnings regardless of age1."
+        },
+        {
+          "statement": "Precheck_file invokes the governance gate over MCP or CLI before any agent tool call (edit_file, write_file, or LLM repair prompt synthesis) is permitted to execute.",
+          "source": "derived",
+          "measurable": false,
+          "structural": true,
+          "normative": false,
+          "score": 65,
+          "quote": "Before any agent tool call (edit_file, write_file, or LLM repair prompt synthesis) is permitted to execute, the meta-harness invokes the precheck_file(file_path) governance gate over MCP or CLI (pjm precheck)1."
+        },
+        {
+          "statement": "The new candidate lower bound L_new must be greater than or equal to 0.",
+          "source": "derived",
+          "measurable": false,
+          "structural": false,
+          "normative": true,
+          "score": 45,
+          "quote": "(assert (\\! (>= L_new 0) :named H_non_negative_domain))"
+        },
+        {
+          "statement": "The new candidate upper bound U_new must be less than or equal to 2147483647.",
+          "source": "derived",
+          "measurable": false,
+          "structural": false,
+          "normative": true,
+          "score": 45,
+          "quote": "(assert (\\! (<= U_new 2147483647) :named H_int32_max))"
+        },
+        {
+          "statement": "For all x in [L_new, U_new], the worst-case upper bound U_new must satisfy the linear sink predicate (<= 1024).",
+          "source": "derived",
+          "measurable": true,
+          "structural": false,
+          "normative": true,
+          "score": 85,
+          "quote": "(assert (\\! (<= (+ (* 4 U_new) 64) 1024) :named H_cpg_sink_safety))"
+        },
+        {
+          "statement": "The `BatchIngestRequest.payload` must contain at least 1 item.",
+          "source": "derived",
+          "measurable": false,
+          "structural": false,
+          "normative": true,
+          "score": 45,
+          "quote": "@minItems(1)  payload: int32\\[\\];"
+        },
+        {
+          "statement": "The `ingestBatch` operation must have a `maxBlastRadiusNodes` of 18 and a `latencyGateNs` of 120.",
+          "source": "derived",
+          "measurable": false,
+          "structural": true,
+          "normative": true,
+          "score": 80,
+          "quote": "@agentCapability(\\#{  allowedCpgSinks: #[\"RingBuffer::pushBounded\", \"Metrics::recordIngest\"],  maxBlastRadiusNodes: 18,  latencyGateNs: 120  })  op ingestBatch(@body body: BatchIngestRequest): { acceptedFrames: int32 } | {  @statusCode statusCode: 422;  errorCode: \"TSP_ERR_FRAME_COUNT_OVERFLOW\";  };"
+        }
+      ],
+      "topScore": 85,
+      "meanScore": 54,
+      "rank": 30
+    },
+    {
+      "studyId": "ai-native-bim-aec-research",
+      "title": "AI-Native High-Performance BIM and AEC",
+      "ssotContractPath": "core/workflow/deep-research-typespec-pipeline.tsp",
+      "originalSsotPath": "core/workflow/deep-research-typespec-pipeline.tsp",
+      "bindingTrust": "default",
+      "bindingResolves": true,
+      "fanIn": 61,
+      "domain": "core",
+      "capability": "workflow-deep-research-typespec-pipeline",
+      "checkedOn": "2026-10-19",
+      "ageDays": 22,
+      "fresh": true,
+      "markdownPath": "docs/rhex/research/ai-native-bim-aec-research.md",
+      "markdownBytes": 69131,
+      "groundedSources": 1,
+      "invariants": [
+        {
+          "statement": "The platform must use IFC 4.3 as a supported exchange baseline.",
+          "source": "derived",
+          "measurable": false,
+          "structural": false,
+          "normative": true,
+          "score": 45,
+          "quote": "Use IFC 4.3 as a supported exchange baseline; isolate IFC 5 experimentation."
+        },
+        {
+          "statement": "The platform must use OpenUSD for scene composition and visualization interchange.",
+          "source": "derived",
+          "measurable": false,
+          "structural": false,
+          "normative": true,
+          "score": 45,
+          "quote": "Use OpenUSD for scene composition and visualization interchange."
+        },
+        {
+          "statement": "A validated function can run without LLM tokens.",
+          "source": "derived",
+          "measurable": false,
+          "structural": false,
+          "normative": false,
+          "score": 30,
+          "quote": "A validated function can run without LLM tokens."
+        },
+        {
+          "statement": "Interactive navigation must achieve a p95 frame time at or below 33 ms.",
+          "source": "derived",
+          "measurable": true,
+          "structural": false,
+          "normative": true,
+          "score": 85,
+          "quote": "p95 frame time at or below 33 ms; stretch target 16.7 ms"
+        }
+      ],
+      "topScore": 85,
+      "meanScore": 51,
+      "rank": 31
+    },
+    {
+      "studyId": "bimly-participant-tenancy-typespec-research",
+      "title": "Bimly participant, project, and tenant architecture",
+      "ssotContractPath": "core/workflow/deep-research-typespec-pipeline.tsp",
+      "originalSsotPath": "core/workflow/deep-research-typespec-pipeline.tsp",
+      "bindingTrust": "default",
+      "bindingResolves": true,
+      "fanIn": 61,
+      "domain": "core",
+      "capability": "workflow-deep-research-typespec-pipeline",
+      "checkedOn": "2026-10-19",
+      "ageDays": 22,
+      "fresh": true,
+      "markdownPath": "docs/rhex/research/bimly-participant-tenancy-typespec-research.md",
+      "markdownBytes": 133170,
+      "groundedSources": 1,
+      "invariants": [
+        {
+          "statement": "The platform must not silently add contractual duties because a new template version contains more fields.",
+          "source": "derived",
+          "measurable": false,
+          "structural": true,
+          "normative": true,
+          "score": 80,
+          "quote": "The platform must not silently add contractual duties because a new template version contains more fields."
+        },
+        {
+          "statement": "All mandatory isolation, authority and integrity gates must pass.",
+          "source": "derived",
+          "measurable": false,
+          "structural": true,
+          "normative": true,
+          "score": 80,
+          "quote": "All mandatory isolation, authority and integrity gates must pass; product coverage can grow by admitting explicitly supported profiles."
+        }
+      ],
+      "topScore": 80,
+      "meanScore": 80,
+      "rank": 32
+    },
+    {
+      "studyId": "bimly-prioritized-research-agenda",
+      "title": "Bimly: prioritized research agenda for an AI-native BIM and AEC system",
+      "ssotContractPath": "core/workflow/deep-research-typespec-pipeline.tsp",
+      "originalSsotPath": "core/workflow/deep-research-typespec-pipeline.tsp",
+      "bindingTrust": "default",
+      "bindingResolves": true,
+      "fanIn": 61,
+      "domain": "core",
+      "capability": "workflow-deep-research-typespec-pipeline",
+      "checkedOn": "2026-10-19",
+      "ageDays": 22,
+      "fresh": true,
+      "markdownPath": "docs/rhex/research/bimly-prioritized-research-agenda.md",
+      "markdownBytes": 32789,
+      "groundedSources": 1,
+      "invariants": [
+        {
+          "statement": "Ambiguous identity reconciliation must remain visible; proximity alone must not silently assign identity.",
+          "source": "derived",
+          "measurable": false,
+          "structural": false,
+          "normative": true,
+          "score": 60,
+          "quote": "Ambiguous identity reconciliation must remain visible; proximity alone must not silently assign identity."
+        },
+        {
+          "statement": "A geometry-kernel selection matrix and adversarial corpus covering nearly coplanar faces, tiny gaps, large coordinates, self-intersections, and feature edits that change face numbering must be delivered.",
+          "source": "derived",
+          "measurable": false,
+          "structural": true,
+          "normative": true,
+          "score": 80,
+          "quote": "Experiment and deliverable: a geometry-kernel selection matrix and adversarial corpus covering nearly coplanar faces, tiny gaps, large coordinates, self-intersections, and feature edits that change face numbering."
+        },
+        {
+          "statement": "A vendor/version/feature matrix and a round-trip loss report must be delivered for IFC fidelity.",
+          "source": "derived",
+          "measurable": false,
+          "structural": true,
+          "normative": true,
+          "score": 80,
+          "quote": "Experiment and deliverable: a vendor/version/feature matrix and a round-trip loss report."
+        },
+        {
+          "statement": "Assert model invariants and recoverability must be done when injecting reorderings, duplicated operations, network partitions, and crashes.",
+          "source": "derived",
+          "measurable": false,
+          "structural": false,
+          "normative": true,
+          "score": 60,
+          "quote": "Inject reorderings, duplicated operations, network partitions, and crashes. Assert model invariants and recoverability; make the scope of deterministic simulation explicit."
+        }
+      ],
+      "topScore": 80,
+      "meanScore": 70,
+      "rank": 33
+    },
+    {
+      "studyId": "rhex-research-first-plan-two-zero-two-six-zero-nine-one-five",
+      "title": "RHEX: план research-first внедрения",
+      "ssotContractPath": "core/workflow/deep-research-typespec-pipeline.tsp",
+      "originalSsotPath": "core/workflow/deep-research-typespec-pipeline.tsp",
+      "bindingTrust": "default",
+      "bindingResolves": true,
+      "fanIn": 61,
+      "domain": "core",
+      "capability": "workflow-deep-research-typespec-pipeline",
+      "checkedOn": "2026-10-19",
+      "ageDays": 22,
+      "fresh": true,
+      "markdownPath": "docs/rhex/research/rhex-research-first-plan-two-zero-two-six-zero-nine-one-five.md",
+      "markdownBytes": 19818,
+      "groundedSources": 1,
+      "invariants": [
+        {
+          "statement": "TypeSpec remains the Single Source of Truth (SSOT); the canonical semantic IR connects independent Effect, Restate, WIT, Arrow, and evidence emitters.",
+          "source": "derived",
+          "measurable": false,
+          "structural": true,
+          "normative": true,
+          "score": 80,
+          "quote": "TypeSpec остаётся SSOT; canonical semantic IR соединяет независимые Effect, Restate, WIT, Arrow и evidence emitters."
+        },
+        {
+          "statement": "Four logical agent levels do not require four sequential RPC or LLM calls.",
+          "source": "derived",
+          "measurable": false,
+          "structural": false,
+          "normative": true,
+          "score": 60,
+          "quote": "Четыре логических уровня агентов не требуют четырёх последовательных RPC или LLM calls."
+        }
+      ],
+      "topScore": 80,
+      "meanScore": 70,
+      "rank": 34
+    },
+    {
+      "studyId": "validation-record",
+      "title": "Validation record",
+      "ssotContractPath": "core/workflow/deep-research-typespec-pipeline.tsp",
+      "originalSsotPath": "core/workflow/deep-research-typespec-pipeline.tsp",
+      "bindingTrust": "default",
+      "bindingResolves": true,
+      "fanIn": 61,
+      "domain": "core",
+      "capability": "workflow-deep-research-typespec-pipeline",
+      "checkedOn": "2026-10-19",
+      "ageDays": 22,
+      "fresh": true,
+      "markdownPath": "docs/rhex/research/validation-record.md",
+      "markdownBytes": 5176,
+      "groundedSources": 1,
+      "invariants": [
+        {
+          "statement": "TypeScript compilation must be strict and have `skipLibCheck` enabled.",
+          "source": "derived",
+          "measurable": false,
+          "structural": false,
+          "normative": true,
+          "score": 60,
+          "quote": "Strict project compilation; `skipLibCheck` enabled"
+        },
+        {
+          "statement": "TypeSpec checks must have auto decorators and union bases enabled, treating warnings as errors.",
+          "source": "derived",
+          "measurable": false,
+          "structural": true,
+          "normative": true,
+          "score": 80,
+          "quote": "Auto decorators and union bases enabled; warnings treated as errors"
+        }
+      ],
+      "topScore": 80,
+      "meanScore": 70,
+      "rank": 35
+    },
+    {
+      "studyId": "meta-harness-requirements",
+      "title": "Meta-harness feature requirements",
+      "ssotContractPath": "core/workflow/deep-research-typespec-pipeline.tsp",
+      "originalSsotPath": "core/workflow/deep-research-typespec-pipeline.tsp",
+      "bindingTrust": "default",
+      "bindingResolves": true,
+      "fanIn": 61,
+      "domain": "core",
+      "capability": "workflow-deep-research-typespec-pipeline",
+      "checkedOn": "2026-10-19",
+      "ageDays": 22,
+      "fresh": true,
+      "markdownPath": "docs/rhex/research/meta-harness-requirements.md",
+      "markdownBytes": 25725,
+      "groundedSources": 1,
+      "invariants": [
+        {
+          "statement": "Every contract declaration SHALL have ownership derived from the reviewed source package.",
+          "source": "derived",
+          "measurable": false,
+          "structural": true,
+          "normative": true,
+          "score": 80,
+          "quote": "MH-001 | P0 / Core | Every contract declaration SHALL have ownership derived from the reviewed source package."
+        },
+        {
+          "statement": "Core SHALL reject dependencies on RHEX, Platform and Bimly through imports, types, defaults or critical metadata.",
+          "source": "derived",
+          "measurable": false,
+          "structural": true,
+          "normative": true,
+          "score": 80,
+          "quote": "MH-002 | P0 / Core | Core SHALL reject dependencies on RHEX, Platform and Bimly through imports, types, defaults or critical metadata."
+        },
+        {
+          "statement": "Compilation SHALL only generate artifacts and diagnostics.",
+          "source": "derived",
+          "measurable": false,
+          "structural": false,
+          "normative": true,
+          "score": 60,
+          "quote": "MH-003 | P0 / Core | Compilation SHALL only generate artifacts and diagnostics."
+        },
+        {
+          "statement": "The checked graph SHALL normalize into a versioned owned IR retaining source provenance.",
+          "source": "derived",
+          "measurable": false,
+          "structural": false,
+          "normative": true,
+          "score": 45,
+          "quote": "MH-004 | P0 / Core | The checked graph SHALL normalize into a versioned owned IR retaining source provenance."
+        },
+        {
+          "statement": "Unknown mandatory semantics SHALL reject a target.",
+          "source": "derived",
+          "measurable": false,
+          "structural": false,
+          "normative": true,
+          "score": 60,
+          "quote": "MH-005 | P0 / Core | Unknown mandatory semantics SHALL reject a target."
+        },
+        {
+          "statement": "Generated artifacts SHALL be deterministic for the declared build inputs.",
+          "source": "derived",
+          "measurable": false,
+          "structural": true,
+          "normative": true,
+          "score": 80,
+          "quote": "MH-006 | P0 / Core | Generated artifacts SHALL be deterministic for the declared build inputs."
+        },
+        {
+          "statement": "Each output path SHALL have one owner and remain inside its output root.",
+          "source": "derived",
+          "measurable": false,
+          "structural": true,
+          "normative": true,
+          "score": 80,
+          "quote": "MH-007 | P0 / Core | Each output path SHALL have one owner and remain inside its output root."
+        }
+      ],
+      "topScore": 80,
+      "meanScore": 69,
+      "rank": 36
+    },
+    {
+      "studyId": "herdr-typespec-meta-harness-architecture-two-zero-two-six-zero-nine-two-one",
+      "title": "Herdr, TypeSpec and the local RHEX meta-harness",
+      "ssotContractPath": "core/workflow/deep-research-typespec-pipeline.tsp",
+      "originalSsotPath": "core/workflow/deep-research-typespec-pipeline.tsp",
+      "bindingTrust": "default",
+      "bindingResolves": true,
+      "fanIn": 61,
+      "domain": "core",
+      "capability": "workflow-deep-research-typespec-pipeline",
+      "checkedOn": "2026-10-19",
+      "ageDays": 22,
+      "fresh": true,
+      "markdownPath": "docs/rhex/research/herdr-typespec-meta-harness-architecture-two-zero-two-six-zero-nine-two-one.md",
+      "markdownBytes": 77728,
+      "groundedSources": 1,
+      "invariants": [
+        {
+          "statement": "A successful TypeSpec compilation must never start agents, install plugins, grant capabilities, publish an SDK, or modify a CAD model.",
+          "source": "derived",
+          "measurable": false,
+          "structural": false,
+          "normative": true,
+          "score": 45,
+          "quote": "A successful TypeSpec compilation must never start agents, install plugins, grant capabilities, publish an SDK, or modify a CAD model."
+        },
+        {
+          "statement": "Core must not import RHEX.",
+          "source": "derived",
+          "measurable": false,
+          "structural": true,
+          "normative": true,
+          "score": 80,
+          "quote": "Core must not import RHEX."
+        },
+        {
+          "statement": "RHEX must not import a platform instance or Bimly.",
+          "source": "derived",
+          "measurable": false,
+          "structural": true,
+          "normative": true,
+          "score": 80,
+          "quote": "RHEX must not import a platform instance or Bimly."
+        }
+      ],
+      "topScore": 80,
+      "meanScore": 68,
+      "rank": 37
+    },
+    {
+      "studyId": "implementation-handoff",
+      "title": "Implementation handoff: TypeSpec platform compiler",
+      "ssotContractPath": "core/workflow/deep-research-typespec-pipeline.tsp",
+      "originalSsotPath": "core/workflow/deep-research-typespec-pipeline.tsp",
+      "bindingTrust": "default",
+      "bindingResolves": true,
+      "fanIn": 61,
+      "domain": "core",
+      "capability": "workflow-deep-research-typespec-pipeline",
+      "checkedOn": "2026-10-19",
+      "ageDays": 22,
+      "fresh": true,
+      "markdownPath": "docs/rhex/research/implementation-handoff.md",
+      "markdownBytes": 6957,
+      "groundedSources": 1,
+      "invariants": [
+        {
+          "statement": "The IR schema must contain no compiler objects or product/provider imports.",
+          "source": "derived",
+          "measurable": false,
+          "structural": true,
+          "normative": true,
+          "score": 80,
+          "quote": "IR schema | Platform architect | No compiler objects or product/provider imports"
+        },
+        {
+          "statement": "Missing or bypassed policy blocks must cause candidate admission to fail.",
+          "source": "derived",
+          "measurable": false,
+          "structural": true,
+          "normative": true,
+          "score": 80,
+          "quote": "Mandatory validator | Compiler/security engineers | Missing or bypassed policy blocks candidate admission"
+        },
+        {
+          "statement": "A consumer that bypasses the TypeSpec validator must still be unable to publish an unqualified release.",
+          "source": "derived",
+          "measurable": false,
+          "structural": false,
+          "normative": true,
+          "score": 45,
+          "quote": "A consumer that bypasses the TypeSpec validator must still be unable to publish an unqualified release."
+        }
+      ],
+      "topScore": 80,
+      "meanScore": 68,
+      "rank": 38
+    },
+    {
+      "studyId": "bimly-express-arrow-typespec-research",
+      "title": "EXPRESS → TypeSpec → Memory-Mapped Arrow: Preserving Semantics, Polymorphism, and Strict Substrate/Tenant Separation",
+      "ssotContractPath": "core/workflow/deep-research-typespec-pipeline.tsp",
+      "originalSsotPath": "core/workflow/deep-research-typespec-pipeline.tsp",
+      "bindingTrust": "default",
+      "bindingResolves": true,
+      "fanIn": 61,
+      "domain": "core",
+      "capability": "workflow-deep-research-typespec-pipeline",
+      "checkedOn": "2026-10-19",
+      "ageDays": 22,
+      "fresh": true,
+      "markdownPath": "docs/rhex/research/bimly-express-arrow-typespec-research.md",
+      "markdownBytes": 58350,
+      "groundedSources": 1,
+      "invariants": [
+        {
+          "statement": "The system must strictly preserve inheritance graphs and attribute origin slots during schema compilation.",
+          "source": "derived",
+          "measurable": false,
+          "structural": true,
+          "normative": true,
+          "score": 80,
+          "quote": "Compile ISO 10303-11 (EXPRESS) schemas into a semantic intermediate representation, strictly preserve their inheritance graphs and attribute origin slots, and lower that representation into immutable Apache Arrow columnar batches grouped by observed runtime type combinations (archetype batches)."
+        },
+        {
+          "statement": "The RHEX core meta-framework must operate without hardcoded assumptions about building construction or IFC.",
+          "source": "derived",
+          "measurable": false,
+          "structural": false,
+          "normative": true,
+          "score": 45,
+          "quote": "Platform-Agnostic Substrate: RHEX has zero hardcoded assumptions about building construction or IFC."
+        },
+        {
+          "statement": "Bimly client applications and BFF servers must never link or execute native C++/Python EXPRESS parsers, Arrow buffer builders, or memory mappers directly.",
+          "source": "derived",
+          "measurable": false,
+          "structural": true,
+          "normative": true,
+          "score": 80,
+          "quote": "Client Isolation Law: Bimly client applications and BFF servers never link or execute native C++/Python EXPRESS parsers, Arrow buffer builders, or memory mappers directly."
+        },
+        {
+          "statement": "Ingestion of semantic attributes into Arrow columnar format must never invoke the geometry kernel.",
+          "source": "derived",
+          "measurable": false,
+          "structural": false,
+          "normative": true,
+          "score": 60,
+          "quote": "Strict Geometry Decoupling Law: Ingestion of semantic attributes into Arrow columnar format MUST NEVER invoke the geometry kernel (e.g. Open Cascade / OCCT)."
+        }
+      ],
+      "topScore": 80,
+      "meanScore": 66,
+      "rank": 39
+    },
+    {
+      "studyId": "core-hub-architect-planning-agent-prompt",
+      "title": "Core Hub — architect and planning agent prompt",
+      "ssotContractPath": "core/workflow/deep-research-typespec-pipeline.tsp",
+      "originalSsotPath": "core/workflow/deep-research-typespec-pipeline.tsp",
+      "bindingTrust": "default",
+      "bindingResolves": true,
+      "fanIn": 61,
+      "domain": "core",
+      "capability": "workflow-deep-research-typespec-pipeline",
+      "checkedOn": "2026-10-19",
+      "ageDays": 22,
+      "fresh": true,
+      "markdownPath": "docs/rhex/research/core-hub-architect-planning-agent-prompt.md",
+      "markdownBytes": 19305,
+      "groundedSources": 1,
+      "invariants": [
+        {
+          "statement": "TypeSpec is the semantic source of truth; TypeSpec is the requested baseline.",
+          "source": "derived",
+          "measurable": false,
+          "structural": false,
+          "normative": false,
+          "score": 45,
+          "quote": "TypeSpec is the semantic source of truth; TypeSpec is the requested baseline."
+        },
+        {
+          "statement": "Core must never import RHEX or Bimly namespaces.",
+          "source": "derived",
+          "measurable": false,
+          "structural": true,
+          "normative": true,
+          "score": 80,
+          "quote": "Core must never import RHEX or Bimly namespaces."
+        },
+        {
+          "statement": "The allowed dependency direction is Core primitives → Core capabilities → Core Hub composition → RHEX policy/composition → Bimly domain composition.",
+          "source": "derived",
+          "measurable": false,
+          "structural": true,
+          "normative": false,
+          "score": 65,
+          "quote": "Enforce the allowed dependency direction: Core primitives → Core capabilities → Core Hub composition → RHEX policy/composition → Bimly domain composition."
+        },
+        {
+          "statement": "UI visibility is never authorization enforcement.",
+          "source": "derived",
+          "measurable": false,
+          "structural": false,
+          "normative": true,
+          "score": 60,
+          "quote": "UI visibility is never authorization enforcement."
+        },
+        {
+          "statement": "Every operation must declare its actor/context requirements, input/output, typed errors, authorization scope, side effects, concurrency behavior, idempotency, cancellation, deadline, retries, audit consequences and compensation where relevant.",
+          "source": "derived",
+          "measurable": false,
+          "structural": false,
+          "normative": true,
+          "score": 45,
+          "quote": "Every operation must declare its actor/context requirements, input/output, typed errors, authorization scope, side effects, concurrency behavior, idempotency, cancellation, deadline, retries, audit consequences and compensation where relevant."
+        }
+      ],
+      "topScore": 80,
+      "meanScore": 59,
+      "rank": 40
+    },
+    {
+      "studyId": "bimly-engineering-reply-deep-research",
+      "title": "Bimly engineering reply: deep research and implementation readiness",
+      "ssotContractPath": "core/workflow/deep-research-typespec-pipeline.tsp",
+      "originalSsotPath": "core/workflow/deep-research-typespec-pipeline.tsp",
+      "bindingTrust": "default",
+      "bindingResolves": true,
+      "fanIn": 61,
+      "domain": "core",
+      "capability": "workflow-deep-research-typespec-pipeline",
+      "checkedOn": "2026-10-19",
+      "ageDays": 22,
+      "fresh": true,
+      "markdownPath": "docs/rhex/research/bimly-engineering-reply-deep-research.md",
+      "markdownBytes": 74993,
+      "groundedSources": 1,
+      "invariants": [
+        {
+          "statement": "The reply's correction rule for a complete scheduled-arrival trace is to record the actual schedule-to-outcome observations without generating another population of synthetic requests.",
+          "source": "derived",
+          "measurable": false,
+          "structural": false,
+          "normative": false,
+          "score": 30,
+          "quote": "Keep the reply's correction rule for a complete scheduled-arrival trace: record the actual schedule-to-outcome observations without generating another population of synthetic requests."
+        },
+        {
+          "statement": "A maximum watermark does not prove every required object and consumer is ready.",
+          "source": "derived",
+          "measurable": false,
+          "structural": false,
+          "normative": true,
+          "score": 45,
+          "quote": "A maximum watermark does not prove every required object and consumer is ready."
+        },
+        {
+          "statement": "Implementation gate requires demonstrating bounded peak memory under an enforced process limit, with source dependencies larger than RAM where that is a requirement.",
+          "source": "derived",
+          "measurable": false,
+          "structural": true,
+          "normative": true,
+          "score": 80,
+          "quote": "Implementation gate: demonstrate bounded peak memory under an enforced process limit, with source dependencies larger than RAM where that is a requirement."
+        },
+        {
+          "statement": "Every accepted revision must refer to a logically complete entity-version map, implemented with shared immutable chunks, a persistent map, or a materialized snapshot plus a bounded delta chain.",
+          "source": "derived",
+          "measurable": false,
+          "structural": false,
+          "normative": true,
+          "score": 45,
+          "quote": "Recommended baseline: every accepted revision refers to a logically complete entity-version map, implemented with shared immutable chunks, a persistent map, or a materialized snapshot plus a bounded delta chain."
+        },
+        {
+          "statement": "A complete spatial predicate must name the query and version, geometry/clearance envelope, frame, units, tolerances, semantic filters, temporal scope if relevant, and the revision against which it was evaluated.",
+          "source": "derived",
+          "measurable": false,
+          "structural": false,
+          "normative": true,
+          "score": 45,
+          "quote": "A complete spatial predicate names the query and version, geometry/clearance envelope, frame, units, tolerances, semantic filters, temporal scope if relevant, and the revision against which it was evaluated."
+        }
+      ],
+      "topScore": 80,
+      "meanScore": 49,
+      "rank": 41
+    },
+    {
+      "studyId": "autonomous-sdlc-cognitive-orchestration-features",
+      "title": "Ten Advanced Features for Autonomous Multi-Agent Cognitive Orchestration, Epistemic Uncertainty Gating, and Neuromorphic Acceleration",
+      "ssotContractPath": "core/agent/moe/emitter-mixture-of-agents.tsp",
+      "originalSsotPath": "core/agent/moe/emitter-mixture-of-agents.tsp",
+      "bindingTrust": "specific",
+      "bindingResolves": true,
+      "fanIn": 3,
+      "domain": "core",
+      "capability": "agent-moe-emitter-mixture-of-agents",
+      "checkedOn": "2026-10-02",
+      "ageDays": 39,
+      "fresh": true,
+      "markdownPath": "docs/rhex/research/autonomous-sdlc-cognitive-orchestration-features.md",
+      "markdownBytes": 1975,
+      "groundedSources": 1,
+      "invariants": [
+        {
+          "statement": "Priority(T) = (DeltaRevenue * P_success + lambda_sla * Urgency_metrics * Penalty_industry) / (Cost_compute + Cost_risk)",
+          "source": "contract",
+          "measurable": false,
+          "structural": false,
+          "normative": false,
+          "score": 70
+        }
+      ],
+      "topScore": 70,
+      "meanScore": 70,
+      "rank": 42
+    },
+    {
+      "studyId": "multimodal-interactions-deep-research-api",
+      "title": "frontier multimodal model Interactions API (`/v1beta/interactions`), Deep Research Agent & Thought Signatures",
+      "ssotContractPath": "core/providers/google/gemini-interactions-deep-research.tsp",
+      "originalSsotPath": "core/providers/google/gemini-interactions-deep-research.tsp",
+      "bindingTrust": "specific",
+      "bindingResolves": true,
+      "fanIn": 1,
+      "domain": "core",
+      "capability": "providers-google-gemini-interactions-deep-research",
+      "checkedOn": "2026-10-19",
+      "ageDays": 22,
+      "fresh": true,
+      "markdownPath": "docs/rhex/research/multimodal-interactions-deep-research-api.md",
+      "markdownBytes": 0,
+      "groundedSources": 2,
+      "invariants": [
+        {
+          "statement": "Deep Research runs execute asynchronously with background: true and checkpointed ThoughtSignature DAGs",
+          "source": "contract",
+          "measurable": false,
+          "structural": false,
+          "normative": false,
+          "score": 70
+        },
+        {
+          "statement": "Per-part GeminiMediaResolution bounds PDF page tokenization (70 LOW, 280 MEDIUM, 560 HIGH, 1120 ULTRA_HIGH)",
+          "source": "contract",
+          "measurable": false,
+          "structural": false,
+          "normative": false,
+          "score": 70
+        }
+      ],
+      "topScore": 70,
+      "meanScore": 70,
+      "rank": 43
+    },
+    {
+      "studyId": "edge-coding-models-and-accelerators",
+      "title": "Edge & Browser-Based Coding Models and Native Acceleration Architectures",
+      "ssotContractPath": "core/workflow/deep-research-typespec-pipeline.tsp",
+      "originalSsotPath": "core/workflow/deep-research-typespec-pipeline.tsp",
+      "bindingTrust": "default",
+      "bindingResolves": true,
+      "fanIn": 61,
+      "domain": "core",
+      "capability": "workflow-deep-research-typespec-pipeline",
+      "checkedOn": "2026-10-19",
+      "ageDays": 22,
+      "fresh": true,
+      "markdownPath": "docs/rhex/research/edge-coding-models-and-accelerators.md",
+      "markdownBytes": 4432,
+      "groundedSources": 1,
+      "invariants": [
+        {
+          "statement": "On 8GB/12GB devices (iPhone 16 Pro / iPad Pro), models $\\le 3\\text{B}$ parameters fit comfortably with remaining headroom for app state.",
+          "source": "derived",
+          "measurable": false,
+          "structural": false,
+          "normative": false,
+          "score": 45,
+          "quote": "On 8GB/12GB devices (iPhone 16 Pro / iPad Pro), models $\\le 3\\text{B}$ parameters fit comfortably with remaining headroom for app state."
+        },
+        {
+          "statement": "On macOS SDK 27.2 (24GB+ unified memory baseline on M-series chips), models up to $16\\text{B}$ MoE run with zero paging.",
+          "source": "derived",
+          "measurable": true,
+          "structural": false,
+          "normative": false,
+          "score": 70,
+          "quote": "On macOS SDK 27.2 (24GB+ unified memory baseline on M-series chips), models up to $16\\text{B}$ MoE run with zero paging."
+        },
+        {
+          "statement": "Gradients are computed for low-rank adapter matrices $A \\in \\mathbb{R}^{r \\times d}$ and $B \\in \\mathbb{R}^{k \\times r}$ where $r=8$ or $r=16$.",
+          "source": "derived",
+          "measurable": false,
+          "structural": true,
+          "normative": false,
+          "score": 65,
+          "quote": "Gradients computed for low-rank adapter matrices $A \\in \\mathbb{R}^{r \\times d}$ and $B \\in \\mathbb{R}^{k \\times r}$ ($r=8$ or $r=16$) while keeping base model weights quantized in 4-bit integer buffers."
+        },
+        {
+          "statement": "Training memory overhead is $\\sim 45\\text{ MB}$ additional VRAM for rank-16 adapters on a 1.5B model.",
+          "source": "derived",
+          "measurable": false,
+          "structural": true,
+          "normative": false,
+          "score": 65,
+          "quote": "Training memory overhead: $\\sim 45\\text{ MB}$ additional VRAM for rank-16 adapters on a 1.5B model."
+        },
+        {
+          "statement": "Model execution engines expose standard WIT 0.3 interfaces.",
+          "source": "derived",
+          "measurable": false,
+          "structural": false,
+          "normative": true,
+          "score": 60,
+          "quote": "Model execution engines expose standard WIT 0.3 interfaces (`interface model-runner { tokenize, infer-step, train-lora }`), enabling compilation into standard WebAssembly component modules."
+        }
+      ],
+      "topScore": 70,
+      "meanScore": 61,
+      "rank": 44
+    },
+    {
+      "studyId": "nano-model-bim-query-compilers",
+      "title": "**Autonomous Research-to-Code and Commercial Nano-Model BIM Query Compilers with Grammar Masks**",
+      "ssotContractPath": "core/workflow/deep-research-typespec-pipeline.tsp",
+      "originalSsotPath": "core/workflow/deep-research-typespec-pipeline.tsp",
+      "bindingTrust": "default",
+      "bindingResolves": true,
+      "fanIn": 61,
+      "domain": "core",
+      "capability": "workflow-deep-research-typespec-pipeline",
+      "checkedOn": "2026-10-19",
+      "ageDays": 22,
+      "fresh": true,
+      "markdownPath": "docs/rhex/research/nano-model-bim-query-compilers.md",
+      "markdownBytes": 724069,
+      "groundedSources": 1,
+      "invariants": [
+        {
+          "statement": "Every surface touched by the agent runtime is normalized to a canonical oneOf-of-tools JSON Schema Draft 2020-12 document.",
+          "source": "derived",
+          "measurable": false,
+          "structural": true,
+          "normative": false,
+          "score": 65,
+          "quote": "Every surface touched by the agent runtime is normalized to a canonical oneOf-of-tools JSON Schema Draft 2020-12 document, which serves as the floor representation from which EBNF (XGrammar), GBNF (llama.cpp and @intrinsicai/gbnfgen), Zod (typespec-mcp-server-js), and database DDLs are mechanically lowered24."
+        },
+        {
+          "statement": "Automatically injects unevaluatedProperties: { not: {} } into all emitted object schemas when seal-object-schemas is true.",
+          "source": "derived",
+          "measurable": false,
+          "structural": true,
+          "normative": false,
+          "score": 65,
+          "quote": "Automatically injects unevaluatedProperties: { not: {} } into all emitted object schemas, enforcing 100% parity between vLLM/XGrammar strict mode and llguidance/INSTAGRAMMAR32."
+        }
+      ],
+      "topScore": 65,
+      "meanScore": 65,
+      "rank": 45
+    },
+    {
+      "studyId": "typespec-rhex-platform-architecture",
+      "title": "TypeSpec as the contract compiler for Core, RHEX, Cloud, and Bimly",
+      "ssotContractPath": "core/workflow/deep-research-typespec-pipeline.tsp",
+      "originalSsotPath": "core/workflow/deep-research-typespec-pipeline.tsp",
+      "bindingTrust": "default",
+      "bindingResolves": true,
+      "fanIn": 61,
+      "domain": "core",
+      "capability": "workflow-deep-research-typespec-pipeline",
+      "checkedOn": "2026-10-19",
+      "ageDays": 22,
+      "fresh": true,
+      "markdownPath": "docs/rhex/research/typespec-rhex-platform-architecture.md",
+      "markdownBytes": 118719,
+      "groundedSources": 1,
+      "invariants": [
+        {
+          "statement": "An agent capable of editing `tspconfig.yaml` must not be able to authorize itself by deleting a linter entry.",
+          "source": "derived",
+          "measurable": false,
+          "structural": false,
+          "normative": true,
+          "score": 45,
+          "quote": "An agent capable of editing `tspconfig.yaml` must not be able to authorize itself by deleting a linter entry."
+        },
+        {
+          "statement": "No provider import is allowed in Core/domain contracts.",
+          "source": "derived",
+          "measurable": false,
+          "structural": true,
+          "normative": false,
+          "score": 65,
+          "quote": "no provider import in Core/domain contracts"
+        },
+        {
+          "statement": "No secrets are permitted in the source code.",
+          "source": "derived",
+          "measurable": false,
+          "structural": false,
+          "normative": false,
+          "score": 45,
+          "quote": "no secrets in source"
+        }
+      ],
+      "topScore": 65,
+      "meanScore": 52,
+      "rank": 46
+    },
+    {
+      "studyId": "telemetry-arrow-abi-and-sandboxing",
+      "title": "**High-Assurance Telemetry, Zero-Copy Device Columnar Interchange, and Multi-Tier Sandboxed Execution in Spatial-BIM Systems**",
+      "ssotContractPath": "core/workflow/deep-research-typespec-pipeline.tsp",
+      "originalSsotPath": "core/workflow/deep-research-typespec-pipeline.tsp",
+      "bindingTrust": "default",
+      "bindingResolves": true,
+      "fanIn": 61,
+      "domain": "core",
+      "capability": "workflow-deep-research-typespec-pipeline",
+      "checkedOn": "2026-10-19",
+      "ageDays": 22,
+      "fresh": true,
+      "markdownPath": "docs/rhex/research/telemetry-arrow-abi-and-sandboxing.md",
+      "markdownBytes": 777170,
+      "groundedSources": 1,
+      "invariants": [
+        {
+          "statement": "At-recording correction (recordValueWithExpectedInterval) and post-recording correction (copyCorrectedForCoordinatedOmission) are mutually exclusive.",
+          "source": "derived",
+          "measurable": false,
+          "structural": false,
+          "normative": false,
+          "score": 45,
+          "quote": "A strict operational invariant governs this mechanism: **at-recording correction** (recordValueWithExpectedInterval) and **post-recording correction** (copyCorrectedForCoordinatedOmission) are mutually exclusive15."
+        },
+        {
+          "statement": "Any BIM graph indexer or multi-tenant analytical store using IfcProject.GlobalId as a primary partition key will suffer catastrophic cross-tenant graph merging and silent entity overwrites unless records are namespaced by content-addressable file digest (sha256).",
+          "source": "derived",
+          "measurable": false,
+          "structural": true,
+          "normative": false,
+          "score": 65,
+          "quote": "Consequently, any BIM graph indexer (such as pipelines indexing IFC files into ChromaDB, BM25, and Neo4j55) or multi-tenant analytical store that uses IfcProject.GlobalId as a primary partition key will suffer catastrophic cross-tenant graph merging and silent entity overwrites unless records are namespaced by content-addressable file digest (sha256)"
+        },
+        {
+          "statement": "Every chunk yielded by get_next must reside on the mandatory stream-level device type.",
+          "source": "derived",
+          "measurable": false,
+          "structural": false,
+          "normative": true,
+          "score": 45,
+          "quote": "Mandatory stream-level device type; every chunk yielded by get_next must reside on this device type3"
+        },
+        {
+          "statement": "get_next signals end-of-stream when its return value is 0 and out->array.release is NULL.",
+          "source": "derived",
+          "measurable": false,
+          "structural": false,
+          "normative": false,
+          "score": 45,
+          "quote": "end-of-stream is signaled when return is 0 and out->array.release == NULL [cite: 3, 18]"
+        }
+      ],
+      "topScore": 65,
+      "meanScore": 50,
+      "rank": 47
+    },
+    {
+      "studyId": "alloy-js-reactive-synthesis-architecture",
+      "title": "**Alloy.js Reactive Synthesis, Symbol Topologies, and Deterministic Code-Generation Toolchains**",
+      "ssotContractPath": "core/workflow/deep-research-typespec-pipeline.tsp",
+      "originalSsotPath": "core/workflow/deep-research-typespec-pipeline.tsp",
+      "bindingTrust": "default",
+      "bindingResolves": true,
+      "fanIn": 61,
+      "domain": "core",
+      "capability": "workflow-deep-research-typespec-pipeline",
+      "checkedOn": "2026-10-19",
+      "ageDays": 22,
+      "fresh": true,
+      "markdownPath": "docs/rhex/research/alloy-js-reactive-synthesis-architecture.md",
+      "markdownBytes": 388042,
+      "groundedSources": 1,
+      "invariants": [
+        {
+          "statement": "User-defined types that reference third-party library constructs or shared runtime validators must emit a standalone declaration for the referenced construct on demand and subsequently link all call sites to that emitted declaration.",
+          "source": "derived",
+          "measurable": false,
+          "structural": false,
+          "normative": true,
+          "score": 60,
+          "quote": "In complex multi-pass emitters like typespec-zod, user-defined types that reference third-party library constructs or shared runtime validators must emit a standalone declaration for the referenced construct on demand and subsequently link all call sites to that emitted declaration5."
+        }
+      ],
+      "topScore": 60,
+      "meanScore": 60,
+      "rank": 48
+    },
+    {
+      "studyId": "autonomous-sdlc-formal-verification-features",
+      "title": "Ten Advanced Features for Formal Invariant Proving, Neuro-Symbolic Tactic Synthesis, and Mathematical Soundness Infrastructure",
+      "ssotContractPath": "core/verification/neuro-symbolic-compliance.tsp",
+      "originalSsotPath": "core/verification/neuro-symbolic-compliance.tsp",
+      "bindingTrust": "specific",
+      "bindingResolves": false,
+      "fanIn": 1,
+      "domain": "core",
+      "capability": "verification-neuro-symbolic-compliance",
+      "checkedOn": "2026-10-02",
+      "ageDays": 39,
+      "fresh": true,
+      "markdownPath": "docs/rhex/research/autonomous-sdlc-formal-verification-features.md",
+      "markdownBytes": 1885,
+      "groundedSources": 1,
+      "invariants": [
+        {
+          "statement": "No statutory or security-critical mutation ships without a verified Z3 unsat proof or cite-test pass",
+          "source": "contract",
+          "measurable": false,
+          "structural": false,
+          "normative": false,
+          "score": 60
+        }
+      ],
+      "topScore": 60,
+      "meanScore": 60,
+      "rank": 49
+    },
+    {
+      "studyId": "bimly-architecture-technical-review",
+      "title": "Bimly architecture: technical review and corrected implementation contract",
+      "ssotContractPath": "core/workflow/deep-research-typespec-pipeline.tsp",
+      "originalSsotPath": "core/workflow/deep-research-typespec-pipeline.tsp",
+      "bindingTrust": "default",
+      "bindingResolves": true,
+      "fanIn": 61,
+      "domain": "core",
+      "capability": "workflow-deep-research-typespec-pipeline",
+      "checkedOn": "2026-10-19",
+      "ageDays": 22,
+      "fresh": true,
+      "markdownPath": "docs/rhex/research/bimly-architecture-technical-review.md",
+      "markdownBytes": 49558,
+      "groundedSources": 1,
+      "invariants": [
+        {
+          "statement": "SPSC queues require exactly one producer and consumer per queue.",
+          "source": "derived",
+          "measurable": false,
+          "structural": false,
+          "normative": true,
+          "score": 60,
+          "quote": "SPSC queues require exactly one producer and consumer per queue."
+        }
+      ],
+      "topScore": 60,
+      "meanScore": 60,
+      "rank": 50
+    },
+    {
+      "studyId": "bimly-core-contracts-deep-research",
+      "title": "Bimly: Deep Research on the Core Engineering Contracts",
+      "ssotContractPath": "core/workflow/deep-research-typespec-pipeline.tsp",
+      "originalSsotPath": "core/workflow/deep-research-typespec-pipeline.tsp",
+      "bindingTrust": "default",
+      "bindingResolves": true,
+      "fanIn": 61,
+      "domain": "core",
+      "capability": "workflow-deep-research-typespec-pipeline",
+      "checkedOn": "2026-10-19",
+      "ageDays": 22,
+      "fresh": true,
+      "markdownPath": "docs/rhex/research/bimly-core-contracts-deep-research.md",
+      "markdownBytes": 105429,
+      "groundedSources": 1,
+      "invariants": [
+        {
+          "statement": "For blocking delivery requirements, the system must wait for a result matching the candidate revision or refuse that publication.",
+          "source": "derived",
+          "measurable": false,
+          "structural": false,
+          "normative": true,
+          "score": 60,
+          "quote": "For blocking delivery requirements, wait for a result matching the candidate revision or refuse that publication."
+        }
+      ],
+      "topScore": 60,
+      "meanScore": 60,
+      "rank": 51
+    },
+    {
+      "studyId": "jev-oss-alternatives-effect-four-typespec-research-two-zero-two-six-zero-nine-two-two",
+      "title": "Open-source Jev alternatives and Effect 4 integration",
+      "ssotContractPath": "core/workflow/deep-research-typespec-pipeline.tsp",
+      "originalSsotPath": "core/workflow/deep-research-typespec-pipeline.tsp",
+      "bindingTrust": "default",
+      "bindingResolves": true,
+      "fanIn": 61,
+      "domain": "core",
+      "capability": "workflow-deep-research-typespec-pipeline",
+      "checkedOn": "2026-10-19",
+      "ageDays": 22,
+      "fresh": true,
+      "markdownPath": "docs/rhex/research/jev-oss-alternatives-effect-four-typespec-research-two-zero-two-six-zero-nine-two-two.md",
+      "markdownBytes": 41164,
+      "groundedSources": 1,
+      "invariants": [
+        {
+          "statement": "Effect requires a distribution sum within 1e-6 of one.",
+          "source": "derived",
+          "measurable": false,
+          "structural": false,
+          "normative": true,
+          "score": 60,
+          "quote": "Its HTTP serializer rounds probabilities to two decimal places; Effect requires a distribution sum within `1e-6` of one."
+        }
+      ],
+      "topScore": 60,
+      "meanScore": 60,
+      "rank": 52
+    },
+    {
+      "studyId": "ai-planning-agent-specification",
+      "title": "**Architectural Specification, Formal EARS pSLO Requirements, and TypeSpec Compiler Governance for a High-Risk Enterprise AI-First Planning Agent**",
+      "ssotContractPath": "core/workflow/deep-research-typespec-pipeline.tsp",
+      "originalSsotPath": "core/workflow/deep-research-typespec-pipeline.tsp",
+      "bindingTrust": "default",
+      "bindingResolves": true,
+      "fanIn": 61,
+      "domain": "core",
+      "capability": "workflow-deep-research-typespec-pipeline",
+      "checkedOn": "2026-10-19",
+      "ageDays": 22,
+      "fresh": true,
+      "markdownPath": "docs/rhex/research/ai-planning-agent-specification.md",
+      "markdownBytes": 177057,
+      "groundedSources": 1,
+      "invariants": [
+        {
+          "statement": "Local stdio MCP servers are strictly prohibited in shared or production environments.",
+          "source": "derived",
+          "measurable": false,
+          "structural": false,
+          "normative": true,
+          "score": 60,
+          "quote": "Local stdio MCP servers inherit the host process's operating system permissions and are strictly prohibited in shared or production environments"
+        },
+        {
+          "statement": "Every remote MCP connection must enforce mutual TLS and OAuth 2.0 token scoping.",
+          "source": "derived",
+          "measurable": false,
+          "structural": false,
+          "normative": true,
+          "score": 45,
+          "quote": "Every remote MCP connection enforces mutual TLS and OAuth 2.0 token scoping with automated token rotation and revocation, rejecting unauthenticated tool discovery or invocation"
+        },
+        {
+          "statement": "The faithfulness threshold must be greater than or equal to 0.97 to avoid violating the mandatory hallucination bound.",
+          "source": "derived",
+          "measurable": false,
+          "structural": false,
+          "normative": true,
+          "score": 45,
+          "quote": "hallucinationBoundExceeded: paramMessage`Faithfulness threshold on \"${\"targetName\"}\" is ${\"actualValue\"}, violating the mandatory < 3% hallucination bound (faithfulnessMin >= 0.97).`"
+        },
+        {
+          "statement": "The minimum statistical power bound for an evaluation dataset must be 250 samples.",
+          "source": "derived",
+          "measurable": false,
+          "structural": false,
+          "normative": true,
+          "score": 45,
+          "quote": "sampleSizeTooSmall: paramMessage`Evaluation dataset \"${\"datasetUrn\"}\" specifies minSampleSize=${\"actualSize\"}, which is below the minimum statistical power bound of 250 samples.`"
+        },
+        {
+          "statement": "Diagnostics inside a TypeSpec linter rule must always be emitted via context.reportDiagnostic({ target, ... }) rather than calling program.reportDiagnostic directly.",
+          "source": "derived",
+          "measurable": false,
+          "structural": false,
+          "normative": true,
+          "score": 60,
+          "quote": "Critically, inside a TypeSpec linter rule, diagnostics must always be emitted via context.reportDiagnostic({ target, ... }) rather than calling program.reportDiagnostic directly57."
+        },
+        {
+          "statement": "The rule must verify 100% EARS pSLO coverage on all agent operations.",
+          "source": "derived",
+          "measurable": false,
+          "structural": false,
+          "normative": true,
+          "score": 45,
+          "quote": "This rule visits every operation in the AST to verify 100% EARS pSLO coverage"
+        },
+        {
+          "statement": "The EARS statement must conform to the five canonical syntactic patterns.",
+          "source": "derived",
+          "measurable": false,
+          "structural": false,
+          "normative": true,
+          "score": 45,
+          "quote": "verify that the EARS statement conforms to the five canonical syntactic patterns"
+        },
+        {
+          "statement": "Every operation decorated with @otelGenAiSpan(\"execute_tool\", ...) or @mcpToolBoundary must declare a Remote HTTP MCP boundary.",
+          "source": "derived",
+          "measurable": false,
+          "structural": false,
+          "normative": true,
+          "score": 45,
+          "quote": "It inspects every operation decorated with @otelGenAiSpan(\"execute_tool\", ...) or @mcpToolBoundary and verifies that the operation declares a Remote HTTP MCP boundary"
+        },
+        {
+          "statement": "Every model parameter passed into an operation must be decorated with @dualLlmIsolation.",
+          "source": "derived",
+          "measurable": false,
+          "structural": false,
+          "normative": true,
+          "score": 45,
+          "quote": "that every model parameter passed into the operation is decorated with @dualLlmIsolation proving it was sanitized by the QuarantinedReader or verified by the SymbolicDomainCore"
+        },
+        {
+          "statement": "The MCP boundary must mandate per-session identity and human oversight signatures.",
+          "source": "derived",
+          "measurable": false,
+          "structural": false,
+          "normative": true,
+          "score": 45,
+          "quote": "and that the MCP boundary mandates per-session identity and human oversight signatures"
+        }
+      ],
+      "topScore": 60,
+      "meanScore": 48,
+      "rank": 53
+    },
+    {
+      "studyId": "rhex-final-architecture",
+      "title": "RHEX: final architecture and independent evaluation",
+      "ssotContractPath": "core/workflow/deep-research-typespec-pipeline.tsp",
+      "originalSsotPath": "core/workflow/deep-research-typespec-pipeline.tsp",
+      "bindingTrust": "default",
+      "bindingResolves": true,
+      "fanIn": 61,
+      "domain": "core",
+      "capability": "workflow-deep-research-typespec-pipeline",
+      "checkedOn": "2026-10-19",
+      "ageDays": 22,
+      "fresh": true,
+      "markdownPath": "docs/rhex/research/rhex-final-architecture.md",
+      "markdownBytes": 63580,
+      "groundedSources": 1,
+      "invariants": [
+        {
+          "statement": "The native host must have a lifetime lock for its duration.",
+          "source": "derived",
+          "measurable": false,
+          "structural": false,
+          "normative": true,
+          "score": 45,
+          "quote": "The host acquires a nonblocking kernel lock on a stable file and holds the descriptor until shutdown."
+        },
+        {
+          "statement": "The compiler process must run at most one active compilation per compiler instance.",
+          "source": "derived",
+          "measurable": false,
+          "structural": false,
+          "normative": true,
+          "score": 45,
+          "quote": "The compiler process owns a native host adapter, parse cache, bounded SourceFile cache, configuration results, and at most one reusable Program per active compilation key."
+        }
+      ],
+      "topScore": 45,
+      "meanScore": 45,
+      "rank": 54
+    },
+    {
+      "studyId": "neuro-symbolic-verification-in-engineering",
+      "title": "**Neuro-Symbolic Lean 4 Verification, Alethe Proof Replay, and Certified Physics-Informed Surrogates in Architectural BIM and Geotechnical Engineering**",
+      "ssotContractPath": "core/workflow/deep-research-typespec-pipeline.tsp",
+      "originalSsotPath": "core/workflow/deep-research-typespec-pipeline.tsp",
+      "bindingTrust": "default",
+      "bindingResolves": true,
+      "fanIn": 61,
+      "domain": "core",
+      "capability": "workflow-deep-research-typespec-pipeline",
+      "checkedOn": "2026-10-19",
+      "ageDays": 22,
+      "fresh": true,
+      "markdownPath": "docs/rhex/research/neuro-symbolic-verification-in-engineering.md",
+      "markdownBytes": 825462,
+      "groundedSources": 1,
+      "invariants": [
+        {
+          "statement": "The deployed system must certify that the trained neural network weights executing in finite-precision floating-point arithmetic never violate those bounds over the admissible soil parameter domain.",
+          "source": "derived",
+          "measurable": false,
+          "structural": false,
+          "normative": true,
+          "score": 45,
+          "quote": "the deployed system must also certify that the trained neural network weights executing in finite-precision floating-point arithmetic never violate those bounds over the admissible soil parameter domain ![][image55] (spanning cohesion ![][image56], internal friction angle ![][image57], unit weight ![][image58], and pore-water pressure ratio ![][image59])4."
+        },
+        {
+          "statement": "The global and local stability conditions are formally discharged across the admissible soil parameter domain using complete non-linear real SMT solving.",
+          "source": "derived",
+          "measurable": false,
+          "structural": false,
+          "normative": false,
+          "score": 30,
+          "quote": "The global and local stability conditions (![][image70] on ![][image71]) are then formally discharged across ![][image55] using ![][image39]\\-complete non-linear real SMT solving (dReal within LyZNet) alongside TorchLean's Lyapunov.lean formalization and lean-crush SMT proof replay15."
+        }
+      ],
+      "topScore": 45,
+      "meanScore": 38,
+      "rank": 55
+    },
+    {
+      "studyId": "google-ai-studio-programmatic-api-extraction",
+      "title": "model provider studio & multimodal AI harness Developer API Programmatic Extraction Report",
+      "ssotContractPath": "core/workflow/deep-research-typespec-pipeline.tsp",
+      "originalSsotPath": "core/workflow/deep-research-typespec-pipeline.tsp",
+      "bindingTrust": "default",
+      "bindingResolves": true,
+      "fanIn": 61,
+      "domain": "core",
+      "capability": "workflow-deep-research-typespec-pipeline",
+      "checkedOn": "2026-10-19",
+      "ageDays": 22,
+      "fresh": true,
+      "markdownPath": "docs/rhex/research/google-ai-studio-programmatic-api-extraction.md",
+      "markdownBytes": 3759,
+      "groundedSources": 1,
+      "invariants": [
+        {
+          "statement": "Every extracted prompt is persisted into a Markdown file in `docs/rhex/research/` and a dedicated `.research.tsp` file in `core/research/studies/`.",
+          "source": "derived",
+          "measurable": false,
+          "structural": false,
+          "normative": false,
+          "score": 30,
+          "quote": "Channel 4 (Dual `.md` + `.research.tsp` Repository Persistence): Persists every extracted prompt and API inventory into `docs/rhex/research/*.md`, `core/research/studies/*.research.tsp`, and `generated/google-ai-studio-extracted-state.json`."
+        }
+      ],
+      "topScore": 30,
+      "meanScore": 30,
+      "rank": 56
+    }
+  ],
+  "filteredOut": [
+    {
+      "study": "ai-planning-agent-specification",
+      "statement": "Every refusal boundary must be verified by executing at least adversarial inputs that must trigger a refusal and benign boundary inputs that must not be over-blocked.",
+      "why": "quantifier with no value"
+    },
+    {
+      "study": "aistudio-eurocode-en-one-nine-nine-two-smt-verifier-prompt",
+      "statement": "The model must verify Clause 6.2.2 shear resistance V_Rd,c against the uploaded Eurocode PDF in File Search Store.",
+      "why": "prompt instruction, not system invariant"
+    },
+    {
+      "study": "aistudio-eurocode-en-one-nine-nine-two-smt-verifier-prompt",
+      "statement": "The model must verify C_Rd,c = 0.18 / gamma_c with gamma_c = 1.50.",
+      "why": "prompt instruction, not system invariant"
+    },
+    {
+      "study": "bimly-architecture-technical-review",
+      "statement": "Zero-copy is a property of a particular transfer with compatible ownership and layout.",
+      "why": "definition"
+    },
+    {
+      "study": "bimly-architecture-technical-review",
+      "statement": "A 2 GB cap for 100 million source triangles is a benchmark hypothesis.",
+      "why": "hypothesis, not constraint"
+    },
+    {
+      "study": "bimly-architecture-technical-review",
+      "statement": "A million simulated cycles is a workload count, not a correctness proof.",
+      "why": "meta-commentary"
+    },
+    {
+      "study": "bimly-prioritized-research-agenda",
+      "statement": "Byte-identical exports are not the general interoperability criterion.",
+      "why": "meta-commentary"
+    },
+    {
+      "study": "jev-oss-alternatives-effect-four-typespec-research-two-zero-two-six-zero-nine-two-two",
+      "statement": "The ModernBERT zero-shot model has 149.6M encoder cross-encoder.",
+      "why": "garbled fact"
+    },
+    {
+      "study": "rhex-research-first-plan-two-zero-two-six-zero-nine-one-five",
+      "statement": "The Node version used is 26.8.2.",
+      "why": "version fact"
+    },
+    {
+      "study": "rhex-research-first-plan-two-zero-two-six-zero-nine-one-five",
+      "statement": "The npm version used is 12.0.2.",
+      "why": "version fact"
+    },
+    {
+      "study": "rhex-research-first-plan-two-zero-two-six-zero-nine-one-five",
+      "statement": "The TypeScript version used is 7.0.2.",
+      "why": "version fact"
+    }
+  ],
+  "rejectedInference": [
+    {
+      "study": "edge-coding-models-and-accelerators",
+      "wouldHaveBeen": "core/agent/moe/emitter-management-moe.tsp",
+      "kept": "core/workflow/deep-research-typespec-pipeline.tsp"
+    },
+    {
+      "study": "rhex-research-first-plan-two-zero-two-six-zero-nine-one-five",
+      "wouldHaveBeen": "core/effect-typespec-emitter/plugin/catalog.tsp",
+      "kept": "core/workflow/deep-research-typespec-pipeline.tsp"
+    }
+  ]
+}

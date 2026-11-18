@@ -1,0 +1,24 @@
+{
+  "generatedAt": "2026-11-10T21:10:56.314Z",
+  "checked": 147,
+  "literal": 145,
+  "literalButShort": 8,
+  "unverified": 2,
+  "emptyQuote": 0,
+  "failures": [
+    {
+      "studyId": "bimly-express-arrow-typespec-research",
+      "statement": "The memory cost for storing polymorphic type membership is approximately A * ceil(T/64) * 8 bytes.",
+      "quote": "A dense table for A observed archetypes and T entity types costs approximately: Memory Cost = A × ≥₁ ≠ T/64 ∘ 8 bytes",
+      "why": "quote not found verbatim in source",
+      "statementKey": "the memory cost for storing polymorphic type membership is approximately a * ceil(t/64) * 8 bytes."
+    },
+    {
+      "studyId": "ai-planning-agent-specification",
+      "statement": "Probabilistic SLO parameters must be in the interval (0.0, 1.0].",
+      "quote": "default: paramMessage`Probabilistic SLO parameter \"${\"metricName\"}\" on \"${\"targetName\"}\" must be in the interval (0.0, 1.0\"], but received ${\"actualValue\"}.`",
+      "why": "quote not found verbatim in source",
+      "statementKey": "probabilistic slo parameters must be in the interval (0.0, 1.0]."
+    }
+  ]
+}

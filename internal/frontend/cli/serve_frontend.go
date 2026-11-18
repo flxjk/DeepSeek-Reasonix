@@ -20,11 +20,9 @@ import (
 	"reasonix/internal/base/secrets"
 	"reasonix/internal/contract/config"
 	"reasonix/internal/contract/event"
-	"reasonix/internal/contract/surface"
 	"reasonix/internal/ext/mcpsetup"
 	"reasonix/internal/frontend/serve"
 	"reasonix/internal/frontend/termrender"
-	"reasonix/internal/platform/telemetry"
 	"reasonix/internal/session/control"
 )
 
@@ -321,15 +319,6 @@ func runServeWithOptions(args []string, opts serveRunOptions) int {
 	bc := serve.NewBroadcaster()
 	cfg, _ := config.Load()
 
-	// Counters for this surface. Enabled() is fail-closed and this frontend is
-	// not interactive, so "auto" reports nothing — a headless server counts only
-	// where telemetry was turned on deliberately. Wrap is nil-safe.
-	reporter := startCLITelemetryReporter(telemetry.Options{
-		Mode: cfg.CLITelemetryMode(), Version: opts.version, Surface: surface.Serve,
-		HomeDir: config.ReasonixHomeDir(), Proxy: cfg.NetworkProxySpec(),
-		Language: cfg.Language,
-	})
-
 	// Build serve config, merging CLI flags over config file.
 	serveCfg, code := serveConfigFromFlags(opts.command, authExplicit, cfg.Serve, serveFlagValues{
 		auth: *auth, token: *token, tokenFile: *tokenFile,
@@ -377,7 +366,7 @@ func runServeWithOptions(args []string, opts serveRunOptions) int {
 	// Keep the browser reachable when the selected provider has no saved key.
 	// The loopback-only provider setup surface stores the missing credential and
 	// rebuilds this controller in place before the normal web UI is exposed.
-	paneSink := reporter.Wrap(bc)
+	paneSink := bc
 	ctrl, err := setupProfileWithOverrides(ctx, *model, *maxSteps, false, paneSink, profile, cliBuildOverrides{
 		AgentComposition: freshCompositionName(*agentComposition, resumeSession), Composition: resumedComposition(resumeSession),
 		NativeSurfaces: true,
@@ -414,7 +403,7 @@ func runServeWithOptions(args []string, opts serveRunOptions) int {
 
 	// A hub, so this frontend drives several sessions at once the way the studio
 	// window does. The session this command was started for is the first pane.
-	hub := serve.NewHub(serve.HubOptions{Serve: serveCfg, NativeSurfaces: true, DecorateSink: reporter.Wrap, ProviderResolver: providerResolver, Page: pageOrWarn(*page)})
+	hub := serve.NewHub(serve.HubOptions{Serve: serveCfg, NativeSurfaces: true, ProviderResolver: providerResolver, Page: pageOrWarn(*page)})
 	adoptFirstPane(hub, ctrl, bc, paneSink, serveCfg, leases)
 	return runServeFrontend(ctrl, hub, serveCfg, serveFrontendOptions{
 		command: opts.command, address: *addr,

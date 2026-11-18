@@ -17,11 +17,10 @@ var (
 	volcengineArkModel = "ark-code-latest"
 )
 
-// OpenRouter credits usage to the app named by HTTP-Referer; without it the
-// traffic is anonymous in its rankings.
+// OpenRouter reads these to label the traffic it serves. It carries no URL: the
+// preset names the app without pointing anywhere.
 func openRouterAttributionHeaders() map[string]string {
 	return map[string]string{
-		"HTTP-Referer":            "https://reasonix.io",
 		"X-OpenRouter-Title":      "Reasonix",
 		"X-OpenRouter-Categories": "cli-agent",
 	}

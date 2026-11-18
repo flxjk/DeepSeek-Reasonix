@@ -204,9 +204,6 @@ export interface PeersSettings {
   // Ceilings on chained and simultaneous dispatches; 0 removes a ceiling.
   max_dispatch_depth: number;
   max_dispatched_sessions: number;
-  // The user's standing yes for open_projects to add folders inside the session's
-  // own workspace without a card; it applies at the next call.
-  open_nested: boolean;
   path: string;
   applies: "next_turn";
   pending: boolean;
@@ -221,7 +218,6 @@ export interface PeersSettingsEdit {
   release_projects?: string[];
   max_dispatch_depth?: number;
   max_dispatched_sessions?: number;
-  open_nested?: boolean;
 }
 
 export type PeerRemember = "project" | "none";
@@ -319,22 +315,6 @@ export interface SearxngProbe {
 }
 
 export type WebAccessPatch = Partial<Pick<WebAccessSettings, "search_backends" | "searxng_url" | "search_paid_allowed" | "fetch_backends" | "fetch_paid_allowed" | "video_url_passthrough">>;
-
-// The opt-in OpenTelemetry trace export. headerEnvSet says the named variable
-// has a value now; the value itself is never read back. A save reaches sessions
-// opened afterwards, not the ones already running.
-export interface ObservabilitySettings {
-  enabled: boolean;
-  endpoint: string;
-  headerName: string;
-  headerEnv: string;
-  serviceName: string;
-  headerEnvSet: boolean;
-  path: string;
-  applies: string;
-}
-
-export type ObservabilityPatch = Partial<Pick<ObservabilitySettings, "enabled" | "endpoint" | "headerName" | "headerEnv" | "serviceName">>;
 
 // Whether the person is told when their feedback level goes up; the user file
 // holds it, and it starts off.

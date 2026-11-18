@@ -1,4 +1,3 @@
-import { FEEDBACK_RETIRED } from "../feedbackchannel";
 import { t } from "../i18n";
 import { FeedbackBadge } from "./feedbackentry";
 import { useDestinations, type Mark } from "./navdest";
@@ -60,13 +59,11 @@ export function Nav({ at, onGo, onFiles, onHome, onRail, onFeedback, onNew, feed
         {[HOME, ...destinations].map(btn)}
       </div>
       <div className="navgrp foot">
-        {!FEEDBACK_RETIRED && (
-          <button className="navbtn" data-action="feedback.open" onClick={onFeedback}>
-            <StudioIcon name="feedback" aria-hidden="true" />
-            <span className="navhint" role="tooltip">{t("common.send_feedback")}</span>
-            <FeedbackBadge unread={feedbackUnread} />
-          </button>
-        )}
+        <button className="navbtn" data-action="feedback.open" onClick={onFeedback}>
+          <StudioIcon name="feedback" aria-hidden="true" />
+          <span className="navhint" role="tooltip">{t("common.send_feedback")}</span>
+          <FeedbackBadge unread={feedbackUnread} />
+        </button>
         {FOOT.map(btn)}
       </div>
     </nav>

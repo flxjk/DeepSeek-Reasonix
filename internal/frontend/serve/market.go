@@ -153,11 +153,6 @@ func (s *Server) marketRun(w http.ResponseWriter, r *http.Request, apply bool) {
 		Home:         config.ReasonixHomeDir(),
 		NewInstaller: market.NewInstallSource(s.ctl().WorkspaceRoot(), marketHTTP(), s.ctl().DisconnectMCPServer),
 	}
-	if apply {
-		if key := s.marketInstallKey(r); key != "" {
-			svc.Report, svc.InstallKey = marketReporter(marketHTTP()), key
-		}
-	}
 	run := svc.Plan
 	if apply {
 		run = svc.Install

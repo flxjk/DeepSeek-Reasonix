@@ -60,6 +60,5 @@ func (b *builder) wireMCP() error {
 		prev := b.cleanup
 		b.cleanup = func() { prev(); _ = proxy.Close() }
 	}
-	b.cleanup = closeAfter(b.cleanup, b.trace)
 	return nil
 }

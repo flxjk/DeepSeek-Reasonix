@@ -54,6 +54,10 @@ CREATE TABLE IF NOT EXISTS reports (
 
 CREATE INDEX IF NOT EXISTS reports_fingerprint ON reports (fingerprint);
 
+-- Retained launch rows. The worker no longer ingests pings (the client was
+-- removed); existing rows stay readable for the dashboard and the diagnostic
+-- impact denominators until the retention purge drops them, and the ingest
+-- sentinel keeps using this table for its canary write.
 CREATE TABLE IF NOT EXISTS pings (
   date TEXT NOT NULL,
   install_id TEXT NOT NULL,
@@ -75,53 +79,10 @@ CREATE TABLE IF NOT EXISTS pings (
   PRIMARY KEY (date, install_id)
 );
 
--- CLI telemetry stays in additive tables so either the schema migration or the
--- Worker deployment can happen first without changing the Desktop contract.
-CREATE TABLE IF NOT EXISTS cli_pings (
-  date TEXT NOT NULL,
-  install_id TEXT NOT NULL,
-  version TEXT NOT NULL,
-  os TEXT NOT NULL,
-  arch TEXT NOT NULL,
-  os_version TEXT NOT NULL DEFAULT '',
-  os_build INTEGER NOT NULL DEFAULT 0,
-  os_revision INTEGER NOT NULL DEFAULT 0,
-  channel TEXT NOT NULL DEFAULT '',
-  distro_id TEXT NOT NULL DEFAULT '',
-  distro_version TEXT NOT NULL DEFAULT '',
-  kernel_version TEXT NOT NULL DEFAULT '',
-  session_type TEXT NOT NULL DEFAULT '',
-  runtime_engine TEXT NOT NULL DEFAULT '',
-  runtime_version TEXT NOT NULL DEFAULT '',
-  gpu_mode TEXT NOT NULL DEFAULT '',
-  opens INTEGER NOT NULL DEFAULT 1,
-  PRIMARY KEY (date, install_id)
-);
-
--- Single-row checkpoint used by the scheduled ingest sentinel to detect when
--- launch totals stop advancing between runs. The worker also creates this
--- table at runtime so existing databases need no manual migration.
-CREATE TABLE IF NOT EXISTS ingest_sentinel_state (
-  id INTEGER PRIMARY KEY CHECK (id = 1),
-  day TEXT NOT NULL,
-  ping_count INTEGER NOT NULL,
-  open_count INTEGER NOT NULL,
-  checked_at TEXT NOT NULL
-);
-
--- Opt-in aggregate Desktop metrics: anonymous per-day (signal, bucket)
--- counters, no content. Generic shape so a new signal is just new rows.
+-- Retained aggregate Desktop metrics: anonymous per-day (signal, bucket)
+-- counters, no content. No longer ingested — the client was removed — but the
+-- rows stay readable until the retention purge drops them.
 CREATE TABLE IF NOT EXISTS metrics (
-  date TEXT NOT NULL,
-  version TEXT NOT NULL,
-  os TEXT NOT NULL,
-  signal TEXT NOT NULL,
-  bucket TEXT NOT NULL,
-  count INTEGER NOT NULL DEFAULT 0,
-  PRIMARY KEY (date, version, os, signal, bucket)
-);
-
-CREATE TABLE IF NOT EXISTS cli_metrics (
   date TEXT NOT NULL,
   version TEXT NOT NULL,
   os TEXT NOT NULL,

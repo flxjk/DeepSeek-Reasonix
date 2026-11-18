@@ -82,7 +82,7 @@ when they bypass the intended boundary:
 - Following symlinks or path traversal to escape workspace confinement.
 - Running shell commands or external tools without the required permission gate.
 - Leaking credentials, environment variables, prompt history, local files, or bot
-  messages to logs, model providers, MCP servers, crash reports, or telemetry.
+  messages to logs, model providers, MCP servers, or crash reports.
 - Allowing a website to drive the local HTTP server through CSRF, CORS, or
   content-type bypasses.
 - Letting a bot user outside the configured allowlist submit prompts, approve

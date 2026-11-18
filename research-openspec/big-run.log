@@ -1,0 +1,274 @@
+{
+  "dry": false,
+  "model": "ggml-org/gemma-4-E4B-it-GGUF:Q8_0",
+  "targetsBeforeDedupe": 34,
+  "targets": 19,
+  "duplicatesDropped": 15,
+  "duplicateKbSaved": 8506,
+  "duplicates": [
+    {
+      "dropped": "agentic-sdlc-and-mutation-memory",
+      "duplicateOf": "agentic-sdlc-and-mutation-memory",
+      "kb": 893
+    },
+    {
+      "dropped": "ai-planning-agent-specification",
+      "duplicateOf": "ai-planning-agent-specification",
+      "kb": 173
+    },
+    {
+      "dropped": "ai-planning-agent-specification",
+      "duplicateOf": "ai-planning-agent-specification",
+      "kb": 173
+    },
+    {
+      "dropped": "alloy-js-reactive-synthesis-architecture",
+      "duplicateOf": "alloy-js-reactive-synthesis-architecture",
+      "kb": 379
+    },
+    {
+      "dropped": "distributed-bim-architecture-analysis",
+      "duplicateOf": "distributed-bim-architecture-analysis",
+      "kb": 566
+    },
+    {
+      "dropped": "local-mac-pdf-to-typespec",
+      "duplicateOf": "local-mac-pdf-to-typespec",
+      "kb": 389
+    },
+    {
+      "dropped": "nano-model-bim-query-compilers",
+      "duplicateOf": "nano-model-bim-query-compilers",
+      "kb": 707
+    },
+    {
+      "dropped": "neuro-symbolic-verification-in-engineering",
+      "duplicateOf": "neuro-symbolic-verification-in-engineering",
+      "kb": 806
+    },
+    {
+      "dropped": "openusd-distillation-services-typespec-effect-four-and-wit-zero-three",
+      "duplicateOf": "openusd-distillation-services-typespec-effect-four-and-wit-zero-three",
+      "kb": 491
+    },
+    {
+      "dropped": "self-healing-typespec-meta-harness-architecture",
+      "duplicateOf": "self-healing-typespec-meta-harness-architecture",
+      "kb": 804
+    },
+    {
+      "dropped": "telemetry-arrow-abi-and-sandboxing",
+      "duplicateOf": "telemetry-arrow-abi-and-sandboxing",
+      "kb": 759
+    },
+    {
+      "dropped": "typespec-and-hey-api-gateway",
+      "duplicateOf": "typespec-and-hey-api-gateway",
+      "kb": 426
+    },
+    {
+      "dropped": "typespec-package-governance-architecture",
+      "duplicateOf": "typespec-package-governance-architecture",
+      "kb": 624
+    },
+    {
+      "dropped": "udast-bidirectional-documentation-architecture",
+      "duplicateOf": "udast-bidirectional-documentation-architecture",
+      "kb": 390
+    },
+    {
+      "dropped": "webgpu-ui-and-monorepo-fabric",
+      "duplicateOf": "webgpu-ui-and-monorepo-fabric",
+      "kb": 926
+    }
+  ],
+  "totalMB": 1.2,
+  "chunks": 659,
+  "maxChunkChars": 14643,
+  "keptMaxChars": 14643,
+  "keptChunks": 88,
+  "keptPct": 13.4,
+  "keptMB": 0.2,
+  "keptPctBytes": 18.9,
+  "keepReasons": {
+    "heading": 48,
+    "unit": 21,
+    "modal+unit": 19
+  },
+  "estimate": {
+    "prefillTokens": 61971,
+    "prefillMinutes": 2,
+    "generationMinutes": 45,
+    "totalHours": 0.8
+  },
+  "biggest": [
+    {
+      "study": "webgpu-ui-and-monorepo-fabric",
+      "kb": 926,
+      "chunks": 20,
+      "kept": 0,
+      "keptKb": 0
+    },
+    {
+      "study": "agentic-sdlc-and-mutation-memory",
+      "kb": 893,
+      "chunks": 14,
+      "kept": 0,
+      "keptKb": 0
+    },
+    {
+      "study": "neuro-symbolic-verification-in-engineering",
+      "kb": 806,
+      "chunks": 12,
+      "kept": 3,
+      "keptKb": 19
+    },
+    {
+      "study": "self-healing-typespec-meta-harness-architecture",
+      "kb": 804,
+      "chunks": 19,
+      "kept": 6,
+      "keptKb": 17
+    },
+    {
+      "study": "telemetry-arrow-abi-and-sandboxing",
+      "kb": 759,
+      "chunks": 19,
+      "kept": 4,
+      "keptKb": 13
+    },
+    {
+      "study": "nano-model-bim-query-compilers",
+      "kb": 707,
+      "chunks": 15,
+      "kept": 1,
+      "keptKb": 3
+    },
+    {
+      "study": "typespec-package-governance-architecture",
+      "kb": 624,
+      "chunks": 22,
+      "kept": 1,
+      "keptKb": 1
+    },
+    {
+      "study": "distributed-bim-architecture-analysis",
+      "kb": 566,
+      "chunks": 19,
+      "kept": 6,
+      "keptKb": 31
+    },
+    {
+      "study": "openusd-distillation-services-typespec-effect-four-and-wit-zero-three",
+      "kb": 491,
+      "chunks": 20,
+      "kept": 3,
+      "keptKb": 7
+    },
+    {
+      "study": "typespec-and-hey-api-gateway",
+      "kb": 426,
+      "chunks": 18,
+      "kept": 4,
+      "keptKb": 26
+    }
+  ]
+}
+phase2 chunks=659 kept=88 remaining=88 doing=88
+[1/88] ai-planning-agent-specification#3 "1.3 Defense-in-Depth Security: Dual-LLM " found=3 acc=2 totalAcc=2 30s
+[2/88] ai-planning-agent-specification#4 "2. Formal Requirements Engineering (RE4A" found=0 acc=0 totalAcc=2 2s
+[3/88] ai-planning-agent-specification#5 "2.1 Mathematical Formulation of Probabil" found=1 acc=1 totalAcc=3 15s
+[4/88] ai-planning-agent-specification#12 "4.2 TypeScript Compiler Library and Deco" found=3 acc=3 totalAcc=6 40s
+[5/88] ai-planning-agent-specification#13 "5. TypeSpec Compiler AST Linter Rules, A" found=1 acc=1 totalAcc=7 10s
+[6/88] ai-planning-agent-specification#14 "5.1 Rule 1: 100% EARS pSLO Coverage and " found=2 acc=2 totalAcc=9 13s
+[7/88] ai-planning-agent-specification#15 "5.2 Rule 2: EU AI Act Chapter III High-R" found=0 acc=0 totalAcc=9 44s
+[8/88] ai-planning-agent-specification#16 "5.3 Rule 3: Dual-LLM (CaMeL) and Remote " found=3 acc=3 totalAcc=12 25s
+[9/88] alloy-js-reactive-synthesis-architecture#3 "Extending the Symbol Graph with Callable" found=0 acc=0 totalAcc=12 3s
+[10/88] alloy-js-reactive-synthesis-architecture#4 "Semantics of Callable Refkeyables and Fa" found=1 acc=1 totalAcc=13 15s
+[11/88] bimly-core-contracts-deep-research#8 "1.6 Memory-layout research with realisti" found=0 acc=0 totalAcc=13 3s
+[12/88] bimly-core-contracts-deep-research#19 "3.4 Tolerances and uncertainty as separa" found=0 acc=0 totalAcc=13 2s
+[13/88] bimly-core-contracts-deep-research#30 "4.6 IDS as incremental computation" found=1 acc=1 totalAcc=14 8s
+[14/88] bimly-core-contracts-deep-research#35 "5.3 Acceptance gates" found=0 acc=0 totalAcc=14 3s
+[15/88] bimly-core-contracts-deep-research#38 "6. Direct answers to the dossier's 16 re" found=3 acc=0 totalAcc=14 21s
+[16/88] bimly-participant-tenancy-typespec-research#15 "9.1 Proposed policy algebra" found=0 acc=0 totalAcc=14 2s
+[17/88] bimly-participant-tenancy-typespec-research#25 "11. Information requirements and deliver" found=0 acc=0 totalAcc=14 2s
+[18/88] bimly-participant-tenancy-typespec-research#26 "11.1 Separation of the requirement layer" found=1 acc=1 totalAcc=15 6s
+[19/88] bimly-participant-tenancy-typespec-research#44 "14.1 Policy computation without role exp" found=0 acc=0 totalAcc=15 2s
+[20/88] bimly-participant-tenancy-typespec-research#73 "24. Participation requirements and relea" found=1 acc=1 totalAcc=16 10s
+[21/88] core-rhex-bimly-adaptive-planning-research-two-zero-two-six-zero-nine-two-one#7 "5.1 Denominator and window requirements" found=0 acc=0 totalAcc=16 1s
+[22/88] core-rhex-bimly-adaptive-planning-research-two-zero-two-six-zero-nine-two-one#10 "6.1 Fields needed for every route policy" found=0 acc=0 totalAcc=16 1s
+[23/88] core-rhex-bimly-adaptive-planning-research-two-zero-two-six-zero-nine-two-one#31 "14.2 A cascade has a stopping policy" found=0 acc=0 totalAcc=16 2s
+[24/88] core-rhex-bimly-adaptive-planning-research-two-zero-two-six-zero-nine-two-one#32 "14.3 Quality prediction is not acceptanc" found=0 acc=0 totalAcc=16 1s
+[25/88] core-rhex-bimly-adaptive-planning-research-two-zero-two-six-zero-nine-two-one#34 "15.1 Aggregate optimization" found=0 acc=0 totalAcc=16 42s
+[26/88] core-rhex-bimly-adaptive-planning-research-two-zero-two-six-zero-nine-two-one#56 "21.1 Cloud is a gated capability" found=1 acc=0 totalAcc=16 19s
+[27/88] core-rhex-bimly-adaptive-planning-research-two-zero-two-six-zero-nine-two-one#63 "22.3 Rollback and stopping rules" found=0 acc=0 totalAcc=16 2s
+[28/88] core-rhex-bimly-adaptive-planning-research-two-zero-two-six-zero-nine-two-one#76 "26.1 Required invariants" found=3 acc=3 totalAcc=19 18s
+[29/88] core-rhex-bimly-adaptive-planning-research-two-zero-two-six-zero-nine-two-one#87 "32.2 Initial proposed service objectives" found=3 acc=3 totalAcc=22 20s
+[30/88] core-rhex-bimly-adaptive-planning-research-two-zero-two-six-zero-nine-two-one#88 "33. Production release gates" found=0 acc=0 totalAcc=22 2s
+[31/88] core-rhex-bimly-rule-engine-deep-research-two-zero-two-six-zero-nine-two-one#5 "4. “Rule engine” covers several differen" found=0 acc=0 totalAcc=22 2s
+[32/88] core-rhex-bimly-rule-engine-deep-research-two-zero-two-six-zero-nine-two-one#9 "7.1 Authorization and engineering accept" found=0 acc=0 totalAcc=22 1s
+[33/88] core-rhex-bimly-rule-engine-deep-research-two-zero-two-six-zero-nine-two-one#16 "9.1 Dependency DAG versus rule agenda" found=0 acc=0 totalAcc=22 1s
+[34/88] core-rhex-bimly-rule-engine-deep-research-two-zero-two-six-zero-nine-two-one#49 "22. Rule-bundle publication and activati" found=0 acc=0 totalAcc=22 1s
+[35/88] core-rhex-bimly-rule-engine-deep-research-two-zero-two-six-zero-nine-two-one#53 "Structural, energy, and optimization rul" found=0 acc=0 totalAcc=22 1s
+[36/88] core-rhex-bimly-rule-engine-deep-research-two-zero-two-six-zero-nine-two-one#56 "24.2 Select rules and facts early" found=0 acc=0 totalAcc=22 1s
+[37/88] core-rhex-bimly-rule-engine-deep-research-two-zero-two-six-zero-nine-two-one#61 "25. Proposed service levels and metrics" found=3 acc=3 totalAcc=25 23s
+[38/88] core-rhex-bimly-rule-engine-deep-research-two-zero-two-six-zero-nine-two-one#70 "28. AI-first authoring without AI-depend" found=0 acc=0 totalAcc=25 2s
+[39/88] core-rhex-bimly-rule-engine-deep-research-two-zero-two-six-zero-nine-two-one#72 "29. Self-improvement: distinguish implem" found=0 acc=0 totalAcc=25 1s
+[40/88] core-rhex-bimly-rule-engine-deep-research-two-zero-two-six-zero-nine-two-one#99 "37. Production release gates" found=0 acc=0 totalAcc=25 2s
+[41/88] distributed-bim-architecture-analysis#4 "Invariant-Confluent Coordination Avoidan" found=0 acc=0 totalAcc=25 1s
+[42/88] distributed-bim-architecture-analysis#5 "Formal Mechanics of Invariant Confluence" found=3 acc=3 totalAcc=28 25s
+[43/88] distributed-bim-architecture-analysis#8 "Deterministic Payload Encoding via RFC 8" found=0 acc=0 totalAcc=28 46s
+[44/88] distributed-bim-architecture-analysis#11 "Catalog Traversal Overhead and Partition" found=3 acc=0 totalAcc=28 29s
+[45/88] distributed-bim-architecture-analysis#13 "The tikv/raft-rs RawNode State Machine a" found=3 acc=0 totalAcc=28 31s
+[46/88] distributed-bim-architecture-analysis#17 "Declarative Rego Policy Validation with " found=3 acc=3 totalAcc=31 48s
+[47/88] local-mac-pdf-to-typespec#2 "IBM Docling (v2.130.0)" found=3 acc=0 totalAcc=31 31s
+[48/88] local-mac-pdf-to-typespec#3 "OpenDataLab MinerU (v4.0.7 / MinerU2.5)" found=3 acc=3 totalAcc=34 39s
+[49/88] local-mac-pdf-to-typespec#5 "Specialized Micro-VLMs and Document-Anch" found=3 acc=2 totalAcc=36 46s
+[50/88] local-mac-pdf-to-typespec#10 "Low-Level MLX-VLM Memory and Latency Opt" found=0 acc=0 totalAcc=36 2s
+[51/88] local-mac-pdf-to-typespec#13 "Constrained Decoding Engines: Preventing" found=3 acc=0 totalAcc=36 36s
+[52/88] local-mac-pdf-to-typespec#15 "Stage 1: High-Speed Local PDF Extraction" found=3 acc=3 totalAcc=39 18s
+[53/88] local-mac-pdf-to-typespec#16 "Stage 2 (Track A): Automated Synthesis a" found=3 acc=3 totalAcc=42 25s
+[54/88] nano-model-bim-query-compilers#8 "Enforcing 100% Feature Parity Across typ" found=3 acc=2 totalAcc=44 37s
+[55/88] neuro-symbolic-verification-in-engineering#2 "Unverified Extrapolation and Constitutiv" found=1 acc=0 totalAcc=44 19s
+[56/88] neuro-symbolic-verification-in-engineering#6 "Inference-by-Inference Alethe Proof Repl" found=3 acc=0 totalAcc=44 42s
+[57/88] neuro-symbolic-verification-in-engineering#10 "End-to-End Neural Envelope Certification" found=3 acc=2 totalAcc=46 41s
+[58/88] openusd-distillation-services-typespec-effect-four-and-wit-zero-three#0 "Formal Algebraic Foundations and Reposit" found=1 acc=1 totalAcc=47 21s
+[59/88] openusd-distillation-services-typespec-effect-four-and-wit-zero-three#5 "Architecture of Required Runtime Service" found=3 acc=3 totalAcc=50 17s
+[60/88] openusd-distillation-services-typespec-effect-four-and-wit-zero-three#12 "4. Submodule generatedSchema.usda AST Tr" found=2 acc=1 totalAcc=51 21s
+[61/88] self-healing-typespec-meta-harness-architecture#4 "Five-Phase Synthesis & Verification Pipe" found=3 acc=2 totalAcc=53 20s
+[62/88] self-healing-typespec-meta-harness-architecture#6 "Event-Sourced Negative Knowledge Substra" found=3 acc=1 totalAcc=54 20s
+[63/88] self-healing-typespec-meta-harness-architecture#7 "The pjm precheck Pre-Flight Gate and BLA" found=3 acc=1 totalAcc=55 34s
+[64/88] self-healing-typespec-meta-harness-architecture#11 "Stage 2: Z3 / CVC5 SMT Decorator Balanci" found=3 acc=3 totalAcc=58 28s
+[65/88] self-healing-typespec-meta-harness-architecture#12 "Stage 3: Programmatic TypeSpec AST Decor" found=3 acc=2 totalAcc=60 32s
+[66/88] self-healing-typespec-meta-harness-architecture#13 "Scenario: Upper boundary overflow reject" found=0 acc=0 totalAcc=60 2s
+[67/88] telemetry-arrow-abi-and-sandboxing#6 "HdrHistogram At-Recording Backfill Mecha" found=1 acc=1 totalAcc=61 12s
+[68/88] telemetry-arrow-abi-and-sandboxing#11 "Pinned buildingSMART Sample Test Files a" found=1 acc=1 totalAcc=62 21s
+[69/88] telemetry-arrow-abi-and-sandboxing#12 "Arrow C Device Data and Stream Interface" found=2 acc=2 totalAcc=64 16s
+[70/88] telemetry-arrow-abi-and-sandboxing#17 "Hardware-Virtualized Agent Micro-Environ" found=3 acc=0 totalAcc=64 45s
+[71/88] typespec-and-hey-api-gateway#2 "Implementing the Custom Multi-Target SSO" found=2 acc=1 totalAcc=65 30s
+[72/88] typespec-and-hey-api-gateway#14 "Node.js 26.10.0 Runtime Optimization and" found=0 acc=0 totalAcc=65 2s
+[73/88] typespec-and-hey-api-gateway#16 "Complete Reference Implementation: The E" found=3 acc=2 totalAcc=67 38s
+[74/88] typespec-and-hey-api-gateway#17 "Architectural Synthesis and Operational " found=1 acc=1 totalAcc=68 16s
+[75/88] typespec-package-governance-architecture#11 "Offline-First DMZ Ingestion Gateway and " found=0 acc=0 totalAcc=68 2s
+[76/88] typespec-rhex-platform-architecture#7 "3.1 Version policy" found=0 acc=0 totalAcc=68 1s
+[77/88] typespec-rhex-platform-architecture#15 "5.7 Shared linter rules and mandatory en" found=1 acc=1 totalAcc=69 8s
+[78/88] typespec-rhex-platform-architecture#49 "14.2 Concurrency scope must match invari" found=0 acc=0 totalAcc=69 1s
+[79/88] typespec-rhex-platform-architecture#65 "16.3 Language-independent acceptance" found=0 acc=0 totalAcc=69 1s
+[80/88] typespec-rhex-platform-architecture#70 "17.5 Product metrics" found=0 acc=0 totalAcc=69 1s
+[81/88] typespec-rhex-platform-architecture#72 "18.1 A policy cannot approve its own rep" found=0 acc=0 totalAcc=69 1s
+[82/88] typespec-rhex-platform-architecture#73 "18.2 Mandatory rule catalog" found=2 acc=2 totalAcc=71 8s
+[83/88] typespec-rhex-platform-architecture#78 "19.4 Rolling documentation is not a vers" found=0 acc=0 totalAcc=71 1s
+[84/88] typespec-rhex-platform-architecture#89 "23.3 Quality gates" found=0 acc=0 totalAcc=71 2s
+[85/88] udast-bidirectional-documentation-architecture#2 "Lossless Markdown Parsing and Serializat" found=1 acc=1 totalAcc=72 12s
+[86/88] udast-bidirectional-documentation-architecture#3 "Formalizing tasks.md via ::rhex-plan-ste" found=2 acc=2 totalAcc=74 23s
+[87/88] udast-bidirectional-documentation-architecture#5 "Conflict Resolution in Movable Trees and" found=3 acc=2 totalAcc=76 34s
+[88/88] udast-bidirectional-documentation-architecture#9 "End-to-End Implementation of the In-RAM " found=3 acc=3 totalAcc=79 29s
+{
+  "model": "ggml-org/gemma-4-E4B-it-GGUF:Q8_0",
+  "chunksProcessed": 90,
+  "chunksRemaining": -2,
+  "invariantsAccepted": 79,
+  "statementsFound": 116,
+  "rejections": 37,
+  "wallMinutes": 24.3
+}

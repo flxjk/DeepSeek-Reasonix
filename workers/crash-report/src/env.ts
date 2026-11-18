@@ -8,8 +8,6 @@ export interface Env {
   // read and write it; the crash tables stay in DB.
   REGISTRY_DB: D1Database;
   RATE_LIMITER: RateLimiter;
-  PING_LIMITER: RateLimiter;
-  METRICS_LIMITER: RateLimiter;
   WRITE_LIMITER?: RateLimiter;
   ADMIN_EMAILS?: string;
   // Shared identity service (id.reasonix.io) and the site that hosts its login
