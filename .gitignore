@@ -96,3 +96,8 @@ scripts/official-theme-art/__pycache__/
 *.exe
 *.exe~
 /relayfake
+
+# local backups containing credentials - never commit
+claude-code-backup-*.tgz
+claude-code-config-*.json
+zshrc-backup-*.txt
